@@ -37,8 +37,9 @@ class RolController extends Controller
 
     public function save(Request $request){
        // $request->validate(Rol::$rules);
+       // return dd($request);
         $input = $request->all(); 
-        //return dd($request);
+        
         try {
 
             Rol::create([
@@ -46,11 +47,11 @@ class RolController extends Controller
             ]);
 
             alert()->success('Rol creado Exitosamente');
-            return redirect("/rol");
+            return redirect("/rol/crear");
 
         } catch (\exception $e) {
             alert()->warning('Error', 'Error al crear Rol');
-            return redirect("/rol");
+            return redirect("/rol/crear");
         }
     }
     

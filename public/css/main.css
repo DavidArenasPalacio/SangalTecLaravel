@@ -1,3 +1,19 @@
 .table {
     width: 100% !important;
 }
+
+.error {
+    --text-opacity: 1;
+    color: #D32929;
+    color: rgba(211, 41, 41, var(--text-opacity));
+    --border-opacity: 1;
+    border-color: #D32929;
+    border-color: rgba(211, 41, 41, var(--border-opacity));
+}
+
+.valid {
+
+    --border-opacity: 1;
+    border-color: #91C714;
+    border-color: rgba(145, 199, 20, var(--border-opacity));
+}

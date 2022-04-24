@@ -23,7 +23,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('/auth/login');
+    return view('home');
 });
 
 Auth::routes();
@@ -32,13 +32,14 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/rol', [RolController::class, 'index']);
 Route::get('/rol/listar', [RolController::class, 'listar']);
-Route::get('/rol/create', [RolController::class, 'create']);
+Route::get('/rol/crear', [RolController::class, 'create']);
 Route::post('/rol/guardar', [RolController::class, 'save']);
 Route::get('/rol/editar/{id}', [RolController::class, 'edit']);
 Route::post('/rol/actualizar', [RolController::class, 'update']);
 
 Route::get('/usuario', [UserController::class, 'index']);
 Route::get('/usuario/listar', [UserController::class, 'listar']);
+Route::get('/usuario/crear/', [UserController::class, 'create']);
 Route::post('/usuario/guardar', [UserController::class, 'save']);
 Route::get('/usuario/editar/{id}', [UserController::class, 'edit']);
 Route::post('/usuario/actualizar', [UserController::class, 'update']);

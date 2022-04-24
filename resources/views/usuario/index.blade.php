@@ -4,10 +4,10 @@
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-    Gestión Usuario
+        Gestión Usuario
     </h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/rol/create" class="button text-white bg-theme-1 shadow-md mr-2">    Crear Usuario</a>
+        <a href="/usuario/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Usuario</a>
     </div>
 
 </div>
@@ -16,14 +16,14 @@
 
         <thead>
             <tr>
-            <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Documento</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Email</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+                <th class="border-b-2 whitespace-no-wrap">Rol</th>
+                <th class="border-b-2 whitespace-no-wrap"> Documento</th>
+                <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
+                <th class="border-b-2 whitespace-no-wrap">Dirección</th>
+                <th class="border-b-2 whitespace-no-wrap">Email</th>
+                <th class="border-b-2 whitespace-no-wrap">Estado</th>
+                <th class="border-b-2 text-center whitespace-no-wrap">Acciones</th>
 
             </tr>
         </thead>
@@ -68,31 +68,38 @@
         ajax: '/usuario/listar',
         columns: [{
                 data: 'nombre',
-                name: 'nombre'
+                name: 'nombre',
+                sClass: 'border-b'
             },
             {
                 data: 'rol',
-                name: 'rol'
+                name: 'rol',
+                sClass: 'border-b'
             },
             {
                 data: 'documento',
-                name: 'documento'
+                name: 'documento',
+                sClass: 'border-b'
             },
             {
                 data: 'telefono',
-                name: 'telefono'
+                name: 'telefono',
+                sClass: 'border-b'
             },
             {
                 data: 'direccion',
-                name: 'direccion'
+                name: 'direccion',
+                sClass: 'border-b'
             },
             {
                 data: 'email',
-                name: 'email'
+                name: 'email',
+                sClass: 'border-b'
             },
             {
                 data: 'estado',
                 name: 'estado',
+                sClass: 'border-b',
                 orderable: false,
                 serachable: false
             },
@@ -101,13 +108,12 @@
                 name: 'acciones',
                 orderable: false,
                 serachable: false,
-                sClass: 'text-center'
+                sClass: 'text-center border-b'
             }
         ]
-    }
-    );
+    });
     $('#btnGuardar').click((e) => {
-    let form = $('#form');
+        let form = $('#form');
         e.preventDefault();
         Swal.fire({
             title: '¿Desea Crear El Usuario?',

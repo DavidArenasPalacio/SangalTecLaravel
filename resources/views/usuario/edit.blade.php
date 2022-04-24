@@ -2,78 +2,150 @@
 
 
 @section('content')
-<section class="container">
-    <div class="p-5 bg-white">
-        <h2 class="text-center">Modificar Usuario</h2>
-        <form action="/usuario/actualizar" method="post">
-            @csrf
-            <input type="hidden" name="id" value="{{$usuario->id}}">
-            <div class="mb-3">
-                <label for="">Nombre:</label>
-                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{$usuario->name}}">
-                @error('nombre')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb3">
-                <label for="">Rol: </label>
-                <select name="rol_id" class="form-control @error('rol_id') is-invalid @enderror" id="">
-                    <option value="">------Seleccione-----</option>
-                    @foreach($roles as $value)
-                    <option {{$value->id == $usuario->rol_id ? 'selected' : ''}}  value="{{ $value->id }}">{{ $value->Nombre_Rol }}</option>
-                    @endforeach
-                </select>
-                @error('rol_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Documento: </label>
-                <input type="text" name="documento" class="form-control @error('documento') is-invalid @enderror" value="{{$usuario->documento}}">
-                @error('documento')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Teléfono: </label>
-                <input type="tel" name="telefono" class="form-control @error('telefono') is-invalid @enderror" value="{{$usuario->telefono}}">
-                @error('telefono')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Dirección: </label>
-                <input type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{$usuario->direccion}}">
-                @error('direccion')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Email: </label>
-                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{$usuario->email}}">
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+<h1 class="text-center text-4xl font-medium">Modificar Usuario</h1>
+<form action="/usuario/actualizar method="POST" id="form">
+    @csrf
+    <input type="hidden" name="id" value="{{$usuario->id}}">
+    <div class="flex flex-col sm:flex-row items-center">
 
-            <div class="d-flex justify-content-between">
-                <a href="/usuario" class="btn btn-primary">Cancelar</a>
-                <button type="submit" class="btn btn-success">Modificar usuario</button>
+        <div class="w-full mr-2">
+            <label for="nombre">Nombre:</label>
 
-            </div>
-        </form>
+            <input type="text" id="nombre" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre" maxlength="125" value="{{$usuario->name}}">
+            @error('nombre')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="">Rol: </label>
+            <select name="rol_id" class="input w-full sm:mt-2 border mr-2 @error('rol_id') border-theme-6  @enderror" id="">
+                <option>------ Seleccione -----</option>
+                @foreach($roles as $value)
+                <option {{$value->id == $usuario->rol_id ? 'selected' : ''}}  value="{{ $value->id }}">{{ $value->Nombre_Rol }}</option>
+                @endforeach
+            </select>
+            @error('rol_id')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+
     </div>
-</section>
+
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="documento">Documento:</label>
+
+            <input type="text" id="documento" name="documento" class="input w-full border mt-2 @error('documento') border-theme-6 @enderror" placeholder="Ingrese el documento" value="{{$usuario->documento}}">
+            @error('documento')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="telefono">Teléfono:</label>
+
+            <input type="text" id="telefono" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="50" value="{{$usuario->telefono}}">
+            @error('telefono')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="direccion">Dirección:</label>
+
+            <input type="text" id="direccion" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{$usuario->direccion}}">
+            @error('direccion')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="email">Correo:</label>
+
+            <input type="email" id="email" name="email" class="input w-full border mt-2 @error('email') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="225" value="{{$usuario->email}}">
+            @error('email')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+    </div>
+
+
+    <!--  <div class="flex justify-between ">
+        <a href="/usuario" class="button  border bg-theme-9 text-white mr-2 mt-5 w-full">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
+    </div> -->
+    <div class="flex justify-between">
+        <a href="/usuario" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Modificar usuario</button>
+    </div>
+</form>
+@endsection
+
+
+@section('script')
+<script>
+    $(document).ready(function() {
+
+        $.validator.addMethod("formAlphanumeric", function(value, element) {
+            var pattern = /^[\w]+$/i;
+            return this.optional(element) || pattern.test(value);
+        }, "El campo debe tener un valor alfanumérico (azAZ09)");
+
+        $.validator.addMethod("formEmail", function(value, element) {
+            var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+            return this.optional(element) || pattern.test(value);
+        }, "Formato del email incorrecto");
+
+        /* $.validator.addMethod("espacios", function(value, element) {
+            return value.trim().length > 0
+        }, "No debe tener espacios"); */
+
+        $('#form').validate({ // initialize the plugin
+            rules: {
+                nombre: {
+                    required: true,
+                    formAlphanumeric: true,
+                    minlength: 2,
+                  
+                },
+                rol_id: {
+                    required: true,
+                    number: true
+                },
+                documento: {
+                    required: true,
+                    number:true,
+                },
+                telefono: {
+                    required: true,
+                    number: true,
+                    minlength: 2,
+                    maxlength: 15,
+                   
+                },
+                direccion: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    formEmail: true,
+/*                     normalizer: function(value) {
+                        return $.trim(value);
+                    } */
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: {
+                
+                rol_id: "Seleccione una opción",
+                documemto: "El campo es obligatorio",
+                telefono: "El campo Teléfono no contiene un formato correcto."
+            },
+            errorElement: 'span'
+
+
+        });
+    });
+</script>
 @endsection

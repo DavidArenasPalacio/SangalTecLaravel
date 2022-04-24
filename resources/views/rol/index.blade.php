@@ -7,7 +7,7 @@
         Gestión Roles
     </h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/rol/create" class="button text-white bg-theme-1 shadow-md mr-2">Crear rol </a>
+        <a href="/rol/crear" class="button text-white bg-theme-1 shadow-md mr-2">Crear rol </a>
     </div>
 
 </div>
@@ -26,67 +26,6 @@
         <thead>
 
 </div>
-{{-- <div class="card">
-        <div class="card-header">
-            <div class="d-flex justify-content-between p-2">
-                <h3>Gestión Roles</h3>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                    Crear Rol
-                </button>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="modal-default">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <h4 class="modal-title">Crear Rol</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-
-                        </div>
-                        <div class="modal-body">
-                            <form action="/rol/guardar" method="post" id="form">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="">Nombre:</label>
-                                    <input type="text" name="nombre"
-                                        class="form-control @error('nombre') is-invalid @enderror">
-                                    @error('nombre')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-</span>
-@enderror
-</div>
-
-<button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-</form>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<div class="card-body">
-
-    <table id="tbl_rol" class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Acciones</th>
-
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-</div> --}}
 @endsection
 
 
@@ -123,14 +62,15 @@
         ajax: '/rol/listar',
         columns: [{
                 data: 'Nombre_Rol',
-                name: 'Nombre_Rol'
+                name: 'Nombre_Rol',
+                sClass: 'border-b'
             },
             {
                 data: 'acciones',
                 name: 'acciones',
                 orderable: false,
                 serachable: false,
-                sClass: 'text-center'
+                sClass: 'text-center border-b'
             }
         ]
 

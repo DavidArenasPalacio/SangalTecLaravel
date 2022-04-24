@@ -55,7 +55,7 @@ class ProductoController extends Controller
 
     public function save(Request $request)
     {
-        //$request->validate(Producto::$rules);
+        $request->validate(Producto::$rules);
 
         $input = $request->all();
         //return response()->json($request);
