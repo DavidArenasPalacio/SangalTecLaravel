@@ -103,7 +103,6 @@
             rules: {
                 nombre: {
                     required: true,
-                    formAlphanumeric: true,
                     minlength: 2,
                   
                 },

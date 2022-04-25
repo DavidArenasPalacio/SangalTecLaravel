@@ -36,14 +36,14 @@ class RolController extends Controller
     }
 
     public function save(Request $request){
-       // $request->validate(Rol::$rules);
+       $request->validate(Rol::$rules);
        // return dd($request);
         $input = $request->all(); 
         
         try {
 
             Rol::create([
-                "Nombre_Rol"=> $input["rol"],
+                "Nombre_Rol"=> $input["Nombre_Rol"],
             ]);
 
             alert()->success('Rol creado Exitosamente');
@@ -57,6 +57,7 @@ class RolController extends Controller
     
 
     public function edit($id){
+       
         $rol = Rol::find($id);
 
         if ($rol == null) {
@@ -70,7 +71,7 @@ class RolController extends Controller
     public function update(Request $request)
     {
 
-        //$request->validate(Rol::$rules);
+        $request->validate(Rol::$rules);
 
         $input = $request->all();
 
@@ -87,7 +88,7 @@ class RolController extends Controller
             }
 
             $rol->update([
-                "Nombre_Rol" => $input["rol"],
+                "Nombre_Rol" => $input["Nombre_Rol"],
             ]);
 
           

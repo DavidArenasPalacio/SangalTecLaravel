@@ -2,49 +2,102 @@
 
 
 @section('content')
-<section class="container">
-<div class="p-5 bg-white">
-    <h2 class="text-center">Modificar Producto</h2>
-<form action="/producto/actualizar" method="post">
+<h1 class="text-center text-4xl font-medium">Modificar Producto</h1>
+<form action="/producto/guardar" method="POST" class="mb-5 py-5" id="form">
     @csrf
-    <input type="hidden" name="id" value="{{$producto->id}}">
-    <div class="mb-3">
-        <label for="">Nombre</label>
-        <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{$producto->Nombre_Producto}}">
-        @error('nombre')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
+
+    <div class="w-full">
+        <label for="Nombre_Producto">Nombre:</label>
+
+        <input type="text" id="Nombre_Producto" name="Nombre_Producto" class="input w-full border mt-2 @error('Nombre_Producto') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{$producto->Nombre_Producto}}" minlength="2">
+        @error('Nombre_Producto')
+        <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
         @enderror
     </div>
-    <div class="mb3">
-        <label for="">Categoría: </label>
-        <select name="categoria_id" class="form-control " id="">
+    <div class="w-full mt-2">
+        <label for="categoria_id">Categoría: </label>
+        <select name="categoria_id" class="input w-full sm:mt-2 border mr-2 @error('categoria_id') border-theme-6 @enderror" id="categoria_id">
+            <option>------ Seleccione -----</option>
             @foreach($categorias as $key => $value)
-            <option {{$value->id == $producto->categoria_id ? 'selected' : ''}}  value="{{ $value->id }}">{{ $value->Nombre_Categoria }}</option>
+            <option {{$value->id == $producto->categoria_id ? 'selected' : ''}} value="{{ $value->id }}">{{ $value->Nombre_Categoria }}</option>
             @endforeach
         </select>
         @error('categoria_id')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
+        <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
         @enderror
     </div>
-    <div class="mb-3">
-        <label for="">Precio: </label>
-        <input type="number" name="precio" class="form-control @error('precio') is-invalid @enderror" value="{{$producto->Precio}}">
-        @error('precio')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="Precio">Precio:</label>
+
+            <input type="number" id="Precio" name="Precio" class="input w-full border mt-2 @error('Precio') border-theme-6 @enderror" placeholder="Ingrese el precio del producto" min="1" value="{{$producto->Precio}}">
+            @error('Precio')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="Cantidad">Cantidad:</label>
+
+            <input type="number" id="Cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{$producto->Cantidad}}">
+            @error('Cantidad')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+
     </div>
-    <div class="d-flex justify-content-between">
-    <a href="/producto" class="btn btn-primary">Cancelar</a>
-    <button type="submit" class="btn btn-success">Modificar producto</button>
-   
+    <div class="flex justify-between">
+        <a href="/producto" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Modificar Produto</button>
     </div>
 </form>
-</div>
-</section>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+
+        $.validator.addMethod("formAlphanumeric", function(value, element) {
+            var pattern = /^[\w]+$/i;
+            return this.optional(element) || pattern.test(value);
+        }, "El campo debe tener un valor alfanumérico (azAZ09)");
+
+
+
+        /* $.validator.addMethod("espacios", function(value, element) {
+            return value.trim().length > 0
+        }, "No debe tener espacios"); */
+
+        $('#form').validate({ // initialize the plugin
+            rules: {
+                Nombre_Producto: {
+                    required: true,
+                    minlength: 5,
+
+                },
+                categoria_id: {
+                    required: true,
+                    number: true
+                },
+                Precio: {
+                    required: true,
+                    number: true,
+                    min: 1,
+                },
+                Cantidad: {
+                    required: true,
+                    number: true,
+                    min: 1,
+                    maxlength: 15,
+
+                }
+            },
+            messages: {
+                categoria_id: "Seleccione una opción",
+            },
+            errorElement: 'span'
+
+
+        });
+    });
+</script>
 @endsection

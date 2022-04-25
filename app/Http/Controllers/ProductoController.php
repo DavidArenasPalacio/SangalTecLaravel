@@ -18,8 +18,7 @@ class ProductoController extends Controller
 
 
     public function index(){
-        $categorias = Categoria::all();
-        return view("producto.index", compact("categorias"));
+        return view("producto.index");
     }  
 
 
@@ -51,27 +50,33 @@ class ProductoController extends Controller
 
 
 
+    public function create(){
+        $categorias = Categoria::all();
+
+        return view("producto.create", compact("categorias"));
+    }  
 
 
     public function save(Request $request)
     {
-        $request->validate(Producto::$rules);
-
+        //dd($request->all());
+       $request->validate(Producto::$rules);
+       
         $input = $request->all();
         //return response()->json($request);
         try {
             Producto::create([   
                 "categoria_id" => $input["categoria_id"],
-                "Nombre_Producto" => $input["nombre"], 
-                "Precio" => $input["precio"],    
-                "Cantidad" => $input["cantidad"], 
+                "Nombre_Producto" => $input["Nombre_Producto"], 
+                "Precio" => $input["Precio"],    
+                "Cantidad" => $input["Cantidad"], 
                 "Estado" => 1
             ]);
             alert()->success('Producto creado Exitosamente');
-            return redirect("/producto");
+            return redirect("/producto/crear");
         } catch (\Exception $e) {
             alert()->warning('Error', 'Error al crear Producto');
-            return redirect("/producto")->with('error', 'Error al crear producto');;
+            return redirect("/producto/crear")->with('error', 'Error al crear producto');;
         }
     }
 

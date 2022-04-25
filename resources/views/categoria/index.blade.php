@@ -2,66 +2,28 @@
 
 
 @section('content')
-
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between p-2">
-            <h3>Gestión Categorías</h3>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                Crear Categoría
-            </button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h4 class="modal-title">Crear Categría</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                    </div>
-                    <div class="modal-body">
-                        <form action="/categoria/guardar" method="post" id="form">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="">Nombre:</label>
-                                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror">
-                                @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                          
-                            <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+        Gestión Categorías
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a href="/categoria/crear" class="button text-white bg-theme-1 shadow-md mr-2">Crear categoría </a>
     </div>
+</div>
+<div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table id="tbl_categoria" class="table table-report table-report--bordered display   w-full">
 
+        <thead>
+            <tr>
+                <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+                <th class="border-b-2 text-center whitespace-no-wrap">Acciones</th>
 
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <thead>
 
-    <div class="card-body">
-
-        <table id="tbl_categoria" class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
 </div>
 @endsection
 

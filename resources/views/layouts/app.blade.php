@@ -74,6 +74,26 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;" class="menu">
+                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                    <div class="menu__title"> Productos <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="/categoria" class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gestión de categorías </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/producto" class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gestión de productos</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="flex">
@@ -108,6 +128,26 @@
                             <a href="/usuario" class="side-menu">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de usuarios </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="side-menu">
+                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__title"> Productos <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="/categoria" class="side-menu">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title"> Gestión de categorías </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/producto" class="side-menu">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title"> Gestión de productos </div>
                             </a>
                         </li>
                     </ul>
@@ -175,8 +215,8 @@
                 </div>
             </div>
 
-            <div class="intro-y col-span-12 lg:col-span-12">
-                <div class="intro-y box p-5">
+            <div class="intro-y mt-5 col-span-12 lg:col-span-12">
+                <div class="intro-y box p-5 ">
                     @yield('content')
                 </div>
             </div>

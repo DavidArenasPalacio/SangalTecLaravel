@@ -33,6 +33,10 @@ class CategoriaController extends Controller
         ->make(true);
     }
 
+    public function create(){
+        return view("categoria.create");
+    }
+
     public function save(Request $request){
         // $request->validate(Categoria::$rules);
         $input = $request->all(); 
@@ -40,7 +44,7 @@ class CategoriaController extends Controller
         try {
 
             Categoria::create([
-                "Nombre_Categoria"=> $input["nombre"],
+                "Nombre_Categoria"=> $input["Nombre_Categoria"],
             ]);
 
             alert()->success('Categoría creado Exitosamente');
@@ -85,7 +89,7 @@ class CategoriaController extends Controller
             }
 
             $categoria->update([
-                "Nombre_Categoria" => $input["nombre"],
+                "Nombre_Categoria" => $input["Nombre_Categoria"],
             ]);
 
           

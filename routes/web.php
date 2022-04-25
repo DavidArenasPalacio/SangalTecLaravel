@@ -47,6 +47,7 @@ Route::get('/usuario/cambiar/estado/{id}/{estado}', [UserController::class, 'upd
 
 Route::get('/categoria', [CategoriaController::class, 'index']);
 Route::get('/categoria/listar', [CategoriaController::class, 'listar']);
+Route::get('/categoria/crear', [CategoriaController::class, 'create']);
 Route::post('/categoria/guardar', [CategoriaController::class, 'save']);
 Route::get('/categoria/editar/{id}', [CategoriaController::class, 'edit']);
 Route::get('/categoria/eliminar/{id}', [CategoriaController::class, 'delete']);
@@ -55,6 +56,7 @@ Route::get('/categoria/cambiar/estado/{idCategoria}/{estado}', [CategoriaControl
 
 Route::get('/producto', [ProductoController::class, 'index']);
 Route::get('/producto/listar', [ProductoController::class, 'listar']);
+Route::get('/producto/crear', [ProductoController::class, 'create']);
 Route::post('/producto/guardar', [ProductoController::class, 'save']);
 Route::get('/producto/editar/{id}', [ProductoController::class, 'edit']);
 Route::post('/producto/actualizar', [ProductoController::class, 'update']);

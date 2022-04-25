@@ -64,7 +64,7 @@ class UserController extends Controller
 
             User::create([
                 "rol_id" => $input["rol_id"],
-                "name" => $input["nombre"],
+                "name" => $input["name"],
                 "documento" => $input["documento"],
                 "telefono" => $input["telefono"],
                 "direccion" => $input["direccion"],

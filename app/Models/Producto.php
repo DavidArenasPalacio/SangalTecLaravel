@@ -15,7 +15,7 @@ class Producto extends Model
     public static $rules = [ 
         'categoria_id' =>  'required|exists:categoria,id',
         'Nombre_Producto'  => 'required|min:2',
-        'Cantidad' => 'numeric|min:0',
+        'Cantidad' => 'required|numeric|min:0',
         'Precio' => 'required',
         'Estado' => 'in:1,0'
     ];

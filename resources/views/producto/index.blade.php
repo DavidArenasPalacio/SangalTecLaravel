@@ -2,101 +2,33 @@
 
 
 @section('content')
-
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between p-2">
-            <h3>Gestión Producto</h3>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                Crear Producto
-            </button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h4 class="modal-title">Crear Producto</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                    </div>
-                    <div class="modal-body">
-                        <form action="/producto/guardar" method="post" id="form">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="">Nombre:</label>
-                                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror">
-                                @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb3">
-                                <label for="">Categoría: </label>
-                                <select name="categoria_id" class="form-control @error('categoria_id') is-invalid @enderror" id="">
-                                    <option value="">------Seleccione-----</option>
-                                    @foreach($categorias as $value)
-                                    <option value="{{ $value->id }}">{{ $value->Nombre_Categoria }}</option>
-                                    @endforeach
-                                </select>
-                                @error('categoria_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Precio: </label>
-                                <input type="number" name="precio" class="form-control @error('precio') is-invalid @enderror">
-                                @error('precio')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Cantidad: </label>
-                                <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror">
-                                @error('cantidad')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+        Gestión Productos
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a href="/producto/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Producto</a>
     </div>
 
-
-
-    <div class="card-body">
-
-        <table id="tbl_productos" class="table table-bordered">
+</div>
+<div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table id="tbl_usuarios" class="table table-report table-report--bordered display  ">
+        <table id="tbl_productos" class="table table-report table-report--bordered display">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Categoría</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                    <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+                    <th class="border-b-2 whitespace-no-wrap">Categoría</th>
+                    <th class="border-b-2 whitespace-no-wrap">Precio</th>
+                    <th class="border-b-2 whitespace-no-wrap">Estado</th>
+                    <th class="border-b-2 whitespace-no-wrap">Acciones</th>
 
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-    </div>
 </div>
+
 @endsection
 
 
@@ -158,11 +90,10 @@
                 sClass: 'text-center'
             }
         ]
-    }
-    );
+    });
 
     $('#btnGuardar').click((e) => {
-    let form = $('#form');
+        let form = $('#form');
         e.preventDefault();
         Swal.fire({
             title: '¿Desea crear el producto?',

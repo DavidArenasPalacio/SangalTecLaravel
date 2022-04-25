@@ -15,7 +15,7 @@ class Rol extends Model
 
 
     public static $rules = [ 
-        'Nombre_Rol' => 'required',
+        'Nombre_Rol' => 'required|min:5',
     ];
 
     public $timestamps = false;

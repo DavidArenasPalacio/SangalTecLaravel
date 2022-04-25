@@ -10,17 +10,17 @@
         <div class="w-full mr-2">
             <label for="nombre">Nombre:</label>
 
-            <input type="text" id="nombre" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre" maxlength="125">
-            @error('nombre')
+            <input type="text" id="name" name="name" class="input w-full border mt-2 @error('name') border-theme-6 @enderror" placeholder="Ingrese el nombre del usuario" maxlength="125" value="{{old('name')}}" >
+            @error('name')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
             <label for="">Rol: </label>
-            <select name="rol_id" class="input w-full sm:mt-2 border mr-2 @error('rol_id') border-theme-6  @enderror" id="">
+            <select name="rol_id" class="input w-full sm:mt-2 border mr-2 @error('rol_id') border-theme-6  @enderror" id="rol_id">
                 <option>------ Seleccione -----</option>
                 @foreach($roles as $value)
-                <option value="{{ $value->id }}">{{ $value->Nombre_Rol }}</option>
+                <option value="{{ $value->id }}" {{old('rol_id') == $value->id ? 'selected' : ''}}>>{{ $value->Nombre_Rol }}</option>
                 @endforeach
             </select>
             @error('rol_id')
@@ -34,7 +34,7 @@
         <div class="w-full mr-2">
             <label for="documento">Documento:</label>
 
-            <input type="text" id="documento" name="documento" class="input w-full border mt-2 @error('documento') border-theme-6 @enderror" placeholder="Ingrese el documento">
+            <input type="text" id="documento" name="documento" class="input w-full border mt-2 @error('documento') border-theme-6 @enderror" placeholder="Ingrese el documento del usuario" value="{{old('documento')}}">
             @error('documento')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -42,7 +42,7 @@
         <div class="w-full">
             <label for="telefono">Teléfono:</label>
 
-            <input type="text" id="telefono" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="50">
+            <input type="text" id="telefono" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="50" value="{{old('telefono')}}" >
             @error('telefono')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -52,7 +52,7 @@
         <div class="w-full mr-2">
             <label for="direccion">Dirección:</label>
 
-            <input type="text" id="direccion" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección">
+            <input type="text" id="direccion" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{old('direccion')}}">
             @error('direccion')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -60,7 +60,7 @@
         <div class="w-full">
             <label for="email">Correo:</label>
 
-            <input type="email" id="email" name="email" class="input w-full border mt-2 @error('email') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="225">
+            <input type="email" id="email" name="email" class="input w-full border mt-2 @error('email') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="225" value="{{old('email')}}">
             @error('email')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -103,17 +103,17 @@
             return this.optional(element) || pattern.test(value);
         }, "Formato del email incorrecto");
 
-        /* $.validator.addMethod("espacios", function(value, element) {
+
+        $.validator.addMethod("espacios", function(value, element) {
             return value.trim().length > 0
-        }, "No debe tener espacios"); */
+        }, "El campo no debe tener espacios"); 
 
         $('#form').validate({ // initialize the plugin
             rules: {
-                nombre: {
+                name: {
                     required: true,
-                    formAlphanumeric: true,
                     minlength: 2,
-                  
+                    espacios: true
                 },
                 rol_id: {
                     required: true,
@@ -122,26 +122,31 @@
                 documento: {
                     required: true,
                     number:true,
+                    espacios: true
                 },
                 telefono: {
                     required: true,
                     number: true,
+                    espacios: true,
                     minlength: 2,
                     maxlength: 15,
                    
                 },
                 direccion: {
-                    required: true
+                    required: true,
+                    espacios: true,
                 },
                 email: {
                     required: true,
                     formEmail: true,
+                    espacios: true
 /*                     normalizer: function(value) {
                         return $.trim(value);
                     } */
                 },
                 password: {
-                    required: true
+                    required: true,
+                    espacios: true
                 }
             },
             messages: {
