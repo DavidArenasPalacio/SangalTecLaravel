@@ -25,7 +25,7 @@ class CreateProductosTable extends Migration
             $table->float('Precio');
             $table->integer('Cantidad');
             $table->foreignId('categoria_id')->constrained('categoria');
-             $table->tinyInteger('Estado');
+            $table->tinyInteger('Estado');
             $table->timestamps();
         });
     }

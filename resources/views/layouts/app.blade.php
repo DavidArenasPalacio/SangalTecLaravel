@@ -114,7 +114,7 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="side-menu">
-                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Usuarios <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
                     <ul class="">
@@ -134,7 +134,7 @@
                 </li>
                 <li>
                     <a href="javascript:;" class="side-menu">
-                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                        <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Productos <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
                     <ul class="">
@@ -173,28 +173,11 @@
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                     @endif
-
-                                    @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
-                                    @endif
                                     @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link" data-toggle="dropdown"" href=" #">
                                             {{ Auth::user()->name }}
                                         </a>
-
-                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
                                     </li>
                                     @endguest
                                 </div>
@@ -208,7 +191,16 @@
                                 <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"> <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                             </div>
                             <div class="p-2 border-t border-theme-40">
-                                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                      <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i>   {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -226,8 +218,8 @@
 
     </div>
 
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-   
     <!-- ./wrapper -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
@@ -237,11 +229,11 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-     <!-- Jquery Validate -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js" integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Jquery Validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js" integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-     
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
