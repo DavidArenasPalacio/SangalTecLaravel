@@ -94,6 +94,26 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;" class="menu">
+                    <div class="menu__icon"> <i data-feather="users"></i> </div>
+                    <div class="menu__title"> Compras <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="/proveedor" class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gestión de proveedores </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/compra" class="menu">
+                            <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="menu__title"> Gestión de compras</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="flex">
@@ -107,25 +127,27 @@
             <div class="side-nav__devider my-6"></div>
             <ul>
                 <li>
-                    <a href="index.html" class="side-menu side-menu--active">
+                    <a href="index.html" class="side-menu ">
                         <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                         <div class="side-menu__title"> Dashboard </div>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    
+                    <a href="javascript:;" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.create') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.create')  ? 'side-menu side-menu--active' : 'side-menu'}}">
+              
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Usuarios <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="">
+                    <ul class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.create') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.create')  ? 'side-menu__sub-open' : '' }}">
                         <li>
-                            <a href="/rol" class="side-menu">
+                            <a href="/rol" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.create')  ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de roles </div>
                             </a>
                         </li>
                         <li>
-                            <a href="/usuario" class="side-menu">
+                            <a href="/usuario" class="{{Request::url() == route('usuario.index') || Request::url() == route('usuario.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de usuarios </div>
                             </a>
@@ -133,19 +155,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="side-menu">
+                    <a href="javascript:;" class="{{Request::url() == route('categoria.index') || Request::url() == route('categoria.create')  || Request::url() == route('producto.index')  || Request::url() == route('producto.create')   ? 'side-menu side-menu--active' : 'side-menu'}}">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Productos <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="">
+                    <ul class="{{ Request::url() == route('categoria.index') || Request::url() == route('categoria.create')  || Request::url() == route('producto.index')  || Request::url() == route('producto.create')    ? 'side-menu__sub-open' : '' }}">
                         <li>
-                            <a href="/categoria" class="side-menu">
+                            <a href="/categoria" class="{{Request::url() == route('categoria.index')  || Request::url() == route('categoria.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de categorías </div>
                             </a>
                         </li>
                         <li>
-                            <a href="/producto" class="side-menu">
+                            <a href="/producto" class="{{Request::url() == route('producto.index') || Request::url() == route('producto.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de productos </div>
                             </a>
@@ -192,9 +214,9 @@
                             </div>
                             <div class="p-2 border-t border-theme-40">
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"" href=" {{ route('logout') }}" onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
-                                      <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i>   {{ __('Logout') }}
+                                        <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -253,6 +275,10 @@
     <script src="/template/js/app.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/messages_es.js"></script>
+
+
+
+
     @yield('script')
 
 </body>

@@ -1,16 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\ComprasController;
-use App\Http\Controllers\ControlExistenciaController;
-use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\ClientesController;
-use App\Http\Controllers\VentasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ControlExistenciaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,33 +31,35 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/rol', [RolController::class, 'index']);
+Route::get('/', [PageController::class, 'loadPage']);
+
+Route::get('/rol', [RolController::class, 'index'])->name("rol.index");
 Route::get('/rol/listar', [RolController::class, 'listar']);
-Route::get('/rol/crear', [RolController::class, 'create']);
+Route::get('/rol/crear', [RolController::class, 'create'])->name("rol.create");
 Route::post('/rol/guardar', [RolController::class, 'save']);
 Route::get('/rol/editar/{id}', [RolController::class, 'edit']);
 Route::post('/rol/actualizar', [RolController::class, 'update']);
 
-Route::get('/usuario', [UserController::class, 'index']);
+Route::get('/usuario', [UserController::class, 'index'])->name("usuario.index");
 Route::get('/usuario/listar', [UserController::class, 'listar']);
-Route::get('/usuario/crear/', [UserController::class, 'create']);
+Route::get('/usuario/crear/', [UserController::class, 'create'])->name("usuario.create");
 Route::post('/usuario/guardar', [UserController::class, 'save']);
 Route::get('/usuario/editar/{id}', [UserController::class, 'edit']);
 Route::post('/usuario/actualizar', [UserController::class, 'update']);
 Route::get('/usuario/cambiar/estado/{id}/{estado}', [UserController::class, 'updateState']);
 
-Route::get('/categoria', [CategoriaController::class, 'index']);
+Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 Route::get('/categoria/listar', [CategoriaController::class, 'listar']);
-Route::get('/categoria/crear', [CategoriaController::class, 'create']);
+Route::get('/categoria/crear', [CategoriaController::class, 'create'])->name('categoria.create');
 Route::post('/categoria/guardar', [CategoriaController::class, 'save']);
 Route::get('/categoria/editar/{id}', [CategoriaController::class, 'edit']);
 Route::get('/categoria/eliminar/{id}', [CategoriaController::class, 'delete']);
 Route::post('/categoria/actualizar', [CategoriaController::class, 'update']);
 Route::get('/categoria/cambiar/estado/{idCategoria}/{estado}', [CategoriaController::class, 'updateState']);
 
-Route::get('/producto', [ProductoController::class, 'index']);
+Route::get('/producto', [ProductoController::class, 'index'])->name('producto.index');
 Route::get('/producto/listar', [ProductoController::class, 'listar']);
-Route::get('/producto/crear', [ProductoController::class, 'create']);
+Route::get('/producto/crear', [ProductoController::class, 'create'])->name('producto.create');
 Route::post('/producto/guardar', [ProductoController::class, 'save']);
 Route::get('/producto/editar/{id}', [ProductoController::class, 'edit']);
 Route::post('/producto/actualizar', [ProductoController::class, 'update']);

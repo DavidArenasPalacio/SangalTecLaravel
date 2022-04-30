@@ -16,7 +16,7 @@
         @enderror
     </div>
     <div class="flex justify-between">
-        <a href="/rol" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <a href="/categoria" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
         <button type="submit" class="button bg-theme-1 text-white mt-5">Crear categoría</button>
     </div>
 </form>
