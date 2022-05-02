@@ -2,99 +2,32 @@
 
 
 @section('content')
-
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between p-2">
-            <h3>Gestión Proveedor</h3>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                Crear Proveedor
-            </button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h4 class="modal-title">Crear Proveedor</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                    </div>
-                    <div class="modal-body">
-                        <form action="/proveedor/guardar" method="post" id="form">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="">Nombre:</label>
-                                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror">
-                                @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Correo: </label>
-                                <input type="email" name="correo" class="form-control @error('correo') is-invalid @enderror">
-                                @error('correo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Teléfono: </label>
-                                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror">
-                                @error('telefono')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="">Dirección: </label>
-                                <input type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror">
-                                @error('direccion')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+        Gestión Proveedor
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a href="/proveedor/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Proveedor</a>
     </div>
 
-
-
-  
-
-    <div class="card-body">
-
-        <table id="tbl_proveedor" class="table table-bordered">
+</div>
+<div class="intro-y datatable-wrapper  box p-5 mt-5">
+        <table id="tbl_proveedor" class="table table-report table-report--bordered display nowrap">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-
+                    <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+                    <th class="border-b-2 whitespace-no-wrap">Correo</th>
+                    <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
+                    <th class="border-b-2 whitespace-no-wrap">Dirección</th>
+                    <th class="border-b-2 whitespace-no-wrap">Estado</th>
+                    <th class="border-b-2 whitespace-no-wrap">Acciones</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-    </div>
 </div>
+
 @endsection
 
 

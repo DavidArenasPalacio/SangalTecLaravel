@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ComprasController;
@@ -30,8 +29,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/', [PageController::class, 'loadPage']);
 
 Route::get('/rol', [RolController::class, 'index'])->name("rol.index");
 Route::get('/rol/listar', [RolController::class, 'listar']);
@@ -65,14 +62,15 @@ Route::get('/producto/editar/{id}', [ProductoController::class, 'edit']);
 Route::post('/producto/actualizar', [ProductoController::class, 'update']);
 Route::get('/producto/cambiar/estado/{id}/{estado}', [ProductoController::class, 'updateState']);
 
-Route::get('/compra', [ComprasController::class, 'index']);
-Route::get('/compra/listar', [ComprasController::class, 'listar']);
+Route::get('/compra', [ComprasController::class, 'index'])->name('compra.index');
+Route::get('/compra/listar', [ComprasController::class, 'listar'])->name('compra.create');
 Route::post('/compra/guardar', [ComprasController::class, 'save']);
 Route::get('/compra/detalle/{id}', [ComprasController::class, 'detalle']);
 Route::get('/compra/cambiar/estado/{idCompra}/{estado}', [ComprasController::class, 'updateState']);
 
-Route::get('/proveedor', [ProveedorController::class, 'index']);
+Route::get('/proveedor', [ProveedorController::class, 'index'])->name('proveedor.index');
 Route::get('/proveedor/listar', [ProveedorController::class, 'listar']);
+Route::get('/proveedor/crear', [ProveedorController::class, 'create'])->name('proveedor.create');
 Route::post('/proveedor/guardar', [ProveedorController::class, 'save']);
 Route::get('/proveedor/editar/{id}', [ProveedorController::class, 'edit']);
 Route::post('/proveedor/actualizar', [ProveedorController::class, 'update']);

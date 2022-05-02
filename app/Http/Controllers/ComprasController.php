@@ -65,6 +65,11 @@ class ComprasController extends Controller
         return view("compra.detalle", compact("detal"));
     }
 
+
+    public function crear(){
+        return view("compra.crear");
+    }
+
     public function save(Request $requet)
     {
         $input = $requet->all();

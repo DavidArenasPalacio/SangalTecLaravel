@@ -43,7 +43,9 @@ class ProveedorController extends Controller
             ->make(true);
     }
 
-
+    public function create(){
+        return view('proveedor.create');
+    }
 
 
     public function save(Request $request)
@@ -55,10 +57,10 @@ class ProveedorController extends Controller
         try {
 
             Proveedor::create([
-                "Nombre_Proveedor" => $input["nombre"],
-                "Correo_Proveedor" => $input["correo"],
-                "Telefono_Proveedor" => $input["telefono"],
-                "Direccion_Proveedor" => $input["direccion"],
+                "Nombre_Proveedor" => $input["Nombre_Proveedor"],
+                "Correo_Proveedor" => $input["Correo_Proveedor"],
+                "Telefono_Proveedor" => $input["Telefono_Proveedor"],
+                "Direccion_Proveedor" => $input["Direccion_Proveedor"],
                 "Estado" => 1
             ]);
 
