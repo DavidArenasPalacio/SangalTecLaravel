@@ -2,143 +2,35 @@
 
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between p-2">
-            <h3>Gestión Compras</h3>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                Crear Compra
-            </button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+        Gestión Compras
+    </h2>
 
-                        <h4 class="modal-title">Crear compra</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                    </div>
-                    <div class="modal-body">
-
-                        <form action="/compra/guardar" method="post" id="form">
-                            <div class="row">
-                                <div class="col-4">
-                                    
-                                    @csrf
-                                    <h2>Proveedor:</h2>
-                                    <div class="mb-3">
-                                        <label for="">proveedor:</label>
-                                        <select class="form-control @error('proveedor_id') is-invalid @enderror" id="proveedor">
-                                            <option value="">------Seleccione-----</option>
-                                            @foreach($proveedor as $value)
-                                            <option value="{{ $value->id }}">{{ $value->Nombre_Proveedor }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('proveedor_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <h2>Producto:</h2>
-                                    <div class="mb3">
-                                        <label for="">Producto: </label>
-                                        <select class="form-control @error('idProducto') is-invalid @enderror" id="nombreProducto" onchange="precioProducto()">
-                                            <option value="">------Seleccione-----</option>
-                                            @foreach($productos as $value)
-                                            <option value="{{ $value->id }}"  precio="{{ $value->Precio }}" >{{ $value->Nombre_Producto }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('idProducto')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-
-                                        <input type="hidden" name="total" id="precioTotalDb">
-
-                                        <label for="">Precio: </label>
-                                        <input type="number" class="form-control @error('precio') is-invalid @enderror" id="precio"  readonly>
-                                        @error('cantidad')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="">Cantidad: </label>
-                                        <input type="number" name="cantidad" class="form-control @error('cantidad') is-invalid @enderror" id="cantidad">
-                                        @error('cantidad')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <button type="button" class="btn btn-primary w-100" onclick="agregarCompra()" >Agregar</button>
-                                </div>
-                                <div class="col-8">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Proveedor</th>
-                                                <th>Producto</th>
-                                                <th>Precio</th>
-                                                <th>Cantidad</th>
-                                                <th>Sub Total</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody id="tblCompra">
-
-                                        </tbody>
-
-                                    </table>
-                                    <h2 class="text-center">Total: $<strong id="precioTotal">0</strong></h2>
-
-                                    <button type="button" class="btn btn-success w-100" id="btnGuardar">Guardar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-
-
-                </div>
-
-            </div>
-        </div>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a href="/compra/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Compra</a>
     </div>
 
-
-
-
-    <div class="card-body">
-
-        <table class="table table-bordered w-100" id="tbl_compras">
-            <thead>
-                <tr>
-                    <th>Usuario Que Realizo La Compra</th>
-                    <th>Nombre Del Proveedor</th> 
-                    <th>Precio Total</th>                      
-                    <th>Fecha De La Compra</th>
-                    <th>Anular Compra</th>
-                    <th>Detalle</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-    </div>
 </div>
+
+<div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table class="table table-report table-report--bordered display" id="tbl_compras">
+        <thead>
+            <tr>
+                <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedor</th> 
+                <th class="border-b-2 whitespace-no-wrap">Precio Total</th>                      
+                <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Anular Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
 
 
 
@@ -198,7 +90,10 @@
             },
             {
                 data: 'acciones',
-                name: 'acciones'
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
             }
         ]
     });

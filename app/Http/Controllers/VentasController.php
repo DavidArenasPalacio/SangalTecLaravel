@@ -14,71 +14,71 @@ use Illuminate\Support\Facades\DB;
 
 class VentasController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {        
         $productos = Producto::all();
         $clientes = Clientes::all();;
 
         return view('ventas.index', compact('productos','clientes'));
-
-        // echo auth()->user()->id;
-        // return view('ventas.index');
     }
 
     public function crear()
     {
-        $productos = Producto::all();
+        
+        
+        $productos = Producto::select("productos.*")
+        ->where("productos.Estado", "=", 1)
+        ->get();
+        // return response()->json($productos);
         $clientes = Clientes::all();;
 
         return view('ventas.crear', compact('productos','clientes'));
     }
 
-    public function store(Request $request)
+    public function store(SaveVenta $request)
     {
-     
-        
-        
+    
         $input = $request->all();
 
         //validacion para que la cantidad a vender no sea mayor al stock disponible
-        foreach ($input["ProductoN"] as $key => $value) {
+        foreach ($input["Producto"] as $key => $value) {
             $productosRecorridos = Producto::findOrFail($value);
 
             if ($input["cantidades"][$key] > $productosRecorridos->Cantidad) {
-                return redirect('/ventas')->with('cantidad', 'El Stock De '. $productosRecorridos->Nombre_Producto .' Es Insuficiente');
+                // return redirect('/ventas')->with('cantidad', 'El Stock De '. $productosRecorridos->Nombre_Producto .' Es Insuficiente');
+            
+                alert()->warning('Cantidad Insuficiente', 'El Stock De '. $productosRecorridos->Nombre_Producto .' Es Insuficiente');
+                return redirect("/ventas/crear");
             }
         } 
 
-try {
+    try {
     
     DB::beginTransaction();
 
     $usuarios = User::all();
 
         $ventas = Ventas::create([
-            'cliente_id' => $input["DocumentoC"],
+            'cliente_id' => $input["Documento"],
             'usuario_id' => auth()->user()->id,
             'Precio_total' => $input["precio_venta"],
-            'Estado' => 0,
+            'Estado' => 1,
         ]);
         
         
 
-        foreach ($input["ProductoN"] as $key => $value) {
+        foreach ($input["Producto"] as $key => $value) {
             
             $ventasdetalle = VentasDetalle::create([
 
                 'producto_id' => $value,
                 'venta_id' => $ventas->id,
+                'Precio_unitario' => $input["precios"][$key],
                 'Cantidad' => $input["cantidades"][$key],
                 'Sub_total' => $input["precios"][$key] * $input["cantidades"][$key],
             ]);
 
+            // return dd($ventasdetalle);
             //esto ara restar las cantidades de los productos vendidos del stock
             $productCant = Producto::findOrFail($value);
 
@@ -87,14 +87,15 @@ try {
 
         DB::commit();
 
-    } catch (\Throwable $th) {
-        
+        alert()->success('Venta Registrada Exitosamente');
         return redirect("/ventas");
 
-                DB::rollBack();  
-    }
+        } catch (\Throwable $e) {
+            
+            alert()->warning('error', 'Error Al Registrar La Venta');
+            return redirect("/ventas");
+        }
 
-        return redirect("/ventas")->with('registrarVenta', 'Se Registro La venta Correctamente');
     }
 
 
@@ -108,27 +109,25 @@ try {
         
         
         return DataTables::of($ventas)
-
-            ->editColumn('estado', function ($venta) {     
-                return $venta->Estado == 1 ? "Activa" : "Inactiva";
+            ->editColumn('estado', function ($ventas) {
+                return $ventas->Estado == 1 ? '<a class="btn btn-success">Activa</a>' : '<a class="btn btn-danger">Anulada</a>';
             })
-            
+            ->addColumn('acciones', function ($ventas) {
+                $estado = '';
 
-            ->addColumn('cambiar', function ($venta) {
+                if (Auth::user()->rol_id == 3) {
 
-                if ($venta->Estado == 1) {
-                    return '<a class="btn btn-danger">Anulada</a>';
+                    if ($ventas->Estado == 1) {
+                        $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
+                    } else {
+                        $estado = '<a class="btn btn-success btn-sm btnEstado"><i class="fas fa-ban"></i></a>';
+                    }
+                    
                 }
-                else{
-                    return '<a class="btn btn-success" href="/ventas/cambiarEstado/'.$venta->id.'/1"> Anular</a>';
-                }
-            })
 
-            ->addColumn('detalle', function ($venta) {
-                return '<a href="/ventas/verproductos/'.$venta->id.'" class="btn btn-secondary"> Ver Productos Vendidos</a>';
+                return '<a href="/ventas/verproductos/' . $ventas->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
             })
-        
-            ->rawColumns([ 'cambiar','detalle'])
+            ->rawColumns(['estado', 'acciones'])
             ->make(true);
     }
 
@@ -137,7 +136,7 @@ try {
     public function listardetalle($id) 
     {
         
-            $ventasdetalle = VentasDetalle::select("ventasdetalle.id", "ventasdetalle.venta_id as Ventas", "productos.Nombre_Producto as Productos", "ventasdetalle.Cantidad as Cantidad", "ventasdetalle.Sub_total as SubTotal")
+            $ventasdetalle = VentasDetalle::select("ventasdetalle.id", "ventasdetalle.venta_id as Ventas", "productos.Nombre_Producto as Productos", "ventasdetalle.Cantidad as Cantidad", "ventasdetalle.Precio_unitario", "ventasdetalle.Sub_total as SubTotal")
                 ->join("productos", "ventasdetalle.producto_id", "=", "productos.id")
                 ->where("ventasdetalle.venta_id", "=", $id)
                 ->get();
@@ -154,9 +153,6 @@ try {
 
         $ventas = Ventas::find($id);
 
-        // $ventas = Ventas::select("ventas.*")
-        // ->where("ventas.idVenta", "=" ,$idVenta)
-        // ->first();
         //consulta para devolver el stock de los productos
         $ventasdetalle = VentasDetalle::select("ventasdetalle.id  as Id", "productos.id as Productos", "ventasdetalle.Cantidad as Cantidad")
                 ->join("productos", "ventasdetalle.producto_id", "=", "productos.id")
@@ -164,7 +160,7 @@ try {
                 ->get();
 
                 
-        if ($Estado == 1) {
+        if ($Estado == 0) {
 
             foreach ($ventasdetalle as $value) {
 
@@ -176,8 +172,8 @@ try {
         }
     
         $ventas->update(["Estado"=>$Estado]);
-
-        return redirect("/ventas")->with('cambiar', 'Se Anuló La Venta Correctamente');;
+        alert()->success('Venta Anulada Exitosamente');
+        return redirect("/ventas");
     }
 
 }

@@ -15,7 +15,7 @@ class ProductoSeeder extends Seeder
     public function run()
     {
         Producto::create([
-            "Nombre_Producto" => "Un pliego de papel globo",
+            "Nombre_Producto" => "Pliego de papel globo",
             "Precio" => 5000,
             "Cantidad" => 20,
             "categoria_id" => 1,

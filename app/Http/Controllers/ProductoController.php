@@ -11,13 +11,8 @@ use Yajra\Datatables\Datatables;
 class ProductoController extends Controller
 {
     
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function index(){
+
         return view("producto.index");
     }  
 
@@ -43,40 +38,38 @@ class ProductoController extends Controller
             
             return '<a href="/producto/editar/'.$producto->id.'" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.$estado;
         })
+        
         ->rawColumns(['estado', 'acciones'])
         ->make(true);
     }
 
-
-
-
-    public function create(){
+    public function crear()
+    {
+        
         $categorias = Categoria::all();
 
-        return view("producto.create", compact("categorias"));
-    }  
+        return view('producto.crear', compact('categorias'));
+    }
 
 
-    public function save(Request $request)
+    public function save(SaveProducto $request)
     {
-        //dd($request->all());
-       $request->validate(Producto::$rules);
-       
+
         $input = $request->all();
-        //return response()->json($request);
+
         try {
             Producto::create([   
                 "categoria_id" => $input["categoria_id"],
-                "Nombre_Producto" => $input["Nombre_Producto"], 
-                "Precio" => $input["Precio"],    
-                "Cantidad" => $input["Cantidad"], 
+                "Nombre_Producto" => $input["nombre"], 
+                "Precio" => $input["precio"],    
+                "Cantidad" => $input["cantidad"], 
                 "Estado" => 1
             ]);
-            alert()->success('Producto creado Exitosamente');
-            return redirect("/producto/crear");
+            alert()->success('Producto Registrado Exitosamente');
+            return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error al crear Producto');
-            return redirect("/producto/crear")->with('error', 'Error al crear producto');;
+            alert()->warning('Error', 'Error Al Registrar El Producto');
+            return redirect("/producto");
         }
     }
 
@@ -85,7 +78,7 @@ class ProductoController extends Controller
     {
         $producto = Producto::where("productos.id","=",$id)->first();
         $categorias = Categoria::all();
-        //return response()->json($producto); 
+
         if ($producto == null) {
             
             return redirect("/producto");
@@ -94,13 +87,10 @@ class ProductoController extends Controller
         return view("producto.edit", compact("producto", "categorias"));
     }
 
-    public function update(Request $request)
+    public function update(SaveProducto $request)
     {
 
-       //$request->validate(Producto::$rules);
-
         $input = $request->all();
-        //return dd($request);
         try {
             $producto = Producto::where("productos.id", "=", $input["id"]);
             
@@ -117,11 +107,11 @@ class ProductoController extends Controller
                 "Precio" => $input["precio"]
             ]);
 
-          
-            alert()->success('Producto modificado Exitosamente');
+        
+            alert()->success('Producto Editado Exitosamente');
             return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error al Modificar Producto');
+            alert()->warning('Error', 'Error Al Editar El Producto');
             return redirect("/producto");
         }
     }
@@ -133,21 +123,19 @@ class ProductoController extends Controller
         $producto = Producto::where("productos.id", "=", $id);
 
         if ($producto == null) {
-          
+        
+            alert()->warning('Error', 'Error Al Actualizar Estado');
             return redirect("/producto");
         }
 
-
         try {
-            // example:
-
 
             $producto->update(["Estado" => $estado]);
-            alert()->success('Estado modificado Exitosamente');
-            return redirect("/producto")->with('success', 'Estado modificado satisfactoriamente!');
+            alert()->success('Estado Actualizado Exitosamente');
+            return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error al Modificar estado');
-            return redirect("/producto")->with('error', 'Error al modifcar estado');
+            alert()->warning('Error', 'Error Al Actualizar Estado');
+            return redirect("/producto");
         }
     }
 }

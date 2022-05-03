@@ -33,7 +33,7 @@ class UsuariosSeeder extends Seeder
             "documento" => "112454664",
             "telefono" => "2454467",
             "direccion" => "Cr 34 #17",
-            "email" => "isaac@gmail.com",
+            "email" => "isaacsenatecnica123@gmail.com",
             "password" => Hash::make("123456789"),
             "estado" => 1,
             "rol_id" => 1,
@@ -49,7 +49,7 @@ class UsuariosSeeder extends Seeder
             "email" => "yeferson@gmail.com",
             "password" => Hash::make("123456789"),
             "estado" => 1,
-            "rol_id" => 1,
+            "rol_id" => 2,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -62,7 +62,7 @@ class UsuariosSeeder extends Seeder
             "email" => "sebastian@gmail.com",
             "password" => Hash::make("123456789"),
             "estado" => 1,
-            "rol_id" => 1,
+            "rol_id" => 2,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

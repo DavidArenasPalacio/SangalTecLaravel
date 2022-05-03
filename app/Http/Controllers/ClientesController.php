@@ -20,43 +20,28 @@ class ClientesController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(SaveCliente $request)
     {
         $input = $request->all();
-        
-        // $request->validate([
-
-        //     'Nombre_Cliente' => 'required|min:3',
-        //     'Documento_Cliente' => 'required|unique:clientes,Documento|numeric|digits_between:6,10',
-        //     'Direccion_Cliente' => 'required|min:7|numeric|digits_between:7,12'
-
-        // ]);
 
         try {
 
             $clientes = Clientes::create([
 
-                'Nombre_Cliente' => $input["nombre_cliente"],
+                'Nombre_Cliente' => $input["nombre"],
                 'Documento_Cliente' => $input["documento"],
-                'Telefono_Cliente' => $input["telefono_cliente"],
-                'Direccion_Cliente' => $input["direccion_cliente"],
+                'Telefono_Cliente' => $input["telefono"],
+                'Direccion_Cliente' => $input["direccion"],
 
                 
             ]);
 
-        // $clientes = new Clientes();
-        //     $clientes->Nombre_Cliente = $request->nombre_cliente;
-        //     $clientes->Documento = $request->documento;
-        //     $clientes->Telefono_Cliente = $request->telefono_cliente;
-        //     $clientes->Direccion_Cliente = $request->direccion_cliente;
-
-        //     $clientes->save();
-
-            return redirect("/clientes")->with('registrar', 'Se Registro El Cliente Correctamente');
-
+            alert()->success('Cliente Registrado Exitosamente');
+            return redirect("/clientes");
 
         } catch (\Throwable $e) {
             
+            alert()->warning('error', 'Error Al Registrar El Cliente');
             return redirect("/clientes");
         }
         
@@ -69,15 +54,11 @@ class ClientesController extends Controller
 
         return DataTables::of($clientes)
 
-            ->addColumn('editar', function ($cliente) {
-                return '<a href="/clientes/editar/'.$cliente->id.'" class="btn btn-primary"> Editar Cliente</a>';
+            ->addColumn('acciones', function ($clientes) {
+                return '<a href="/clientes/editar/'.$clientes->id.'" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.'<a href="/clientes/detalle/' . $clientes->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>';
             })
-
-            ->addColumn('detalle', function ($cliente) {
-                return '<a href="/clientes/detalle/'.$cliente->id.'" class="btn btn-secondary"> Detalle Del Cliente</a>';
-            })
-        
-            ->rawColumns(['editar','detalle'])
+            
+            ->rawColumns(['acciones'])
             ->make(true);
     }
 
@@ -85,65 +66,42 @@ class ClientesController extends Controller
     {
         $cliente = Clientes::find($id);
 
-            // $cliente = Clientes::select("clientes.*")
-            //     ->where("clientes.id", "=", $id)
-            //     ->first();
-    
             return view("clientes.detalle", compact("cliente"));
 
     }
 
     public function editar($id)
     {
-
         $clientes = Clientes::find($id);
-
-        // $clientes = Clientes::where("id","=", $id)
-        // ->first();
 
         return view('clientes.editar', compact('clientes'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(SaveCliente $request, $id)
     {
-        $input = $request->all();
-        $request->validate([
+        // $input = $request->all();
 
-            'nombre_cliente' => 'required|min:3',
-            'documento' => 'required|digits_between:6,10',
-            'telefono_cliente' => 'required|min:7|numeric|digits_between:7,12'
-
-        ]);
-
-        // try {
-            // $clientes = Clientes::select("clientes.*")
-            // ->where("clientes.idCliente", "=" ,$id)
-            // ->first();
-
+        try {
             
             $clientes = Clientes::find($id);
 
-            $clientes->Nombre_Cliente = $request->input('nombre_cliente');
+            $clientes->Nombre_Cliente = $request->input('nombre');
             $clientes->Documento_Cliente = $request->input('documento');
-            $clientes->Telefono_Cliente = $request->input('telefono_cliente');
-            $clientes->Direccion_Cliente = $request->input('direccion_cliente');
+            $clientes->Telefono_Cliente = $request->input('telefono');
+            $clientes->Direccion_Cliente = $request->input('direccion');
 
             $clientes->save();
 
-            return redirect("/clientes")->with('editar', 'Se Editó El Cliente Correctamente');
+            alert()->success('Cliente Editado Exitosamente');
+            return redirect("/clientes");
 
-        // } catch (\Throwable $e) {
+        } catch (\Throwable $e) {
             
-        //     return redirect("clientes/editar");
-        // }
+            alert()->warning('error', 'Error Al Editar El Cliente');
+            return redirect("/clientes");
+        }
 
         
-    }
-
-
-    public function destroy()
-    {
-        //
     }
 }
