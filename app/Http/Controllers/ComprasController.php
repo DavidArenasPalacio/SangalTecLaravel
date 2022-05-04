@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\DetallesCompra;
 use App\Models\Compra;
 use Yajra\Datatables\Datatables;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,14 +21,7 @@ class ComprasController extends Controller
 
     public function index()
     {
-        $proveedor = Proveedor::all();
-
-        $productos = Producto::all();
-
-
-
-
-        return view("compra.index", compact("proveedor", "productos"));
+        return view("compra.index");
     }
 
 
@@ -39,6 +33,9 @@ class ComprasController extends Controller
         return DataTables::of($compra)
             ->editColumn('estado', function ($compra) {
                 return $compra->Estado == 1 ? '<span class="bg-primary p-1 rounded">Activo</span>' : '<span class="bg-danger p-1 rounded">Anulado</span>';
+            })
+            ->editColumn('created_at', function ($compra) {
+                return $compra->created_at->toDateTimeString();
             })
             ->addColumn('acciones', function ($compra) {
                 $estado = '';
@@ -66,8 +63,19 @@ class ComprasController extends Controller
     }
 
 
-    public function crear(){
-        return view("compra.crear");
+    public function create(){
+        $proveedores = Proveedor::all();
+
+        $productos = Producto::all();
+
+
+        return view("compra.create", compact("proveedores", "productos"));
+    }
+
+    public function obtener_Precio($id){
+        $obtenterPrecio = Producto::select("productos.Precio")->where("id", $id)->first();
+       // dd($obtenterPrecio);
+        return $obtenterPrecio;
     }
 
     public function save(Request $requet)

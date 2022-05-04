@@ -64,6 +64,8 @@ Route::get('/producto/cambiar/estado/{id}/{estado}', [ProductoController::class,
 
 Route::get('/compra', [ComprasController::class, 'index'])->name('compra.index');
 Route::get('/compra/listar', [ComprasController::class, 'listar'])->name('compra.create');
+Route::get('/compra/create', [ComprasController::class, 'create'])->name('compra.create');
+Route::get('/compra/obtenerPrecio/{id}', [ComprasController::class, 'obtener_Precio']);
 Route::post('/compra/guardar', [ComprasController::class, 'save']);
 Route::get('/compra/detalle/{id}', [ComprasController::class, 'detalle']);
 Route::get('/compra/cambiar/estado/{idCompra}/{estado}', [ComprasController::class, 'updateState']);
