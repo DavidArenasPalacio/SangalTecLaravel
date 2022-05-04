@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 class LoginController extends Controller
 {
     /*
@@ -40,6 +41,16 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
+
+        $usuario = User::select("users.*")
+        ->where("users.email", "=", $request["email"])
+        ->first();
+        
+        if($usuario->estado != 1){
+            return redirect("/login")->with('error', 'El usuario está deshabilitado');
+        }
+
+
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle

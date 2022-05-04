@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-@extends('layouts.app')
-@section('content')
 <h1 class="text-center text-4xl font-medium">Crear Categoría</h1>
 <form action="/categoria/guardar" method="POST" id="form">
   @csrf
@@ -24,7 +21,7 @@
 
 
 @section('script')
-<script>
+{{-- <script>
     $(document).ready(function() {
         $.validator.addMethod("formAlphanumeric", function(value, element) {
             var pattern = /^[\w]+$/i;
@@ -43,5 +40,5 @@
 
         });
     });
-</script>
+</script> --}}
 @endsection

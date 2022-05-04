@@ -6,18 +6,26 @@
     <h2 class="text-lg font-medium mr-auto">
         Gestión Categorías
     </h2>
+
+    @if (auth()->user()->rol_id == 1)
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
         <a href="/categoria/crear" class="button text-white bg-theme-1 shadow-md mr-2">Crear categoría </a>
     </div>
+    @endif
+      
 </div>
 <div class="intro-y datatable-wrapper box p-5 mt-5">
     <table id="tbl_categoria" class="table table-report table-report--bordered display   w-full">
 
         <thead>
             <tr>
+                
                 <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+
+                @if(auth()->user()->rol_id == 1)       
                 <th class="border-b-2 text-center whitespace-no-wrap">Acciones</th>
 
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -65,13 +73,15 @@
                 data: 'Nombre_Categoria',
                 name: 'Nombre_Categoria'
             },
+            @if(auth()->user()->rol_id == 1 )
             {
                 data: 'acciones',
                 name: 'acciones',
                 orderable: false,
                 serachable: false,
                 sClass: 'text-center'
-            }
+            }       
+            @endif
         ]
     }
     );

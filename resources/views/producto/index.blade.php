@@ -6,13 +6,15 @@
     <h2 class="text-lg font-medium mr-auto">
         Gestión Productos
     </h2>
+
+    @if (auth()->user()->rol_id == 1)
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
         <a href="/producto/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Producto</a>
     </div>
+    @endif
 
 </div>
 <div class="intro-y datatable-wrapper box p-5 mt-5">
-    <table id="tbl_usuarios" class="table table-report table-report--bordered display  ">
         <table id="tbl_productos" class="table table-report table-report--bordered display">
             <thead>
                 <tr>
@@ -82,6 +84,7 @@
                 orderable: false,
                 serachable: false
             },
+            
             {
                 data: 'acciones',
                 name: 'acciones',

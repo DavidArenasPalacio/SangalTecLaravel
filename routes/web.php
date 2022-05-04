@@ -23,12 +23,14 @@ use App\Http\Controllers\ControlExistenciaController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('/auth/login');
 });
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+//RUTAS SOLO PARA ADMINISTRADOR
+Route::group(['middleware' => ['auth','validacionRol']], function () {
 
 Route::get('/rol', [RolController::class, 'index'])->name("rol.index");
 Route::get('/rol/listar', [RolController::class, 'listar']);

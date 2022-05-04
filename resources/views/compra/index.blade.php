@@ -29,6 +29,25 @@
         <thead>
 </div>
 
+<div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table class="table table-report table-report--bordered display" id="tbl_compras">
+        <thead>
+            <tr>
+                <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedor</th> 
+                <th class="border-b-2 whitespace-no-wrap">Precio Total</th>                      
+                <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Anular Compra</th>
+                <th class="border-b-2 whitespace-no-wrap">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+
 
 
 @endsection
@@ -87,7 +106,10 @@
             },
             {
                 data: 'acciones',
-                name: 'acciones'
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
             }
         ]
     });
