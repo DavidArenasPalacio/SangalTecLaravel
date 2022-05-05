@@ -43,12 +43,12 @@ class ProductoController extends Controller
         ->make(true);
     }
 
-    public function crear()
+    public function create()
     {
         
         $categorias = Categoria::all();
 
-        return view('producto.crear', compact('categorias'));
+        return view('producto.create', compact('categorias'));
     }
 
 

@@ -31,14 +31,13 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //RUTAS SOLO PARA ADMINISTRADOR
 Route::group(['middleware' => ['auth','validacionRol']], function () {
-
 Route::get('/rol', [RolController::class, 'index'])->name("rol.index");
 Route::get('/rol/listar', [RolController::class, 'listar']);
 Route::get('/rol/crear', [RolController::class, 'create'])->name("rol.create");
 Route::post('/rol/guardar', [RolController::class, 'save']);
 Route::get('/rol/editar/{id}', [RolController::class, 'edit']);
 Route::post('/rol/actualizar', [RolController::class, 'update']);
-
+});
 Route::get('/usuario', [UserController::class, 'index'])->name("usuario.index");
 Route::get('/usuario/listar', [UserController::class, 'listar']);
 Route::get('/usuario/crear/', [UserController::class, 'create'])->name("usuario.create");

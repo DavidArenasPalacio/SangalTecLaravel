@@ -5,12 +5,13 @@
 
 <form action="/compra/guardar" method="POST" class="mb-5 py-5" id="form">
     @csrf
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 lg:col-span-3">
-            <div>
+    <div class="flex flex-col sm:flex-row items-center">
+
+        <div class="preview">
+            <div class="w-full ">
                 <label for="proveedor_id">Proveedor:</label>
 
-                <select class="select2 w-full " name="proveedor_id" id="proveedor_id">
+                <select class="select2 input input w-full sm:mt-2" name="proveedor_id" id="proveedor_id">
 
                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                     @foreach($proveedores as $value)
@@ -22,7 +23,7 @@
             <div class="mt-5">
                 <label for="producto">Producto:</label>
 
-                <select class="select2 w-full " onchange="obtener_precio()" id="producto">
+                <select class="select2 input input--sm border mr-2 " onchange="obtener_precio()" id="producto">
 
                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                     @foreach($productos as $value)
@@ -35,8 +36,8 @@
                 <label for="precio">Precio:</label>
 
                 <input type="text" id="precio" disabled name="Precio"
-                    class="input w-full border bg-gray-200 mt-2 @error('Precio') border-theme-6 @enderror" min="1"
-                    value="{{old('Precio')}}">
+                    class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Precio') border-theme-6 @enderror"
+                    min="1" value="{{old('Precio')}}">
                 @error('Precio')
                 <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
@@ -57,6 +58,7 @@
             </div>
         </div>
     </div>
+
 </form>
 @endsection
 
@@ -64,23 +66,24 @@
 <script>
 function obtener_precio() {
     let id = $("#producto option:selected").val();
-    
+
     $.ajax({
         url: `/compra/obtenerPrecio/${id}`,
         type: 'GET',
-        success: function(respu){
+        success: function(respu) {
             console.log(respu.Precio);
             $("#precio").val(respu.Precio);
-    }
-    })/* .done(function(respuesta) {
-        console.log(respuesta);
-        if (respuesta != 0) {
-            $("#precio").val(respuesta);
         }
-        
-    }).fail(function(error) {
+    })
+    /* .done(function(respuesta) {
+            console.log(respuesta);
+            if (respuesta != 0) {
+                $("#precio").val(respuesta);
+            }
+            
+        }).fail(function(error) {
 
-    }); */
+        }); */
 }
 </script>
 @endsection

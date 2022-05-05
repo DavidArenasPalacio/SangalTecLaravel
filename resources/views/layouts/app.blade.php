@@ -134,16 +134,16 @@
                 </li>
                 <li>
                     
-                    <a href="javascript:;" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.crear')  ? 'side-menu side-menu--active' : 'side-menu'}}">
+                    <a href="javascript:;" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.create') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.create')  ? 'side-menu side-menu--active' : 'side-menu'}}">
               
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Usuarios <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.crear')  ? 'side-menu__sub-open' : '' }}">
+                    <ul class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.create') || Request::url() == route('usuario.index')  || Request::url() == route('usuario.create')  ? 'side-menu__sub-open' : '' }}">
                         
                         @if (auth()->user()->rol_id == 1)
                         <li>
-                            <a href="/rol" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.crear')  ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/rol" class="{{Request::url() == route('rol.index') || Request::url() == route('rol.create')  ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de roles </div>
                             </a>
@@ -151,7 +151,7 @@
                         @endif
 
                         <li>
-                            <a href="/usuario" class="{{Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/usuario" class="{{Request::url() == route('usuario.index') || Request::url() == route('usuario.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de usuarios </div>
                             </a>
@@ -159,19 +159,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="{{Request::url() == route('categoria.index') || Request::url() == route('categoria.crear')  || Request::url() == route('producto.index')  || Request::url() == route('producto.crear')   ? 'side-menu side-menu--active' : 'side-menu'}}">
+                    <a href="javascript:;" class="{{Request::url() == route('categoria.index') || Request::url() == route('categoria.create')  || Request::url() == route('producto.index')  || Request::url() == route('producto.create')   ? 'side-menu side-menu--active' : 'side-menu'}}">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Productos <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="{{ Request::url() == route('categoria.index') || Request::url() == route('categoria.crear')  || Request::url() == route('producto.index')  || Request::url() == route('producto.crear')    ? 'side-menu__sub-open' : '' }}">
+                    <ul class="{{ Request::url() == route('categoria.index') || Request::url() == route('categoria.create')  || Request::url() == route('producto.index')  || Request::url() == route('producto.create')    ? 'side-menu__sub-open' : '' }}">
                         <li>
-                            <a href="/categoria" class="{{Request::url() == route('categoria.index')  || Request::url() == route('categoria.crear') ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/categoria" class="{{Request::url() == route('categoria.index')  || Request::url() == route('categoria.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de categorías </div>
                             </a>
                         </li>
                         <li>
-                            <a href="/producto" class="{{Request::url() == route('producto.index') || Request::url() == route('producto.crear') ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/producto" class="{{Request::url() == route('producto.index') || Request::url() == route('producto.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de productos </div>
                             </a>
@@ -179,15 +179,15 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:;" class="{{Request::url() == route('proveedor.index') || Request::url() == route('proveedor.crear')  || Request::url() == route('compra.index')  || Request::url() == route('compra.crear')   ? 'side-menu side-menu--active' : 'side-menu'}}">
+                    <a href="javascript:;" class="{{Request::url() == route('proveedor.index') || Request::url() == route('proveedor.create')  || Request::url() == route('compra.index')  || Request::url() == route('compra.create')   ? 'side-menu side-menu--active' : 'side-menu'}}">
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Compras <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
-                    <ul class="{{Request::url() == route('proveedor.index') || Request::url() == route('proveedor.crear')  || Request::url() == route('compra.index')   ? 'side-menu__sub-open' : '' }}">
+                    <ul class="{{Request::url() == route('proveedor.index') || Request::url() == route('proveedor.create')  || Request::url() == route('compra.index')   ? 'side-menu__sub-open' : '' }}">
                         
                         @if (auth()->user()->rol_id == 1)
                         <li>
-                            <a href="/proveedor" class="{{Request::url() == route('proveedor.index')  || Request::url() == route('proveedor.crear') ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/proveedor" class="{{Request::url() == route('proveedor.index')  || Request::url() == route('proveedor.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de proveedor </div>
                             </a>
@@ -195,7 +195,7 @@
                         @endif
 
                         <li>
-                            <a href="/compra" class="{{Request::url() == route('compra.index') || Request::url() == route('compra.crear') ? 'side-menu side-menu--active' : 'side-menu'}}">
+                            <a href="/compra" class="{{Request::url() == route('compra.index') || Request::url() == route('compra.create') ? 'side-menu side-menu--active' : 'side-menu'}}">
                                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                                 <div class="side-menu__title"> Gestión de compras </div>
                             </a>

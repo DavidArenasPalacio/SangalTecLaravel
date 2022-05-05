@@ -9,7 +9,7 @@
         <div class="w-full">
             <label for="nombre">Nombre:</label>
 
-            <input type="text" id="nombre" name="Nombre_Producto" class="input w-full border mt-2 @error('Nombre_Producto') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{old('Nombre_Producto')}}" minlength="2" require>
+            <input type="text" id="Nombre_Producto" name="Nombre_Producto" class="input w-full border mt-2 @error('Nombre_Producto') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{old('Nombre_Producto')}}" minlength="2" required>
             @error('Nombre_Producto')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -31,7 +31,7 @@
         <div class="w-full mr-2">
             <label for="precio">Precio:</label>
 
-            <input type="number" id="precio" name="Precio" class="input w-full border mt-2 @error('Precio') border-theme-6 @enderror" placeholder="Ingrese el precio del producto"  min="1"  value="{{old('Precio')}}">
+            <input type="number" id="precio" name="Precio" class="input w-full border mt-2 @error('Precio') border-theme-6 @enderror" placeholder="Ingrese el precio del producto"    value="{{old('Precio')}}">
             @error('Precio')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -39,7 +39,7 @@
         <div class="w-full">
             <label for="cantidad">Cantidad:</label>
 
-            <input type="number" id="cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1"  value="{{old('Cantidad')}}">
+            <input type="number" id="cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto"   value="{{old('Cantidad')}}">
             @error('Cantidad')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
@@ -63,16 +63,16 @@
 
   
 
-        /* $.validator.addMethod("espacios", function(value, element) {
+     $.validator.addMethod("espacios", function(value, element) {
             return value.trim().length > 0
-        }, "No debe tener espacios"); */
+        }, "No debe tener espacios"); 
 
         $('#form').validate({ // initialize the plugin
             rules: {
                 Nombre_Producto: {
                     required: true,
                     minlength: 5,
-                  
+                    espcios: true
                 },
                 categoria_id: {
                     required: true,
