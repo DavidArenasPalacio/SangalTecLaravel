@@ -7,7 +7,7 @@
         Gestión Compra
     </h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/compra/create" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Compra</a>
+        <a href="/compra/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Compra</a>
     </div>
 </div>
 <div class="intro-y datatable-wrapper box p-5 mt-5">

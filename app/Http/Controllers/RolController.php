@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rol;
 use Yajra\Datatables\Datatables; 
+use App\Http\Requests\SaveRol;
 class RolController extends Controller
 {
 
@@ -33,19 +34,21 @@ class RolController extends Controller
 
         $input = $request->all(); 
 
-        try {
+        // try {
 
-            Rol::create([
-                "Nombre_Rol"=> $input["nombre"],
+            $rol = Rol::create([
+                "Nombre_Rol"=> $input["Nombre_Rol"],
             ]);
+            return dd($rol);
 
             alert()->success('Rol Registrado Exitosamente');
             return redirect("/rol");
 
-        } catch (\exception $e) {
-            alert()->warning('Error', 'Error Al Registrar El Rol');
-            return redirect("/rol");
-        }
+        // } catch (\exception $e) {
+        //     alert()->warning('Error', 'Error Al Registrar El Rol');
+        //     return redirect("/rol");
+        // }
+
     }
     
 

@@ -42,7 +42,7 @@ class ComprasController extends Controller
             ->addColumn('acciones', function ($compra) {
                 $estado = '';
 
-                if (Auth::user()->rol_id == 3) {
+                if (Auth::user()->rol_id == 1) {
 
                     if ($compra->Estado == 1) {
                         $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
@@ -69,13 +69,13 @@ class ComprasController extends Controller
     }
 
 
-    public function create(){
+    public function crear(){
         $proveedores = Proveedor::all();
 
         $productos = Producto::all();
 
 
-        return view("compra.create", compact("proveedores", "productos"));
+        return view("compra.crear", compact("proveedores", "productos"));
     }
 
     public function obtener_Precio($id){
@@ -86,18 +86,21 @@ class ComprasController extends Controller
 
     public function save(Request $requet)
     {
+        dd($requet);
         $input = $requet->all();
        //return dd($input["cantidad"]);
-        try {
+        // try {
             DB::beginTransaction();
 
           //  return dd($input["precioTotal"]);
             $compra = Compra::create([
                 "usuario_id" => Auth()->user()->id,
                 "proveedor_id" => $input['proveedor_id'],
-                "Precio_total" =>  $input["precioTotal"],
+                "Precio_total" =>  $input["total"],
                 "Estado" => 1
             ]);
+
+            
 
             foreach ($input["nombreProducto"] as $key => $value) {
 
@@ -133,14 +136,16 @@ class ComprasController extends Controller
                 // return dd($detallecompra);
             }
 
+            return dd($detallecompra);
+
             DB::commit();
-            alert()->success('Compra Registrada Exitosamente');
-            return redirect("/compra");
-        } catch (\Exception $e) {
-            DB::rollBack();
-            alert()->warning('Error', 'Error Al Registrar La Compra');
-            return redirect("/compra");
-        }
+        //     alert()->success('Compra Registrada Exitosamente');
+        //     return redirect("/compra");
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        //     alert()->warning('Error', 'Error Al Registrar La Compra');
+        //     return redirect("/compra");
+        // }
     }
 
 

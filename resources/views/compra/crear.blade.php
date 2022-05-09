@@ -64,7 +64,7 @@
             </div>
 
 
-        </form>
+        
     </div>
 
     <div class="intro-y col-span-12 lg:col-span-8">
@@ -96,7 +96,7 @@
             <button type="button" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Guardar</button>
         </div>
     </div>
-
+</form>
 </div>
 @endsection
 

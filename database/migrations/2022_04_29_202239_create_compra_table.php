@@ -15,10 +15,10 @@ class CreateCompraTable extends Migration
     {
         Schema::create('proveedor', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre_Proveedor');
-            $table->string('Correo_Proveedor');
-            $table->string('Telefono_Proveedor');
-            $table->string('Direccion_Proveedor');
+            $table->string('Nombre_Proveedor', 30);
+            $table->string('Correo_Proveedor', 70);
+            $table->string('Telefono_Proveedor', 20);
+            $table->string('Direccion_Proveedor', 55);
             $table->tinyInteger('Estado');
             $table->timestamps();
         });

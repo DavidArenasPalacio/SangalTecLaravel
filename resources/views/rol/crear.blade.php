@@ -26,26 +26,3 @@
 
 @endsection
 
-
-@section('script')
-<script>
-    $(document).ready(function() {
-        $.validator.addMethod("formAlphanumeric", function(value, element) {
-            var pattern = /^[\w]+$/i;
-            return this.optional(element) || pattern.test(value);
-        }, "El campo debe tener un valor alfanumérico (azAZ09)");
-
-        $('#form').validate({ // initialize the plugin
-            rules: {
-                Nombre_Rol: {
-                    required: true,
-                    formAlphanumeric: true
-                }
-            },
-            errorElement: 'span',
-
-
-        });
-    });
-</script>
-@endsection

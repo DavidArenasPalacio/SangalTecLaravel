@@ -8,6 +8,7 @@ use App\Models\Producto;
 use Illuminate\Validation\ValidationException ;
 Use  RealRashid\SweetAlert\Facades\Alert;
 use Yajra\Datatables\Datatables; 
+use App\Http\Requests\SaveProducto;
 class ProductoController extends Controller
 {
     
@@ -43,12 +44,12 @@ class ProductoController extends Controller
         ->make(true);
     }
 
-    public function create()
+    public function crear()
     {
         
         $categorias = Categoria::all();
 
-        return view('producto.create', compact('categorias'));
+        return view("producto.crear", compact("categorias"));
     }
 
 
