@@ -40,11 +40,11 @@
 
                 </div>
                 <div class="mt-5">
+                <input type="hidden" name="total" id="precioTotal">
+
                     <label for="precio">Precio:</label>
 
-                    <input type="text" id="precio" disabled name="Precio"
-                        class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Precio') border-theme-6 @enderror"
-                        min="1" value="{{old('Precio')}}">
+                    <input type="text" id="precio" disabled name="Precio" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Precio') border-theme-6 @enderror" min="1" value="{{old('Precio')}}">
                     @error('Precio')
                     <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                     @enderror
@@ -52,9 +52,7 @@
                 <div class="mt-5">
                     <label for="cantidad">Cantidad:</label>
 
-                    <input type="number" id="cantidad" name="Cantidad"
-                        class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror"
-                        placeholder="Ingrese la cantidad del producto" min="1" value="{{old('Cantidad')}}">
+                    <input type="number" id="cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{old('Cantidad')}}">
                     @error('Cantidad')
                     <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                     @enderror
@@ -95,72 +93,146 @@
                     </tr>
                 </tfoot>
             </table>
+            <button type="button" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Guardar</button>
         </div>
     </div>
+
 </div>
 @endsection
 
 @section('script')
 <script>
-function obtener_precio() {
-    let id = $("#producto option:selected").val();
+    function obtener_precio() {
+        let id = $("#producto option:selected").val();
 
-    $.ajax({
-        url: `/compra/obtenerPrecio/${id}`,
-        type: 'GET',
-        success: function(respu) {
-            console.log(respu.Precio);
-            $("#precio").val(respu.Precio);
-        }
-    })
-    /* .done(function(respuesta) {
-            console.log(respuesta);
-            if (respuesta != 0) {
-                $("#precio").val(respuesta);
+        $.ajax({
+            url: `/compra/obtenerPrecio/${id}`,
+            type: 'GET',
+            success: function(respu) {
+                console.log(respu.Precio);
+                $("#precio").val(respu.Precio);
             }
-            
-        }).fail(function(error) {
+        })
+        /* .done(function(respuesta) {
+                console.log(respuesta);
+                if (respuesta != 0) {
+                    $("#precio").val(respuesta);
+                }
+                
+            }).fail(function(error) {
 
-        }); */
-}
-
-let cont = 0;
-
-function agregar() {
-    let id = $("#producto option:selected").val();
-    let nombre = $("#producto option:selected").text();
-    let precio = $("#precio").val();
-    let cantidad = $("#cantidad").val();
-
-    let subtotal = parseInt(precio) * parseInt(cantidad);
-    let separar = nombre.split("-");
-
-    if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
-        console.log("Holaa");
-    } else {
-        Swal.fie(
-            'Espera!',
-            'La cantidad debe ser mayor a cero!!',
-            'warning'
-        )
+            }); */
     }
 
-}
+    let cont = 0;
+
+    function agregar() {
+        let proveedor = $("#proveedor option:selected").val();
+        let id = $("#producto option:selected").val();
+        let nombre = $("#producto option:selected").text();
+        let precio = $("#precio").val();
+        let cantidad = $("#cantidad").val();
+
+        let subtotal = parseInt(precio) * parseInt(cantidad);
+        let separar = nombre.split("-");
+
+        if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
+            if (parseInt(cantidad) > 0) {
+                let nuevaCantidad = parseInt($.trim(separar[1])) - parseInt(cantidad);
+                console.log(nuevaCantidad);
+                $("#producto option:selected").text($.trim(separar[0]) + " - " + nuevaCantidad);
+
+
+                $("#tbl_productos").append(`
+        <tr id="datos${id}" >
+        <input type="hidden" name="proveedor_id" value="${proveedor}">
+                <input type="hidden" name="nombreProducto[]" value="${$.trim(separar[0])}">
+                <input type="hidden" name="precio[]" value="${precio}">
+                <input type="hidden" name="cantidad[]" value="${cantidad}">
+                
+           <td class="productos" id="${id}">${$.trim(separar[0])}</td>
+           <td class="cantidades">${cantidad}</td>
+           <td>${precio}</td>
+            <td class="subtotal">${subtotal}</td>
+
+           <td>
+                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">x</button>
+           </td>
+        </tr>
+    `);
+
+            } else {
+
+            }
+
+        } else {
+            alert("La cantidad debe ser mayor a cero actual!!");
+        }
+        _subtotal();
+        
+    }
+
+    function limpiar() {
+
+
+        document.getElementById("precio").value = "";
+        document.getElementById("cantidad").value = "";
+    }
+
+
+    function _subtotal() {
+        let total = 0;
+        $(".subtotal").each(function(i, e) {
+            total += parseInt(e.innerHTML);
+        })
+
+        $("#total").text(total);
+        $("#precioTotal").val(parseInt(total));
+    }
+
+    function eliminar(pos, subtotal) {
+
+
+        let id = $(`#datos${pos}`);
+
+        id.remove();
+        let total = $("#total").text();
+        console.log(total);
+        $("#total").text(parseInt(total) - subtotal);
+    }
+
+    $('#btnGuardar').click((e) => {
+        let form = $('#form');
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Desea crear la compra?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        })
+    });
 </script>
 
 <script>
-$('select').select2({
-    language: {
+    $('select').select2({
+        language: {
 
-        noResults: function() {
+            noResults: function() {
 
-            return "No hay resultado";
-        },
-        searching: function() {
+                return "No hay resultado";
+            },
+            searching: function() {
 
-            return "Buscando..";
+                return "Buscando..";
+            }
         }
-    }
-});
+    });
 </script>
 @endsection

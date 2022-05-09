@@ -84,24 +84,24 @@ class ComprasController extends Controller
         return $obtenterPrecio;
     }
 
-    public function save(SaveCompra $requet)
+    public function save(Request $requet)
     {
         $input = $requet->all();
-
+       //return dd($input["cantidad"]);
         try {
             DB::beginTransaction();
 
-
+          //  return dd($input["precioTotal"]);
             $compra = Compra::create([
                 "usuario_id" => Auth()->user()->id,
-                "proveedor_id" => $input['proveedor'],
-                "Precio_total" =>  $input["total"],
+                "proveedor_id" => $input['proveedor_id'],
+                "Precio_total" =>  $input["precioTotal"],
                 "Estado" => 1
             ]);
 
             foreach ($input["nombreProducto"] as $key => $value) {
 
-
+              
                 $productoUpdate = Producto::where("productos.Nombre_Producto", $value)->first();
 
                // return response()->json($productoUpdate->Cantidad);
