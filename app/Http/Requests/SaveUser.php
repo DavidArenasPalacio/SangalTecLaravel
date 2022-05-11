@@ -24,13 +24,12 @@ class SaveUser extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required','min:3'],
-            'rol_id' => ['required'],
-            'documento' => ['required','numeric','digits_between:10, 15','unique:users,documento'],
-            'telefono' => ['required','numeric','digits_between:7,10'],
-            'direccion' => ['required'],
-            'email' => ['required','email:rfc,dns','unique:users,email'],
-            'contraseña' => ['required','min:8'],
+            'nombre_usuario' => ['required','min:3'],
+            'documento_usuario' => ['required','numeric','digits_between:10, 15'],
+            'telefono_usuario' => ['required','numeric','digits_between:7,10'],
+            'direccion_usuario' => ['required'],
+            'email_usuario' => ['required','email:rfc,dns','unique:users,email'],
+            'password_usuario' => ['required','min:8'],
         ];
     }
 }

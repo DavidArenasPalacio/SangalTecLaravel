@@ -38,7 +38,7 @@ class CategoriaController extends Controller
     }
 
     public function save(SaveCategoria $request){
-        // $request->validate(Categoria::$rules);
+
         $input = $request->all(); 
 
         try {

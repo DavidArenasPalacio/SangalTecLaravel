@@ -79,8 +79,8 @@ class ComprasController extends Controller
     }
 
     public function obtener_Precio($id){
-        $obtenterPrecio = Producto::select("productos.Precio")->where("id", $id)->first();
-       // dd($obtenterPrecio);
+        $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
+        dd($obtenterPrecio);
         return $obtenterPrecio;
     }
 
@@ -104,7 +104,7 @@ class ComprasController extends Controller
 
             foreach ($input["nombreProducto"] as $key => $value) {
 
-              
+            
                 $productoUpdate = Producto::where("productos.Nombre_Producto", $value)->first();
 
                // return response()->json($productoUpdate->Cantidad);

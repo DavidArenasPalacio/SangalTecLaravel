@@ -9,8 +9,8 @@
         <div class="w-full">
             <label for="nombre">Nombre:</label>
 
-            <input type="text" id="Nombre_Producto" name="Nombre_Producto" class="input w-full border mt-2 @error('Nombre_Producto') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{old('Nombre_Producto')}}" minlength="2" required>
-            @error('Nombre_Producto')
+            <input type="text" id="Nombre_Producto" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{old('nombre')}}" minlength="2">
+            @error('nombre')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -29,18 +29,26 @@
     
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
         <div class="w-full mr-2">
-            <label for="precio">Precio:</label>
+            <label for="precio">Precio Compra:</label>
 
-            <input type="number" id="precio" name="Precio" class="input w-full border mt-2 @error('Precio') border-theme-6 @enderror" placeholder="Ingrese el precio del producto"    value="{{old('Precio')}}">
-            @error('Precio')
+            <input type="number" id="precio" name="precio_compra" class="input w-full border mt-2 @error('precio_compra') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se comprará el producto" value="{{old('precio_compra')}}">
+            @error('precio_compra')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full mr-2">
+            <label for="precio">Precio Venta:</label>
+
+            <input type="number" id="precio" name="precio_venta" class="input w-full border mt-2 @error('precio_venta') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se venderá el producto"    value="{{old('precio_venta')}}">
+            @error('precio_venta')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
             <label for="cantidad">Cantidad:</label>
 
-            <input type="number" id="cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto"   value="{{old('Cantidad')}}">
-            @error('Cantidad')
+            <input type="number" id="cantidad" name="cantidad" class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" value="{{old('cantidad')}}">
+            @error('cantidad')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -56,40 +64,12 @@
 <script>
     $(document).ready(function() {
 
-        $.validator.addMethod("formAlphanumeric", function(value, element) {
-            var pattern = /^[\w]+$/i;
-            return this.optional(element) || pattern.test(value);
-        }, "El campo debe tener un valor alfanumérico (azAZ09)");
-
-  
-
-     $.validator.addMethod("espacios", function(value, element) {
-            return value.trim().length > 0
-        }, "No debe tener espacios"); 
-
         $('#form').validate({ // initialize the plugin
             rules: {
-                Nombre_Producto: {
-                    required: true,
-                    minlength: 5,
-                    espcios: true
-                },
                 categoria_id: {
                     required: true,
                     number: true
                 },
-                Precio: {
-                    required: true,
-                    number:true,
-                    min: 1,
-                },
-                Cantidad: {
-                    required: true,
-                    number: true,
-                    min: 1,
-                    maxlength: 15,
-                   
-                }
             },
             messages: {    
                 categoria_id: "Seleccione una opción",

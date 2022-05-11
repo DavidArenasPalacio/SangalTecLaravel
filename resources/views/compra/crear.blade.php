@@ -44,7 +44,7 @@
 
                     <label for="precio">Precio:</label>
 
-                    <input type="text" id="precio" disabled name="Precio" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Precio') border-theme-6 @enderror" min="1" value="{{old('Precio')}}">
+                    <input type="text" id="precio" readonly name="Precio" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Precio') border-theme-6 @enderror" min="1" value="{{old('Precio')}}">
                     @error('Precio')
                     <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                     @enderror

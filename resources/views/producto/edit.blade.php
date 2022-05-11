@@ -3,14 +3,14 @@
 
 @section('content')
 <h1 class="text-center text-4xl font-medium">Modificar Producto</h1>
-<form action="/producto/guardar" method="POST" class="mb-5 py-5" id="form">
+<form action="{{ route('producto.actualizar',$producto->id) }}" method="POST" class="mb-5 py-5" id="form">
     @csrf
 
     <div class="w-full">
         <label for="Nombre_Producto">Nombre:</label>
 
-        <input type="text" id="Nombre_Producto" name="Nombre_Producto" class="input w-full border mt-2 @error('Nombre_Producto') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{$producto->Nombre_Producto}}" minlength="2">
-        @error('Nombre_Producto')
+        <input type="text" id="Nombre_Producto" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre del producto" value="{{$producto->Nombre_Producto}}" minlength="2">
+        @error('nombre')
         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
         @enderror
     </div>
@@ -27,19 +27,27 @@
         @enderror
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
-        <div class="w-full mr-2">
+        {{-- <div class="w-full mr-2">
             <label for="Precio">Precio:</label>
 
             <input type="number" id="Precio" name="Precio" class="input w-full border mt-2 @error('Precio') border-theme-6 @enderror" placeholder="Ingrese el precio del producto" min="1" value="{{$producto->Precio}}">
             @error('Precio')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
-        </div>
-        <div class="w-full">
-            <label for="Cantidad">Cantidad:</label>
+        </div> --}}
+        <div class="w-full mr-2">
+            <label for="precio">Precio Compra:</label>
 
-            <input type="number" id="Cantidad" name="Cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{$producto->Cantidad}}">
-            @error('Cantidad')
+            <input type="number" id="precio" name="precio_compra" class="input w-full border mt-2 @error('precio_compra') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se comprará el producto" min="1" value="{{$producto->Precio_Compra}}">
+            @error('precio_compra')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full mr-2">
+            <label for="precio">Precio Venta:</label>
+
+            <input type="number" id="precio" name="precio_venta" class="input w-full border mt-2 @error('precio_venta') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se venderá el producto" min="1" value="{{$producto->Precio_Venta}}">
+            @error('precio_venta')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -53,43 +61,15 @@
 @endsection
 
 @section('script')
-<script>
+{{-- <script>
     $(document).ready(function() {
-
-        $.validator.addMethod("formAlphanumeric", function(value, element) {
-            var pattern = /^[\w]+$/i;
-            return this.optional(element) || pattern.test(value);
-        }, "El campo debe tener un valor alfanumérico (azAZ09)");
-
-
-
-        /* $.validator.addMethod("espacios", function(value, element) {
-            return value.trim().length > 0
-        }, "No debe tener espacios"); */
 
         $('#form').validate({ // initialize the plugin
             rules: {
-                Nombre_Producto: {
-                    required: true,
-                    minlength: 5,
-
-                },
                 categoria_id: {
                     required: true,
                     number: true
                 },
-                Precio: {
-                    required: true,
-                    number: true,
-                    min: 1,
-                },
-                Cantidad: {
-                    required: true,
-                    number: true,
-                    min: 1,
-                    maxlength: 15,
-
-                }
             },
             messages: {
                 categoria_id: "Seleccione una opción",
@@ -99,5 +79,5 @@
 
         });
     });
-</script>
+</script> --}}
 @endsection

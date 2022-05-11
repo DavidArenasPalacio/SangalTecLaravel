@@ -6,11 +6,22 @@
 <form action="/rol/actualizar" method="POST" id="form">
     @csrf
     <input type="hidden" name="id" value="{{$rol->id}}">
-    <div>
+
+    {{-- <div>
         <label for="">Nombre del rol:</label>
         <input type="text" name="Nombre_Rol" class="input w-full border mt-2 @error('Nombre_Rol') border-theme-6 @enderror" value="{{$rol->Nombre_Rol}}">
         @error('Nombre_Rol')
         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+        @enderror
+    </div> --}}
+
+    <div>
+        <label for="">Nombre Del Rol:</label>
+        <input type="text" name="nombre" placeholder="Ingrese el nombre del rol" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" value="{{$rol->Nombre_Rol}}">
+        @error('nombre')
+        <span class="text-theme-6 mt-2" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 

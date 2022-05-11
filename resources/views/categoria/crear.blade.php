@@ -2,14 +2,23 @@
 @section('content')
 <h1 class="text-center text-4xl font-medium">Crear Categoría</h1>
 <form action="/categoria/guardar" method="POST" id="form">
-  @csrf
-    <div>
+    @csrf
+    {{-- <div>
         <label for="Nombre_Categoria">Nombre de la categoría:</label>
-        <input type="text" id="Nombre_Categoria" name="Nombre_Categoria" class="input w-full border mt-2 @error('Nombre_Categoria') border-theme-6 @enderror" required>
+        <input type="text" id="Nombre_Categoria" name="Nombre_Categoria" class="input w-full border mt-2 @error('Nombre_Categoria') border-theme-6 @enderror">
 
-       
+    
         @error('Nombre_Categoria')
         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+        @enderror
+    </div> --}}
+    <div>
+        <label for="rol">Nombre De La Categoría:</label>
+        <input type="text" name="nombre" placeholder="Ingrese el nombre de la categoría" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror">
+        @error('nombre')
+        <span class="text-theme-6 mt-2" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
     <div class="flex justify-between">

@@ -4,14 +4,14 @@
 @section('content')
 <h1 class="text-center text-4xl font-medium">Crear Categoría</h1>
 <form action="/categoria/actualizar" method="POST" id="form">
-  @csrf
-  <input type="hidden" name="id" value="{{$categoria->id}}">
-  <div>
+    @csrf
+    <input type="hidden" name="id" value="{{$categoria->id}}">
+    <div>
         <label for="Nombre_Categoria">Nombre de la categoría:</label>
-        <input type="text" id="Nombre_Categoria" name="Nombre_Categoria" class="input w-full border mt-2 @error('Nombre_Categoria') border-theme-6 @enderror" value="{{$categoria->Nombre_Categoria}}">
+        <input type="text" id="nombre" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" value="{{$categoria->Nombre_Categoria}}">
 
-       
-        @error('Nombre_Categoria')
+
+        @error('nombre')
         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
         @enderror
     </div>

@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException ;
 Use  RealRashid\SweetAlert\Facades\Alert;
 use Yajra\Datatables\Datatables; 
 use App\Http\Requests\SaveProducto;
+use App\Http\Requests\UpdateProducto;
 class ProductoController extends Controller
 {
     
@@ -29,12 +30,12 @@ class ProductoController extends Controller
         })
         ->addColumn('acciones', function($producto) {
             $estado = ''; 
-              
+            
             if($producto->Estado == 1) {
-                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/0" class="btn btn-danger btn-sm"><i class="fas fa-lock"></i></a>';
+                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
             }
             else {
-                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/1" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-unlock"></i></a>';
+                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/1" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
             }
             
             return '<a href="/producto/editar/'.$producto->id.'" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.$estado;
@@ -62,7 +63,8 @@ class ProductoController extends Controller
             Producto::create([   
                 "categoria_id" => $input["categoria_id"],
                 "Nombre_Producto" => $input["nombre"], 
-                "Precio" => $input["precio"],    
+                "Precio_Compra" => $input["precio_compra"],  
+                "Precio_Venta" => $input["precio_venta"],  
                 "Cantidad" => $input["cantidad"], 
                 "Estado" => 1
             ]);
@@ -77,7 +79,7 @@ class ProductoController extends Controller
 
     public function edit($id)
     {
-        $producto = Producto::where("productos.id","=",$id)->first();
+        $producto = Producto::find($id);
         $categorias = Categoria::all();
 
         if ($producto == null) {
@@ -88,27 +90,28 @@ class ProductoController extends Controller
         return view("producto.edit", compact("producto", "categorias"));
     }
 
-    public function update(SaveProducto $request)
+    public function update(UpdateProducto $request, $id)
     {
 
         $input = $request->all();
         try {
-            $producto = Producto::where("productos.id", "=", $input["id"]);
-            
+
+            $producto = Producto::find($id);
 
             if ($producto == null) {
                 
-                return redirect("/producto")->with('error', 'Error al modificar producto');
+                alert()->warning('Error', 'Error Al Editar El Producto');
+                return redirect("/producto");
             }
 
             
             $producto->update([
                 "categoria_id" => $input["categoria_id"],
                 "Nombre_Producto" => $input["nombre"],
-                "Precio" => $input["precio"]
+                "Precio_Compra" => $input["precio_compra"],  
+                "Precio_Venta" => $input["precio_venta"],  
             ]);
-
-        
+            
             alert()->success('Producto Editado Exitosamente');
             return redirect("/producto");
         } catch (\Exception $e) {

@@ -34,20 +34,20 @@ class RolController extends Controller
 
         $input = $request->all(); 
 
-        // try {
+        try {
 
             $rol = Rol::create([
-                "Nombre_Rol"=> $input["Nombre_Rol"],
+                "Nombre_Rol"=> $input["nombre"],
             ]);
-            return dd($rol);
+            
 
             alert()->success('Rol Registrado Exitosamente');
             return redirect("/rol");
 
-        // } catch (\exception $e) {
-        //     alert()->warning('Error', 'Error Al Registrar El Rol');
-        //     return redirect("/rol");
-        // }
+        } catch (\exception $e) {
+            alert()->warning('Error', 'Error Al Registrar El Rol');
+            return redirect("/rol");
+        }
 
     }
     

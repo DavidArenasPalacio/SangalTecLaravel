@@ -2,54 +2,59 @@
 
 
 @section('content')
-<section class="container">
-    <div class="p-5 bg-white">
-        <h2 class="text-center">Modificar Proveedor</h2>
-        <form action="/proveedor/actualizar" method="post">
-            @csrf
-            <input type="hidden" name="id" value="{{$proveedor->id}}">
-            <div class="mb-3">
-                <label for="">Nombre</label>
-                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{$proveedor->Nombre_Proveedor}}">
-        @error('nombre')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-    <div class=" mb-3">
-                <label for="">Correo: </label>
-                <input type="email" name="correo" class="form-control @error('correo') is-invalid @enderror" value="{{$proveedor->Correo_Proveedor}}">
-                @error('correo')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Teléfono: </label>
-                <input type="tel" name="telefono" class="form-control @error('telefono') is-invalid @enderror" value="{{$proveedor->Telefono_Proveedor}}">
-                @error('telefono')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="">Dirección: </label>
-                <input type="text" name="direccion" class="form-control @error('direccion') is-invalid @enderror" value="{{$proveedor->Direccion_Proveedor}}">
-                @error('direccion')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="d-flex justify-content-between">
-                <a href="/proveedor" class="btn btn-primary">Cancelar</a>
-                <button type="submit" class="btn btn-success">Modificar proveedor</button>
+<h1 class="text-center text-4xl font-medium">Modificar Proveedor</h1>
+<form action="{{ route('proveedor.actualizar',$proveedor->id) }}" method="POST" id="form">
+    @csrf
+    <input type="hidden" name="id" value="{{$proveedor->id}}">
+    <div class="flex flex-col sm:flex-row items-center">
 
-            </div>
-        </form>
+        <div class="w-full mr-2">
+            <label for="Nombre_Proveedor">Nombre Proveedor:</label>
+
+            <input type="text" id="Nombre_Proveedor" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre del proveedor" maxlength="125" value="{{$proveedor->Nombre_Proveedor}}" >
+            @error('nombre')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="Correo_Proveedor">Correo Proveedor:</label>
+
+            <input type="email" id="Correo_Proveedor" name="correo" class="input w-full border mt-2 @error('correo') border-theme-6 @enderror" placeholder="Ingrese el correo del proveedor" maxlength="225" value="{{$proveedor->Correo_Proveedor}}">
+            @error('correo')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
     </div>
-</section>
+
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="Telefono_Proveedor">Telefono Proveedor:</label>
+
+            <input type="text" id="Telefono_Proveedor" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono del proveedor" value="{{$proveedor->Telefono_Proveedor}}">
+            @error('telefono')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full ">
+            <label for="Direccion_Proveedor">Dirección Proveedor:</label>
+
+            <input type="text" id="Direccion_Proveedor" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección del proveedor" value="{{$proveedor->Direccion_Proveedor}}">
+            @error('direccion')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        
+    
+    </div>
+
+
+    <!--  <div class="flex justify-between ">
+        <a href="/usuario" class="button  border bg-theme-9 text-white mr-2 mt-5 w-full">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
+    </div> -->
+    <div class="flex justify-between">
+        <a href="/proveedor" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Modificar Proveedor</button>
+    </div>
+</form>
 @endsection

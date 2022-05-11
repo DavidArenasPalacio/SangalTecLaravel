@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::get('/producto/crear', [ProductoController::class, 'crear'])->name("producto.crear");
     Route::post('/producto/guardar', [ProductoController::class, 'save']);
     Route::get('/producto/editar/{id}', [ProductoController::class, 'edit']);
-    Route::post('/producto/actualizar', [ProductoController::class, 'update']);
+    Route::post('/producto/actualizar/{id}', [ProductoController::class, 'update'])->name("producto.actualizar");
     //FIN RUTAS PRODUCTOS
     
     
@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::get('/proveedor/crear', [ProveedorController::class, 'crear'])->name("proveedor.crear");
     Route::post('/proveedor/guardar', [ProveedorController::class, 'save']);
     Route::get('/proveedor/editar/{id}', [ProveedorController::class, 'edit']);
-    Route::post('/proveedor/actualizar', [ProveedorController::class, 'update']);
+    Route::post('/proveedor/actualizar/{id}', [ProveedorController::class, 'update'])->name("proveedor.actualizar");
     Route::get('/proveedor/cambiar/estado/{id}/{estado}', [ProveedorController::class, 'updateState']);
     Route::get('/proveedor/detalle/{id}', [ProveedorController::class, 'detalle'])->name('proveedor.detalle');
     //FIN RUTAS PROVEEDORES

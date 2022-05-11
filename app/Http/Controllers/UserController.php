@@ -71,26 +71,24 @@ class UserController extends Controller
         return view("usuario.crear", compact("roles"));
     }
 
-    public function save(Request $request)
+    public function save(SaveUser $request)
     {
-        // $request->validate(User::$rules);
 
         $input = $request->all();
 
         try {
 
-            User::create([
-                "rol_id" => $input["rol_id"],
-                "name" => $input["name"],
-                "documento" => $input["documento"],
-                "telefono" => $input["telefono"],
-                "direccion" => $input["direccion"],
-                "email" => $input["email"],
-                "password" => Hash::make($input["password"]),
+            $usuario = User::create([
+                "rol_id" => $input["rol_usuario"],
+                "name" => $input["nombre_usuario"],
+                "documento" => $input["documento_usuario"],
+                "telefono" => $input["telefono_usuario"],
+                "direccion" => $input["direccion_usuario"],
+                "email" => $input["email_usuario"],
+                "password" => Hash::make($input["password_usuario"]),
                 "estado" => 1
             ]);
 
-            // return dd($usuario);
 
             alert()->success('Usuario Creado Exitosamente');
             return redirect("/usuario");
@@ -124,13 +122,11 @@ class UserController extends Controller
             return redirect("/usuario");
         }
         $roles = Rol::all();
-        /* return response()->json($producto[0]["idProducto"]); */
-
         
         return view("usuario.edit", compact("usuario", "roles"));
     }
 
-    public function update(Request $request)
+    public function update(SaveUser $request)
     {
 
         $input = $request->all();
@@ -145,12 +141,13 @@ class UserController extends Controller
                 return redirect("/usuario");            }
 
             $usuario->update([
-                "rol_id" => $input["rol_id"],
-                "name" => $input["nombre"],
-                "documento" => $input["documento"],
-                "telefono" => $input["telefono"],
-                "direccion" => $input["direccion"],
-                "email" => $input["email"],
+                "rol_id" => $input["rol_usuario"],
+                "name" => $input["nombre_usuario"],
+                "documento" => $input["documento_usuario"],
+                "telefono" => $input["telefono_usuario"],
+                "direccion" => $input["direccion_usuario"],
+                "email" => $input["email_usuario"],
+                "password" => Hash::make($input["password_usuario"]),
             ]);
 
 

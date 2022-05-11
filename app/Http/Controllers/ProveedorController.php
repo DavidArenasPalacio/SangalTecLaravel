@@ -83,13 +83,13 @@ class ProveedorController extends Controller
     }
 
 
-    public function update(SaveProveedor $request)
+    public function update(SaveProveedor $request, $id)
     {
         $input = $request->all();
 
         try {
 
-            $proveedor = Proveedor::where("proveedor.id", $input["id"]);
+            $proveedor = Proveedor::find($id);
 
             if ($proveedor == null) {
                 alert()->warning('error', 'Error Al Editar El Proveedor');

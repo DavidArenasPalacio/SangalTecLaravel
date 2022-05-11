@@ -8,18 +8,18 @@
     <div class="flex flex-col sm:flex-row items-center">
 
         <div class="w-full mr-2">
-            <label for="Nombre_Proveedor">Nombre:</label>
+            <label for="Nombre_Proveedor">Nombre Proveedor:</label>
 
-            <input type="text" id="Nombre_Proveedor" name="Nombre_Proveedor" class="input w-full border mt-2 @error('Nombre_Proveedor') border-theme-6 @enderror" placeholder="Ingrese el nombre del proveedor" maxlength="125" value="{{old('name')}}" >
-            @error('Nombre_Proveedor')
+            <input type="text" id="Nombre_Proveedor" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre del proveedor" maxlength="125" value="{{old('nombre')}}" >
+            @error('nombre')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
-            <label for="Correo_Proveedor">Correo:</label>
+            <label for="Correo_Proveedor">Correo Proveedor:</label>
 
-            <input type="email" id="Correo_Proveedor" name="Correo_Proveedor" class="input w-full border mt-2 @error('Correo_Proveedor') border-theme-6 @enderror" placeholder="Ingrese el correo del proveedor" maxlength="225" value="{{old('Correo_Proveedor')}}">
-            @error('Correo_Proveedor')
+            <input type="email" id="Correo_Proveedor" name="correo" class="input w-full border mt-2 @error('correo') border-theme-6 @enderror" placeholder="Ingrese el correo del proveedor" maxlength="225" value="{{old('correo')}}">
+            @error('correo')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -27,23 +27,23 @@
 
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
         <div class="w-full mr-2">
-            <label for="Telefono_Proveedor">Documento:</label>
+            <label for="Telefono_Proveedor">Telefono Proveedor:</label>
 
-            <input type="text" id="Telefono_Proveedor" name="Telefono_Proveedor" class="input w-full border mt-2 @error('Telefono_Proveedor') border-theme-6 @enderror" placeholder="Ingrese el teléfono del proveedor" value="{{old('Telefono_Proveedor')}}">
-            @error('documento')
+            <input type="text" id="Telefono_Proveedor" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono del proveedor" value="{{old('telefono')}}">
+            @error('telefono')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full ">
-            <label for="Direccion_Proveedor">Dirección:</label>
+            <label for="Direccion_Proveedor">Dirección Proveedor:</label>
 
-            <input type="text" id="Direccion_Proveedor" name="Direccion_Proveedor" class="input w-full border mt-2 @error('Direccion_Proveedor') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{old('Direccion_Proveedor')}}">
-            @error('Direccion_Proveedor')
+            <input type="text" id="Direccion_Proveedor" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{old('direccion')}}">
+            @error('direccion')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         
-       
+    
     </div>
 
 
@@ -61,7 +61,7 @@
 @endsection
 
 @section('script')
-<script>
+{{-- <script>
     $(document).ready(function() {
 
         $.validator.addMethod("formAlphanumeric", function(value, element) {
@@ -119,5 +119,5 @@
 
         });
     });
-</script>
+</script> --}}
 @endsection

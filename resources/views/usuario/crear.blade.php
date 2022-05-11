@@ -10,20 +10,20 @@
         <div class="w-full mr-2">
             <label for="nombre">Nombre:</label>
 
-            <input type="text" id="name" name="name" class="input w-full border mt-2 @error('name') border-theme-6 @enderror" placeholder="Ingrese el nombre del usuario" maxlength="125" value="{{old('name')}}" >
-            @error('name')
+            <input type="text" id="name" name="nombre_usuario" class="input w-full border mt-2 @error('nombre_usuario') border-theme-6 @enderror" placeholder="Ingrese el nombre del usuario" maxlength="125" value="{{old('nombre_usuario')}}" >
+            @error('nombre_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
             <label for="">Rol: </label>
-            <select name="rol_id" class="input w-full sm:mt-2 border mr-2 @error('rol_id') border-theme-6  @enderror" id="rol_id">
+            <select name="rol_usuario" class="input w-full sm:mt-2 border mr-2 @error('rol_usuario') border-theme-6  @enderror" id="rol">
                 <option>------ Seleccione -----</option>
                 @foreach($roles as $value)
-                <option value="{{ $value->id }}" {{old('rol_id') == $value->id ? 'selected' : ''}}>>{{ $value->Nombre_Rol }}</option>
+                <option value="{{ $value->id }}" {{old('rol_usuario') == $value->id ? 'selected' : ''}}>{{ $value->Nombre_Rol }}</option>
                 @endforeach
             </select>
-            @error('rol_id')
+            @error('rol_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -34,16 +34,16 @@
         <div class="w-full mr-2">
             <label for="documento">Documento:</label>
 
-            <input type="text" id="documento" name="documento" class="input w-full border mt-2 @error('documento') border-theme-6 @enderror" placeholder="Ingrese el documento del usuario" value="{{old('documento')}}">
-            @error('documento')
+            <input type="text" id="documento" name="documento_usuario" class="input w-full border mt-2 @error('documento_usuario') border-theme-6 @enderror" placeholder="Ingrese el documento del usuario" value="{{old('documento_usuario')}}">
+            @error('documento_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
             <label for="telefono">Teléfono:</label>
 
-            <input type="text" id="telefono" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="50" value="{{old('telefono')}}" >
-            @error('telefono')
+            <input type="text" id="telefono" name="telefono_usuario" class="input w-full border mt-2 @error('telefono_usuario') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="50" value="{{old('telefono_usuario')}}" >
+            @error('telefono_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -52,16 +52,16 @@
         <div class="w-full mr-2">
             <label for="direccion">Dirección:</label>
 
-            <input type="text" id="direccion" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{old('direccion')}}">
-            @error('direccion')
+            <input type="text" id="direccion" name="direccion_usuario" class="input w-full border mt-2 @error('direccion_usuario') border-theme-6 @enderror" placeholder="Ingrese la dirección" value="{{old('direccion_usuario')}}">
+            @error('direccion_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
         <div class="w-full">
             <label for="email">Correo:</label>
 
-            <input type="email" id="email" name="email" class="input w-full border mt-2 @error('email') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="225" value="{{old('email')}}">
-            @error('email')
+            <input type="email" id="email" name="email_usuario" class="input w-full border mt-2 @error('email_usuario') border-theme-6 @enderror" placeholder="Ingrese el teléfono" maxlength="225" value="{{old('email_usuario')}}">
+            @error('email_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -70,8 +70,8 @@
         <div class="w-full mr-2">
             <label for="password">Contraseña:</label>
 
-            <input type="password" id="password" name="password" class="input w-full border mt-2 @error('password') border-theme-6 @enderror" placeholder="Ingrese la contraseña">
-            @error('password')
+            <input type="password" id="password" name="password_usuario" class="input w-full border mt-2 @error('password_usuario') border-theme-6 @enderror" placeholder="Ingrese la contraseña">
+            @error('password_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
         </div>
@@ -93,67 +93,18 @@
 <script>
     $(document).ready(function() {
 
-        $.validator.addMethod("formAlphanumeric", function(value, element) {
-            var pattern = /^[\w]+$/i;
-            return this.optional(element) || pattern.test(value);
-        }, "El campo debe tener un valor alfanumérico (azAZ09)");
-
-        $.validator.addMethod("formEmail", function(value, element) {
-            var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
-            return this.optional(element) || pattern.test(value);
-        }, "Formato del email incorrecto");
-
-
-        $.validator.addMethod("espacios", function(value, element) {
-            return value.trim().length > 0
-        }, "El campo no debe tener espacios"); 
-
         $('#form').validate({ // initialize the plugin
             rules: {
-                name: {
-                    required: true,
-                    minlength: 2,
-                    espacios: true
-                },
-                rol_id: {
+                rol_usuario: {
                     required: true,
                     number: true
                 },
-                documento: {
-                    required: true,
-                    number:true,
-                    espacios: true
-                },
-                telefono: {
-                    required: true,
-                    number: true,
-                    espacios: true,
-                    minlength: 2,
-                    maxlength: 15,
-                   
-                },
-                direccion: {
-                    required: true,
-                    espacios: true,
-                },
-                email: {
-                    required: true,
-                    formEmail: true,
-                    espacios: true
-/*                     normalizer: function(value) {
-                        return $.trim(value);
-                    } */
-                },
-                password: {
-                    required: true,
-                    espacios: true
-                }
+
             },
             messages: {
                 
-                rol_id: "Seleccione una opción",
-                documemto: "El campo es obligatorio",
-                telefono: "El campo Teléfono no contiene un formato correcto."
+                rol_usuario: "Seleccione una opción",
+            
             },
             errorElement: 'span'
 

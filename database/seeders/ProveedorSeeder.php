@@ -15,8 +15,8 @@ class ProveedorSeeder extends Seeder
     public function run()
     {
         Proveedor::create([
-            "Nombre_Proveedor" => "Claro",
-            "Correo_Proveedor" => "claro@claro.com",
+            "Nombre_Proveedor" => "Norma",
+            "Correo_Proveedor" => "norma@norma.com",
             "Telefono_Proveedor" => "3467537",
             "Direccion_Proveedor" => "cr 334 #23",
             "Estado" => 1,
@@ -25,8 +25,8 @@ class ProveedorSeeder extends Seeder
         ]);
 
         Proveedor::create([
-            "Nombre_Proveedor" => "Tigo",
-            "Correo_Proveedor" => "tigo@tigo.com",
+            "Nombre_Proveedor" => "Distrimax",
+            "Correo_Proveedor" => "Distrimax@max.com",
             "Telefono_Proveedor" => "34556732",
             "Direccion_Proveedor" => "cr 24 #3",
             "Estado" => 1,
@@ -35,8 +35,8 @@ class ProveedorSeeder extends Seeder
         ]);
 
         Proveedor::create([
-            "Nombre_Proveedor" => "Movistar",
-            "Correo_Proveedor" => "movistar@movistar.com",
+            "Nombre_Proveedor" => "Samsumg",
+            "Correo_Proveedor" => "Samsumg@ss.com",
             "Telefono_Proveedor" => "2345562",
             "Direccion_Proveedor" => "cr 45 #2",
             "Estado" => 1,

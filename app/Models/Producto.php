@@ -10,7 +10,7 @@ class Producto extends Model
 {
     protected $table = 'productos'; 
     
-    protected $fillable = ['categoria_id', 'Nombre_Producto', 'Precio', 'Cantidad', 'Estado']; 
+    protected $fillable = ['categoria_id', 'Nombre_Producto', 'Precio_Compra', 'Precio_Venta', 'Cantidad', 'Estado']; 
     
     public static $rules = [ 
         'categoria_id' =>  'required|exists:categoria,id',

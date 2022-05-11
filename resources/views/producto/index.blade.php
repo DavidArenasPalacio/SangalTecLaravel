@@ -20,7 +20,9 @@
                 <tr>
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Categoría</th>
-                    <th class="border-b-2 whitespace-no-wrap">Precio</th>
+                    <th class="border-b-2 whitespace-no-wrap">Precio Compra</th>
+                    <th class="border-b-2 whitespace-no-wrap">Precio Venta</th>
+                    <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
                     <th class="border-b-2 whitespace-no-wrap">Estado</th>
                     <th class="border-b-2 whitespace-no-wrap">Acciones</th>
 
@@ -75,8 +77,16 @@
                 name: 'categoria'
             },
             {
-                data: 'Precio',
-                name: 'Precio'
+                data: 'Precio_Compra',
+                name: 'Precio_Compra'
+            },
+            {
+                data: 'Precio_Venta',
+                name: 'Precio_Venta'
+            },
+            {
+                data: 'Cantidad',
+                name: 'Cantidad'
             },
             {
                 data: 'estado',
