@@ -29,7 +29,9 @@ class ComprasController extends Controller
 
     public function listar()
     {
-        $compra = Compra::select("compra.*", "users.name as users", "proveedor.Nombre_Proveedor as proveedor")->join("users", "users.id", "=", "compra.usuario_id")->join("proveedor", "proveedor.id", "=", "compra.proveedor_id")->get();
+        $compra = Compra::select("compra.*", "users.name as users", "proveedor.Nombre_Proveedor as proveedor")->join("users", "users.id", "=", "compra.usuario_id")
+        ->join("proveedor", "proveedor.id", "=", "compra.proveedor_id")
+        ->get();
 
 
         return DataTables::of($compra)
@@ -70,23 +72,28 @@ class ComprasController extends Controller
 
 
     public function crear(){
-        $proveedores = Proveedor::all();
 
-        $productos = Producto::all();
+        $productos = Producto::select("productos.*")
+        ->where("productos.Estado", "=", 1)
+        ->get();
+        
+        $proveedores = Proveedor::select("proveedor.*")
+        ->where("proveedor.Estado", "=", 1)
+        ->get();
 
 
         return view("compra.crear", compact("proveedores", "productos"));
     }
 
-    public function obtener_Precio($id){
-        $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
-        dd($obtenterPrecio);
-        return $obtenterPrecio;
-    }
+    // public function obtener_Precio($id){
+    //     $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
+    //     dd($obtenterPrecio);
+    //     return $obtenterPrecio;
+    // }
 
     public function save(Request $requet)
     {
-        dd($requet);
+        // dd($requet);
         $input = $requet->all();
        //return dd($input["cantidad"]);
         // try {
@@ -101,7 +108,6 @@ class ComprasController extends Controller
             ]);
 
             
-
             foreach ($input["nombreProducto"] as $key => $value) {
 
             

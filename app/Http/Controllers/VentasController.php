@@ -11,6 +11,7 @@ use App\Models\Clientes;
 use App\Models\VentasDetalle;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class VentasController extends Controller
 {
@@ -35,7 +36,7 @@ class VentasController extends Controller
         return view('ventas.crear', compact('productos','clientes'));
     }
 
-    public function store(SaveVenta $request)
+    public function store(Request $request)
     {
     
         $input = $request->all();
@@ -61,7 +62,7 @@ class VentasController extends Controller
         $ventas = Ventas::create([
             'cliente_id' => $input["Documento"],
             'usuario_id' => auth()->user()->id,
-            'Precio_total' => $input["precio_venta"],
+            'Precio_total' => $input["total"],
             'Estado' => 1,
         ]);
         
@@ -115,7 +116,7 @@ class VentasController extends Controller
             ->addColumn('acciones', function ($ventas) {
                 $estado = '';
 
-                if (Auth::user()->rol_id == 3) {
+                if (Auth::user()->rol_id == 1) {
 
                     if ($ventas->Estado == 1) {
                         $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';

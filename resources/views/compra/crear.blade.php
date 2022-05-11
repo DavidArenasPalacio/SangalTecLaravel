@@ -11,7 +11,7 @@
                     <label for="proveedor_id">Proveedor:</label>
 
                     <div class="mt-2">
-                        <select class="select2   w-full " name="proveedor_id" id="proveedor_id">
+                        <select class="select2   w-full " name="proveedor_id" id="proveedor">
 
                             <option selected="true" disabled="disabled">------ Seleccione -----</option>
                             @foreach($proveedores as $value)
@@ -23,13 +23,13 @@
                 </div>
                 <div class="preview mt-5">
                     <div>
-                        <label for="producto">Producto:</label>
+                        <label for="">Producto:</label>
                         <div class="mt-2">
-                            <select class="select2  w-full  mr-2 " onchange="obtener_precio()" id="producto">
+                            <select name="nombreProducto" class="select2  w-full  mr-2 " onchange="obtener_precio()" id="nombreProducto">
 
                                 <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                 @foreach($productos as $value)
-                                <option value="{{$value->id}}">{{$value->Nombre_Producto}} - {{$value->Cantidad}}
+                                <option precio="{{$value->Precio_Compra}}" value="{{$value->id}}" {{old('nombreProducto')==$value->id  ? 'selected' : ''}}>{{ $value->Nombre_Producto }}
                                 </option>
                                 @endforeach
 
@@ -82,7 +82,7 @@
                         <th class="border-b-2 whitespace-no-wrap">Eliminar</th>
                     </tr>
                 </thead>
-                <tbody id="tbl_productos">
+                <tbody id="tblCompra">
 
                 </tbody>
                 <tfoot>
@@ -103,16 +103,20 @@
 @section('script')
 <script>
     function obtener_precio() {
-        let id = $("#producto option:selected").val();
 
-        $.ajax({
-            url: `/compra/obtenerPrecio/${id}`,
-            type: 'GET',
-            success: function(respu) {
-                console.log(respu.Precio);
-                $("#precio").val(respu.Precio);
-            }
-        })
+        let Precio_Compra = $("#nombreProducto option:selected").attr("precio");
+        $("#precio").val(Precio_Compra);
+
+        // let id = $("#producto option:selected").val();
+
+        // $.ajax({
+        //     url: `/compra/obtenerPrecio/${id}`,
+        //     type: 'GET',
+        //     success: function(respu) {
+        //         console.log(respu.Precio_Compra);
+        //         // $("#precio").val(respu.Precio);
+        //     }
+        // })
         /* .done(function(respuesta) {
                 console.log(respuesta);
                 if (respuesta != 0) {
@@ -129,44 +133,51 @@
     function agregar() {
         let proveedor = $("#proveedor option:selected").val();
         let id = $("#producto option:selected").val();
-        let nombre = $("#producto option:selected").text();
+        let nombreProducto = $("#nombreProducto option:selected").text();
         let precio = $("#precio").val();
         let cantidad = $("#cantidad").val();
 
         let subtotal = parseInt(precio) * parseInt(cantidad);
-        let separar = nombre.split("-");
+        
+        // let separar = nombre.split("-");
 
-        if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
-            if (parseInt(cantidad) > 0) {
-                let nuevaCantidad = parseInt($.trim(separar[1])) - parseInt(cantidad);
-                console.log(nuevaCantidad);
-                $("#producto option:selected").text($.trim(separar[0]) + " - " + nuevaCantidad);
+        // if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
+            if ( cantidad >= 0 && precio >= 0) {
+
+            // if (parseInt(cantidad) > 0) {
+            //     let nuevaCantidad = parseInt($.trim(separar[1])) - parseInt(cantidad);
+            //     console.log(nuevaCantidad);
+            //     $("#producto option:selected").text($.trim(separar[0]) + " - " + nuevaCantidad);
 
 
-                $("#tbl_productos").append(`
-        <tr id="datos${id}" >
-        <input type="hidden" name="proveedor_id" value="${proveedor}">
-                <input type="hidden" name="nombreProducto[]" value="${$.trim(separar[0])}">
-                <input type="hidden" name="precio[]" value="${precio}">
-                <input type="hidden" name="cantidad[]" value="${cantidad}">
-                
-           <td class="productos" id="${id}">${$.trim(separar[0])}</td>
-           <td class="cantidades">${cantidad}</td>
-           <td>${precio}</td>
-            <td class="subtotal">${subtotal}</td>
+                $("#tblCompra").append(`
+                <tr id="tr-${id}">
+                <input type="hidden" name="nombreProducto[]" value="${nombreProducto}">
+                <input type="hidden" name="precios[]" value="${precio}">
+                <input type="hidden" name="cantidades[]" value="${cantidad}">
+            
 
-           <td>
-                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">x</button>
-           </td>
-        </tr>
-    `);
+                <td class="nombreProducto">${nombreProducto}</td>
+                <td>${cantidad}</td>
+                <td>${precio}</td>
+                <td class="subtotal">${subtotal}</td>
 
-            } else {
+                <td>
+                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">x</button>
+                </td>
+                </tr>
+            `);
+            console.log(id);
+        console.log(nombreProducto);
+        console.log(precio);
+        console.log(cantidad);
+        console.log(subtotal);
+            // } else {
 
-            }
+            // }
 
         } else {
-            alert("La cantidad debe ser mayor a cero actual!!");
+            swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
         }
         _subtotal();
         
@@ -190,12 +201,10 @@
         $("#precioTotal").val(parseInt(total));
     }
 
-    function eliminar(pos, subtotal) {
+    function eliminar(id, subtotal) {
 
+        $("#tr-"+id).remove();
 
-        let id = $(`#datos${pos}`);
-
-        id.remove();
         let total = $("#total").text();
         console.log(total);
         $("#total").text(parseInt(total) - subtotal);
