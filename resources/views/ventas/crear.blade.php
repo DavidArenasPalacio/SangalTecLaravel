@@ -64,7 +64,7 @@
                             <label for="">Nombre Del Producto</label>
                             {{-- <input style="width: 80%" type="text" name="" value="{{$value->NombreP}}" disabled> --}}
                             <select name="ProductoN" id="ProductoN" class="form-control" onchange="colocar_precio()"> 
-                                <option value="">--Seleccionr Producto--</option>
+                                <option value="">--Seleccione Producto--</option>
                                 @foreach($productos as $value)
                             <option precio="{{$value->Precio}}" value="{{ $value->idProducto }} " {{old('ProductoN')==$value->idProducto  ? 'selected' : ''}}>{{ $value->Nombre_Producto }}</option>
                             @endforeach
@@ -93,7 +93,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody id="tbl_productos">
+                            <tbody id="#tbl_productos">
                                 
                             </tbody>
                         </table>    
@@ -138,7 +138,7 @@
     if (cantidad > 0 && precio >0) {
 
         
-        $("#tbl_productos").append(` 
+        $("tbl_productos").append(` 
 
             <tr id="tr-${producto_id}">                        
                 <td>
@@ -154,7 +154,7 @@
                     <button type="button" class="btn btn-danger" onclick="cancelar_producto(${producto_id}, ${parseInt(cantidad) * parseInt(precio)})">Eliminar</button>    
                 </td>
             </tr>
-        ` )
+        `)
 
         let precio_venta = $("#precio_venta").val() || 0;
         $("#precio_venta").val(parseInt(precio_venta) + parseInt(cantidad) * parseInt(precio));

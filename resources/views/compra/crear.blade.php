@@ -104,13 +104,13 @@
 <script>
     function obtener_precio() {
         let id = $("#producto option:selected").val();
-
+        console.log(id);
         $.ajax({
             url: `/compra/obtenerPrecio/${id}`,
             type: 'GET',
             success: function(respu) {
-                console.log(respu.Precio);
-                $("#precio").val(respu.Precio);
+                console.log(respu.Precio_Compra);
+                $("#precio").val(respu.Precio_Compra);
             }
         })
         /* .done(function(respuesta) {
@@ -156,7 +156,7 @@
             <td class="subtotal">${subtotal}</td>
 
            <td>
-                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">x</button>
+                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">  <i data-feather="trash-2" class="mx-auto"></i></button>
            </td>
         </tr>
     `);

@@ -80,7 +80,7 @@ class ComprasController extends Controller
 
     public function obtener_Precio($id){
         $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
-        dd($obtenterPrecio);
+     
         return $obtenterPrecio;
     }
 
