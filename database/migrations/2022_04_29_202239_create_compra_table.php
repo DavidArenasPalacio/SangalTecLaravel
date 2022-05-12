@@ -36,6 +36,7 @@ class CreateCompraTable extends Migration
             $table->id();
             $table->foreignId('compra_id')->constrained('users');
             $table->foreignId('producto_id')->constrained('productos');
+            $table->float('Precio_unitario');
             $table->integer('Cantidad');
             $table->float('Sub_total');
             $table->timestamps();

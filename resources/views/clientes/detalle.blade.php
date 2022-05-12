@@ -6,37 +6,27 @@
 
 @section('content')
 
-<div class=" row card">
-
-    <div class="card-body">
-
-        <br>
-            <table id="clientes" class="table table-bordered" style="width: 100%;">
-                <thead>
-                    <tr>
-                        
-                        <th>Nombre Del Cliente</th>
-                        <th>Documento</th>
-                        <th>Telefono Del Cliente</th>
-                        <th>Direccion Del Cliente</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                                       
-                    <tr>
-                        
-                        <td>{{$cliente->Nombre_Cliente}}</td>
-                       <td>{{$cliente->Documento_Cliente}}</td>
-                       <td>{{$cliente->Telefono_Cliente}}</td>
-                       <td>{{$cliente->Direccion_Cliente}}</td>
-                   </tr> 
-                          
-                </tbody>                
+<div>
+        <table class="table table-report table-report--bordered display  ">
+            <thead>
+                <tr>                
+                    <th>Nombre Del Cliente</th>
+                    <th>Documento</th>
+                    <th>Telefono Del Cliente</th>
+                    <th>Direccion Del Cliente</th>
+                </tr>    
+            </thead>
+            <tbody>                    
+                 <tr>
+                   <td class="border-b-2 whitespace-no-wrap">{{$cliente->Nombre_Cliente}}</td>
+                   <td class="border-b-2 whitespace-no-wrap">{{$cliente->Documento_Cliente}}</td>
+                   <td class="border-b-2 whitespace-no-wrap">{{$cliente->Telefono_Cliente}}</td>
+                   <td class="border-b-2 whitespace-no-wrap">{{$cliente->Direccion_Cliente}}</td>
+               </tr>                           
+            </tbody>                
             </table>
-    </div>
-    
-        <a href="/clientes" class="btn btn-primary col-12">Volver</a>
-    
+</div>
+<div class="flex justify-between">
+    <a href="/clientes" class="button border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
 </div>
 @endsection

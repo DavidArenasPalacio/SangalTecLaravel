@@ -50,8 +50,8 @@
                     <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Venta</th>
                     <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
                     <th class="border-b-2 whitespace-no-wrap">Fecha De La Venta</th>
-                    <th class="border-b-2 whitespace-no-wrap">Anular Venta</th>
-                    <th class="border-b-2 whitespace-no-wrap">Detalle</th>
+                    <th class="border-b-2 whitespace-no-wrap">Estado</th>
+                    <th class="border-b-2 whitespace-no-wrap">Acciones</th>
                 </tr>
             </thead>
             <tbody>

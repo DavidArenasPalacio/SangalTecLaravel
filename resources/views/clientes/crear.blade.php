@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1 class="text-center text-4xl font-medium">Crear Cliente</h1>
+<h1 class="text-center text-4xl font-medium">Registrar Un Cliente</h1>
 <form id="formCl" action="{{ route('clientes.store') }}" method="POST" id="form">
     @csrf
     <div class="flex flex-col sm:flex-row items-center">
@@ -53,7 +53,7 @@
     </div> -->
     <div class="flex justify-between">
         <a href="/clientes" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Crear Cliente</button>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Cliente</button>
     </div>
 </form>
 @endsection
@@ -61,50 +61,5 @@
 @section('script')
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-
-    $('#formCl').submit(function(e){
-    
-        e.preventDefault();
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: true
-        })
-    
-        swalWithBootstrapButtons.fire({
-            title: '¿Desea Crear El Cliente?',
-            text: "",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Aceptar',
-            cancelButtonText: 'Cancelar',
-            reverseButtons: false
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                'Se Creó El Cliente Correctamente',
-                '',
-                'success'
-                )
-                this.submit();
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                'El Cliente No Fue Creado',
-                '',
-                'error'
-                )
-            }
-        })
-    
-    });
-    
-    </script>
 
 @endsection

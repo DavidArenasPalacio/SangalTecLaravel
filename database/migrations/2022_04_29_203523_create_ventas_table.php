@@ -35,6 +35,7 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->foreignId('venta_id')->constrained('ventas');
             $table->foreignId('producto_id')->constrained('productos');
+            $table->float('Precio_unitario');
             $table->integer('Cantidad');
             $table->float('Sub_total');
             $table->timestamps();

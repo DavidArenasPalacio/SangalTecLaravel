@@ -3,7 +3,7 @@
 @section('content')
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 lg:col-span-4">
-        <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar Venta</h2>
+        <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar Una Venta</h2>
         <form action="/ventas/guardar" method="POST" class="mb-5 py-5" id="form">
             @csrf
             <div class="preview mt-5">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="flex justify-between">
                     <a href="/ventas" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
-                    <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar Compra</button>
+                    <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar Producto</button>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                     </tr>
                 </tfoot>
             </table>
-            <button type="button" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Guardar</button>
+            <button type="button" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Registrar Venta</button>
         </div>
     </div>
 </form>
@@ -223,23 +223,6 @@ function colocar_nombre(e){
         $("#total").text(parseInt(total) - subtotal);
     }
 
-    $('#btnGuardar').click((e) => {
-        let form = $('#form');
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Desea crear la venta?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
-    });
 </script>
 
 <script>

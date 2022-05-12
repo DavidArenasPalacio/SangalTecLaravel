@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="text-center text-4xl font-medium">Crear Categoría</h1>
+<h1 class="text-center text-4xl font-medium">Registrar Una Categoría</h1>
 <form action="/categoria/guardar" method="POST" id="form">
     @csrf
     {{-- <div>
@@ -23,7 +23,7 @@
     </div>
     <div class="flex justify-between">
         <a href="/categoria" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5">Crear categoría</button>
+        <button type="submit" class="button bg-theme-1 text-white mt-5">Registrar Categoría</button>
     </div>
 </form>
 @endsection

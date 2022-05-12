@@ -26,7 +26,7 @@ class ProductoController extends Controller
        // return response()->json($producto);
         return DataTables::of($producto)
         ->editColumn('estado', function($producto){
-            return $producto->Estado == 1 ? '<span class="bg-primary p-1 rounded">Activo</span>' : '<span class="bg-danger p-1 rounded">Inactivo</span>';
+            return $producto->Estado == 1 ? '<span class="bg-primary p-1 rounded">Disponible</span>' : '<span class="bg-danger p-1 rounded">No Disponible</span>';
         })
         ->addColumn('acciones', function($producto) {
             $estado = ''; 

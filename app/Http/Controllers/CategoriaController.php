@@ -84,7 +84,8 @@ class CategoriaController extends Controller
 /*             return response()->json($categoria); */
             if ($categoria == null) {
                 
-                return redirect("/categoria")->with('error', 'Error al modificar categoría');
+                alert()->warning('Error', 'Error Al Editar La Categoría');;
+                return redirect("/categoria");
             }
 
             $categoria->update([

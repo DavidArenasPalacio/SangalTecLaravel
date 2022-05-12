@@ -4,12 +4,12 @@
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Gestión Productos
+        Gestión De Productos
     </h2>
 
     @if (auth()->user()->rol_id == 1)
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/producto/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Producto</a>
+        <a href="/producto/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Registrar Producto</a>
     </div>
     @endif
 

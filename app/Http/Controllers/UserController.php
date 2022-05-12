@@ -43,7 +43,7 @@ class UserController extends Controller
         //  return response()->json($users);
         return DataTables::of($users)
             ->editColumn('estado', function ($users) {
-                return $users->estado == 1 ? '<span class="bg-primary p-1 rounded">Activo</span>' : '<span class="bg-danger p-1 rounded">Inactivo</span>';
+                return $users->estado == 1 ? '<span class="bg-primary p-1 rounded">Habilitado</span>' : '<span class="bg-danger p-1 rounded">Deshabilitado</span>';
             })
             ->addColumn('acciones', function ($users) {
                 $estado = '';
@@ -90,12 +90,12 @@ class UserController extends Controller
             ]);
 
 
-            alert()->success('Usuario Creado Exitosamente');
+            alert()->success('Usuario Registrado Exitosamente');
             return redirect("/usuario");
         } catch (\Exception $e) {
             return $e;
-            alert()->warning('Error', 'Error al crear Usuario');
-            return redirect("/usuario/crear")->with('error', 'Error al crear usuario');
+            alert()->warning('Error', 'Error Al Registrar Usuario');
+            return redirect("/usuario/crear")->with('error', 'Error Al Registrar Usuario');
         }
     }
 
@@ -118,7 +118,7 @@ class UserController extends Controller
         // }
 
         if ($usuario == null) {
-            alert()->warning('Error', 'Error al editar Usuario');
+            alert()->warning('Error', 'Error Al Editar Usuario');
             return redirect("/usuario");
         }
         $roles = Rol::all();
@@ -137,7 +137,7 @@ class UserController extends Controller
 
             if ($usuario == null) {
 
-                alert()->warning('Error', 'Error al Modificar usuario');
+                alert()->warning('Error', 'Error Al Editar Usuario');
                 return redirect("/usuario");            }
 
             $usuario->update([
@@ -151,10 +151,10 @@ class UserController extends Controller
             ]);
 
 
-            alert()->success('usuario modificado Exitosamente');
+            alert()->success('Usuario Editado Exitosamente');
             return redirect("/usuario");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error al Modificar usuario');
+            alert()->warning('Error', 'Error Al Editar Usuario');
             return redirect("/usuario");
         }
     }
@@ -166,7 +166,7 @@ class UserController extends Controller
         
         if ($user == null) {
         
-            alert()->warning('Error', 'Error El Actualizar Estado');
+            alert()->warning('Error', 'Error Al Actualizar Estado');
             return redirect("/usuario");
         }
 
@@ -177,12 +177,12 @@ class UserController extends Controller
                 alert()->success('Estado Actualizado Exitosamente');
                 return redirect("/usuario");
             } catch (\Exception $e) {
-                alert()->warning('Error', 'Error El Actualizar Estado');
+                alert()->warning('Error', 'Error Al Actualizar Estado');
                 return redirect("/usuario");
             }
         }
         else{
-            alert()->warning('Error Al Actualizar Estado', 'No Se Puede Actualizar El Estado De Un Usuario Con El Rol De Administrador');
+            alert()->warning('Error', 'No Se Puede Actualizar El Estado De Un Usuario Con El Rol De Administrador');
                 return redirect("/usuario");
         }
     }

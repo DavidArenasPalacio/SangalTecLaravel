@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1 class="text-center text-4xl font-medium">Crear Proveedor</h1>
+<h1 class="text-center text-4xl font-medium">Registrar Un Proveedor</h1>
 <form action="/proveedor/guardar" method="POST" id="form">
     @csrf
     <div class="flex flex-col sm:flex-row items-center">
@@ -55,7 +55,7 @@
     </div> -->
     <div class="flex justify-between">
         <a href="/proveedor" class="button  border  bg-gray-600  text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Crear Proveedor</button>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Proveedor</button>
     </div>
 </form>
 @endsection

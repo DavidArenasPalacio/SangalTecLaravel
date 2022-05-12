@@ -3,7 +3,7 @@
 
 
 
-<h1 class="text-center text-4xl font-medium">Crear Rol</h1>
+<h1 class="text-center text-4xl font-medium">Registrar Un Rol</h1>
 <form action="/rol/guardar" method="POST" id="form">
     @csrf
     {{-- <div>
@@ -27,7 +27,7 @@
 
     <div class="flex justify-between">
         <a href="/rol" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5">Crear Rol</button>
+        <button type="submit" class="button bg-theme-1 text-white mt-5">Registrar Rol</button>
     </div>
 
 </form>

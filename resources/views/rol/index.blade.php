@@ -4,10 +4,10 @@
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Gestión Roles
+        Gestión De Roles
     </h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/rol/crear" class="button text-white bg-theme-1 shadow-md mr-2">Crear rol </a>
+        <a href="/rol/crear" class="button text-white bg-theme-1 shadow-md mr-2">Registrar Rol </a>
     </div>
 
 </div>
