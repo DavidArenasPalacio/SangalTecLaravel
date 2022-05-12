@@ -17,7 +17,7 @@
             <tr>
                 <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
                 <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedo</th>
-                <th class="border-b-2 whitespace-no-wrap"> Precio Total</th>
+                <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
                 <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
                 <th class="border-b-2 whitespace-no-wrap">Anular Compra</th>
                 <th class="border-b-2 whitespace-no-wrap">Detalle</th>

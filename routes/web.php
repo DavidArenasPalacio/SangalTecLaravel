@@ -123,9 +123,9 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     
     //RUTAS CLIENTES
     
-    Route::get('/clientes', [ClientesController::class, 'index']);
+    Route::get('/clientes', [ClientesController::class, 'index'])->name('clientes.index');
     Route::get('/clientes/listar', [ClientesController::class, 'listar'])->name('clientes.datatable');
-    Route::get('/clientes/crear', [ClientesController::class, 'crear'])->middleware('auth');
+    Route::get('/clientes/crear', [ClientesController::class, 'crear'])->middleware('auth')->name('clientes.crear');
     Route::post('/clientes/guardar', [ClientesController::class, 'store'])->name('clientes.store');
     Route::get('/clientes/editar/{id}', [ClientesController::class, 'editar'])->name('clientes.editar');
     Route::post('/clientes/actualizar/{id}', [ClientesController::class, 'update'])->name('clientes.actualizar');
@@ -133,9 +133,9 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     //FIN RUTAS CLIENTES
     
     //RUTAS VENTAS
-    Route::get('/ventas', [VentasController::class, 'index']);
+    Route::get('/ventas', [VentasController::class, 'index'])->name('ventas.index');
     Route::get('/ventas/listar', [VentasController::class, 'listar']);
-    Route::get('/ventas/crear', [VentasController::class, 'crear']);
+    Route::get('/ventas/crear', [VentasController::class, 'crear'])->name('ventas.crear');
     Route::post('/ventas/guardar', [VentasController::class, 'store'])->name('ventas.store');
     Route::get('/ventas/verproductos/{id}', [VentasController::class, 'listardetalle'])->name('ventas.detalle');
     //FIN RUTAS VENTAS
