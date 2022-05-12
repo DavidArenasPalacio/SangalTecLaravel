@@ -5,6 +5,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use App\Models\Clientes;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\SaveCliente;
 
 class ClientesController extends Controller
 {

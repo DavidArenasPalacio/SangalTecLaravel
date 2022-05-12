@@ -20,62 +20,8 @@
 
                         </select>
                     </div>
-<<<<<<< HEAD
-                    <div class="row text-center card-body d-flex justify-content-center">
-                        <div class="form-group col-6">
-                            <label for="">Nombre Del Producto</label>
-                            {{-- <input style="width: 80%" type="text" name="" value="{{$value->NombreP}}" disabled> --}}
-                            <select name="ProductoN" id="ProductoN" class="form-control" onchange="colocar_precio()"> 
-                                <option value="">--Seleccione Producto--</option>
-                                @foreach($productos as $value)
-                            <option precio="{{$value->Precio}}" value="{{ $value->idProducto }} " {{old('ProductoN')==$value->idProducto  ? 'selected' : ''}}>{{ $value->Nombre_Producto }}</option>
-                            @endforeach
-                            </select>
-                            
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="">Cantidad</label>
-                            <input id="cantidad" style="width: 80%" type="number" name="cantidad" value="{{old('cantidad')}}" />
-                        </div>
-                        <div class="form-group col-3">
-                            <label for="">Precio</label>
-                            <input id="precio" style="width: 80%" type="text" name="precio" value="{{old('precio')}}" readonly>
-                        </div>
-                        <div class="col-12">
-                            <button type="button" class="btn btn-success float-right" onclick="agregar_producto()" >Agregar Producto</button>
-                        </div>
-                    </div>    
-                        <table id="table" class="table table-bordered" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>                      
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-                                    <th>Sub Total</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="#tbl_productos">
-                                
-                            </tbody>
-                        </table>    
-                </div>
-            </div>
-        </div>
-
-        {{-- @endforeach --}}
-    </form>
-</div>
-
-@endsection
-@section('script')
-
-
-    <script>
-=======
                     <div class="mt-5">        
                             <label for="">Nombre Del Cliente:</label>
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
         
                             <input type="text" id="nombre" readonly name="nombreC" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('nombreC') border-theme-6 @enderror" min="1" value="{{old('nombreC')}}">
                             @error('nombreC')
@@ -206,11 +152,7 @@ function colocar_nombre(e){
 
         let subtotal = parseInt(precio) * parseInt(cantidad);
         
-<<<<<<< HEAD
-        $("tbl_productos").append(` 
-=======
         // let separar = nombre.split("-");
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
 
         // if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
             if ( cantidad >= 0 && precio >= 0) {
@@ -236,10 +178,6 @@ function colocar_nombre(e){
                 <td>
                     <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id}, ${parseInt(subtotal)})">x</button>
                 </td>
-<<<<<<< HEAD
-            </tr>
-        `)
-=======
                 </tr>
             `);
             console.log(id);
@@ -248,7 +186,6 @@ function colocar_nombre(e){
         console.log(cantidad);
         console.log(subtotal);
             // } else {
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
 
             // }
 

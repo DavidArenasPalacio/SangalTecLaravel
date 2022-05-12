@@ -85,19 +85,11 @@ class ComprasController extends Controller
         return view("compra.crear", compact("proveedores", "productos"));
     }
 
-<<<<<<< HEAD
-    public function obtener_Precio($id){
-        $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
-     
-        return $obtenterPrecio;
-    }
-=======
     // public function obtener_Precio($id){
     //     $obtenterPrecio = Producto::select("productos.Precio_Compra")->where("id", $id)->first();
-    //     dd($obtenterPrecio);
+     
     //     return $obtenterPrecio;
     // }
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
 
     public function save(Request $requet)
     {

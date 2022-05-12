@@ -103,18 +103,6 @@
 @section('script')
 <script>
     function obtener_precio() {
-<<<<<<< HEAD
-        let id = $("#producto option:selected").val();
-        console.log(id);
-        $.ajax({
-            url: `/compra/obtenerPrecio/${id}`,
-            type: 'GET',
-            success: function(respu) {
-                console.log(respu.Precio_Compra);
-                $("#precio").val(respu.Precio_Compra);
-            }
-        })
-=======
 
         let Precio_Compra = $("#nombreProducto option:selected").attr("precio");
         $("#precio").val(Precio_Compra);
@@ -129,7 +117,6 @@
         //         // $("#precio").val(respu.Precio);
         //     }
         // })
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
         /* .done(function(respuesta) {
                 console.log(respuesta);
                 if (respuesta != 0) {
@@ -170,18 +157,10 @@
                 <input type="hidden" name="cantidades[]" value="${cantidad}">
             
 
-<<<<<<< HEAD
-           <td>
-                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">  <i data-feather="trash-2" class="mx-auto"></i></button>
-           </td>
-        </tr>
-    `);
-=======
                 <td class="nombreProducto">${nombreProducto}</td>
                 <td>${cantidad}</td>
                 <td>${precio}</td>
                 <td class="subtotal">${subtotal}</td>
->>>>>>> 4c3e74f9a70be13fb7adcc54497969261f8749d9
 
                 <td>
                     <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(subtotal)})">x</button>

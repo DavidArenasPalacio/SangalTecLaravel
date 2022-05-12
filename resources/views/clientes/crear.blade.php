@@ -1,70 +1,62 @@
 @extends('layouts.app')
 
-@section('titulo')
-    <h1 style="margin-top: 10%; text-align: center">Crear Cliente</h1>
-@endsection   
-
 
 @section('content')
-
-@if ($errors->any())
-    <div style=" margin-left: 30%; width: 40%;" class="alert alert-danger alert-dismissible fade show" role="alert">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    <button  type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-@endif
-
-<div class="row justify-content-center">
-<div class="col-md-5">
-<form id="formCl" action="{{ route('clientes.store') }}" method="POST"  enctype="multipart/form-data" autocomplete="on">
+<h1 class="text-center text-4xl font-medium">Crear Cliente</h1>
+<form id="formCl" action="{{ route('clientes.store') }}" method="POST" id="form">
     @csrf
-    <div class="form-group">        
-        <input  class="form-control" placeholder="Ingrese el nombre del cliente" name="nombre_cliente" value="{{old('nombre_cliente')}}"/>
-        {{-- @error('nombre_cliente')    
-            <small>{{ $message }}</small>            
-        @enderror  --}}
-    </div>
-    <br>
-    <div class="form-group">        
-        <input class="form-control" placeholder="Ingrese el numero de documento del cliente" name="documento" value="{{old('documento')}}"/>
-        {{-- @error('documento')    
-            <small>{{ $message }}</small>            
-        @enderror  --}}
-    </div>
-    <br>
-    <div class="form-group">        
-        <input  class="form-control" placeholder="Ingrese el numero de telefono del cliente" name="telefono_cliente" value="{{old('telefono_cliente')}}"/>
-        {{-- @error('telefono_cliente')    
-            <small>{{ $message }}</small>            
-        @enderror  --}}
-    </div>
-    <br>
-    <div class="form-group">        
-        <input  class="form-control" placeholder="Ingrese la direccion del cliente" name="direccion_cliente" value="{{old('direccion_cliente')}}"/>
-        {{-- @error('direccion_cliente')    
-            <small>{{ $message }}</small>            
-        @enderror  --}}
-    </div>
-    <div class="form-group ">
-        <div class="row">
-            <div class="col-6">
-                <button type="submit" class="btn btn-success form-control"> Crear</button>
-            </div>
-            <div class="col-6">
-                <a href="/clientes" class="btn btn-primary form-control"> Volver</a>
-            </div>
+    <div class="flex flex-col sm:flex-row items-center">
+
+        <div class="w-full mr-2">
+            <label for="nombre">Nombre:</label>
+
+            <input type="text"  name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" placeholder="Ingrese el nombre del cliente" maxlength="125" value="{{old('nombre')}}" >
+            @error('nombre')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
         </div>
     </div>
+
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="documento">Documento:</label>
+
+            <input type="text" id="documento" name="documento" class="input w-full border mt-2 @error('documento') border-theme-6 @enderror" placeholder="Ingrese el documento del cliente" value="{{old('documento')}}">
+            @error('documento')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        <div class="w-full">
+            <label for="telefono">Teléfono:</label>
+
+            <input type="text" id="telefono" name="telefono" class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror" placeholder="Ingrese el teléfono del cliente" maxlength="50" value="{{old('telefono')}}" >
+            @error('telefono')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center sm:mt-2">
+        <div class="w-full mr-2">
+            <label for="direccion">Dirección:</label>
+
+            <input type="text" id="direccion" name="direccion" class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror" placeholder="Ingrese la dirección del cliente" value="{{old('direccion')}}">
+            @error('direccion')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
+        </div>
+        
+    </div>
+
+    <!--  <div class="flex justify-between ">
+        <a href="/usuario" class="button  border bg-theme-9 text-white mr-2 mt-5 w-full">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
+    </div> -->
+    <div class="flex justify-between">
+        <a href="/clientes" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Crear Cliente</button>
+    </div>
 </form>
-</div>
-</div>
-@endsection 
+@endsection
 
 @section('script')
 
