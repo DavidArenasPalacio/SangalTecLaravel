@@ -53,7 +53,7 @@
         <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
     </div> -->
     <div class="flex justify-between">
-        <a href="/proveedor" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+        <a href="/proveedor" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
         <button type="submit" class="button bg-theme-1 text-white mt-5 ">Modificar Proveedor</button>
     </div>
 </form>

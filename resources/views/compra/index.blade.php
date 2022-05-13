@@ -14,7 +14,7 @@
     <table id="tbl_compras" class="table table-report table-report--bordered display  ">
 
         <thead>
-            <tr>
+            <tr class="bg-gray-700 text-white">
                 <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
                 <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedo</th>
                 <th class="border-b-2 whitespace-no-wrap">Precio Total</th>

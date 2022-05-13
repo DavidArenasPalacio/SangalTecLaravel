@@ -17,7 +17,7 @@
 <div class="intro-y datatable-wrapper box p-5 mt-5">
         <table id="tbl_productos" class="table table-report table-report--bordered display">
             <thead>
-                <tr>
+                <tr class="bg-gray-700 text-white">
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Categoría</th>
                     <th class="border-b-2 whitespace-no-wrap">Precio Compra</th>
