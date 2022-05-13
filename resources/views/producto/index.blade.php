@@ -15,7 +15,7 @@
 
 </div>
 <div class="intro-y datatable-wrapper box p-5 mt-5">
-        <table id="tbl_productos" class="table table-report table-report--bordered display">
+        <table id="tbl_productos" class="table table-report table-report--bordered display dtr-inline dt-responsive">
             <thead>
                 <tr>
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>

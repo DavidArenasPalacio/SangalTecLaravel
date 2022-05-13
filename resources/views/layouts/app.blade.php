@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
 
 
-    <link rel="stylesheet" href="/dist/css/datatables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
 
     {{-- Plantilla --}}
     <link rel="stylesheet" href="/template/css/app.css" />
@@ -313,7 +314,9 @@
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-    <script src="/dist/js/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>>
 
     <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
