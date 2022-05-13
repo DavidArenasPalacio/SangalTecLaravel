@@ -15,6 +15,7 @@
 
 </div>
 <div class="intro-y datatable-wrapper box p-5 mt-5">
+
         <table id="tbl_usuarios" class="table 
        w-full display  dtr-inline dt-responsive">
 

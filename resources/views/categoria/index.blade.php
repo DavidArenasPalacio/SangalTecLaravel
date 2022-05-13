@@ -18,7 +18,7 @@
     <table id="tbl_categoria" class="table table-report table-report--bordered display   w-full">
 
         <thead>
-            <tr>
+            <tr class="bg-gray-700 text-white">
                 
                 <th class="border-b-2 whitespace-no-wrap">Nombre</th>
 

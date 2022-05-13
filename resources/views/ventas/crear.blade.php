@@ -68,7 +68,7 @@
                 @enderror
             </div>
             <div class="flex justify-between">
-                <a href="/ventas" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+                <a href="/ventas" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
                 <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar Producto</button>
             </div>
         </div>
