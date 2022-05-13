@@ -34,7 +34,7 @@ class CreateCompraTable extends Migration
 
         Schema::create('detallecompra', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('compra_id')->constrained('users');
+            $table->foreignId('compra_id')->constrained('compra');
             $table->foreignId('producto_id')->constrained('productos');
             $table->float('Precio_unitario');
             $table->integer('Cantidad');

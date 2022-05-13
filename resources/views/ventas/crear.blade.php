@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="grid grid-cols-12 gap-6 mt-5">
-    <div class="intro-y col-span-12 lg:col-span-4">
-        <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar Una Venta</h2>
-        <form action="/ventas/guardar" method="POST" class="mb-5 py-5" id="form">
+<form action="/ventas/guardar" method="POST" class="mb-5 py-5" id="form">
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 lg:col-span-4">
+            <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar Una Venta</h2>
+            
             @csrf
             <div class="preview mt-5">
                 <div class="">
@@ -21,89 +22,88 @@
                         </select>
                     </div>
                     <div class="mt-5">        
-                            <label for="">Nombre Del Cliente:</label>
-        
-                            <input type="text" id="nombre" readonly name="nombreC" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('nombreC') border-theme-6 @enderror" min="1" value="{{old('nombreC')}}">
-                            @error('nombreC')
-                            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
-                            @enderror
-                        </div>
+                        <label for="">Nombre Del Cliente:</label>
+    
+                        <input type="text" id="nombre" readonly name="nombreC" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('nombreC') border-theme-6 @enderror" min="1" value="{{old('nombreC')}}">
+                        @error('nombreC')
+                        <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                        @enderror
+                    </div>
                 </div>
-                <div class="preview mt-5">
-                    <div>
-                        <label for="">Producto:</label>
-                        <div class="mt-2">
-                            <select name="Producto" id="Producto" class="select2  w-full  mr-2 " onchange="obtener_precio()" >
+            </div>                
+            <div class="preview mt-5">
+                <div>
+                    <label for="">Producto:</label>
+                    <div class="mt-2">
+                        <select name="" id="Producto" class="select2  w-full  mr-2 " onchange="obtener_precio()" >
 
-                                <option selected="true" disabled="disabled">------ Seleccione -----</option>
-                                @foreach($productos as $value)
-                                <option precio="{{$value->Precio_Venta}}" value="{{$value->id}}" {{old('Producto')==$value->id  ? 'selected' : ''}}>{{ $value->Nombre_Producto }}
-                                </option>
-                                @endforeach
+                            <option selected="true" disabled="disabled">------ Seleccione -----</option>
+                            @foreach($productos as $value)
+                            <option precio="{{$value->Precio_Venta}}" value="{{$value->id}}">{{ $value->Nombre_Producto }}
+                            </option>
+                            @endforeach
 
-                            </select>
-                        </div>
-
+                        </select>
                     </div>
 
                 </div>
-                <div class="mt-5">
+
+            </div>
+            <div class="mt-5">
                 <input type="hidden" name="total" id="precioTotal">
 
-                    <label for="precio">Precio:</label>
+                <label for="precio">Precio:</label>
 
-                    <input type="text" id="precio" readonly name="precio" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('precio') border-theme-6 @enderror" min="1" value="{{old('precio')}}">
-                    @error('precio')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
-                    @enderror
-                </div>
-                <div class="mt-5">
-                    <label for="">Cantidad:</label>
-
-                    <input type="number" id="cantidad" name="cantidad" class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{old('cantidad')}}">
-                    @error('cantidad')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
-                    @enderror
-                </div>
-                <div class="flex justify-between">
-                    <a href="/ventas" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
-                    <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar Producto</button>
-                </div>
+                <input type="text" id="precio" readonly name="" class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('precio') border-theme-6 @enderror" min="1" value="{{old('precio')}}">
+                @error('precio')
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                @enderror
             </div>
+            <div class="mt-5">
+                <label for="">Cantidad:</label>
 
+                <input type="number" id="cantidad" name="cantidad" class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{old('cantidad')}}">
+                @error('cantidad')
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                @enderror
+            </div>
+            <div class="flex justify-between">
+                <a href="/ventas" class="button  border bg-theme-9 text-white mr-2 mt-5 ">Volver</a>
+                <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar Producto</button>
+            </div>
+        </div>
 
-        
-    </div>
-
-    <div class="intro-y col-span-12 lg:col-span-8">
-
-        <div class="mt-5">
-            <h2 class="text-3xl text-center font-medium leading-none mt-3">Productos agregados</h2>
-            <table class="table mt-5">
-
-                <thead>
-                    <tr class="bg-gray-700 text-white">
-                        <th class="border-b-2 whitespace-no-wrap">Producto</th>
-                        <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
-                        <th class="border-b-2 whitespace-no-wrap">Precio</th>
-                        <th class="border-b-2 whitespace-no-wrap">Subtotal</th>
-                        <th class="border-b-2 whitespace-no-wrap">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody id="tbl_productos">
-
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="5" class="text-center">
-                            Total: <b id="total">0</b>
-                        </th>
-                    </tr>
-                </tfoot>
-            </table>
-            <button type="button" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Registrar Venta</button>
+        <div class="intro-y col-span-12 lg:col-span-8">
+            <div class="mt-5">
+                <h2 class="text-3xl text-center font-medium leading-none mt-3">Productos agregados</h2>
+                <table class="table mt-5">
+    
+                    <thead>
+                        <tr class="bg-gray-700 text-white">
+                            <th class="border-b-2 whitespace-no-wrap">Producto</th>
+                            <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
+                            <th class="border-b-2 whitespace-no-wrap">Precio</th>
+                            <th class="border-b-2 whitespace-no-wrap">Subtotal</th>
+                            <th class="border-b-2 whitespace-no-wrap">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_productos">
+    
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5" class="text-center">
+                                Total: <b id="total">0</b>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Registrar Venta</button>
+            </div>
         </div>
     </div>
+
+    
 </form>
 </div>
 @endsection
@@ -180,14 +180,6 @@ function colocar_nombre(e){
                 </td>
                 </tr>
             `);
-            console.log(id);
-        console.log(nombreProducto);
-        console.log(precio);
-        console.log(cantidad);
-        console.log(subtotal);
-            // } else {
-
-            // }
 
         } else {
             swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
@@ -212,6 +204,8 @@ function colocar_nombre(e){
 
         $("#total").text(total);
         $("#precioTotal").val(parseInt(total));
+
+        console.log(total);
     }
 
     function eliminar(id, subtotal) {

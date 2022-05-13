@@ -116,7 +116,7 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::get('/compra', [ComprasController::class, 'index'])->name("compra.index");
     Route::get('/compra/listar', [ComprasController::class, 'listar']);
     Route::get('/compra/crear', [ComprasController::class, 'crear'])->name("compra.crear");
-    Route::get('/compra/obtenerPrecio/{id}', [ComprasController::class, 'obtener_Precio']);
+    // Route::get('/compra/obtenerPrecio/{id}', [ComprasController::class, 'obtener_Precio']);
     Route::post('/compra/guardar', [ComprasController::class, 'save']);
     Route::get('/compra/detalle/{id}', [ComprasController::class, 'detalle']);
     //FIN RUTAS COPMRAS

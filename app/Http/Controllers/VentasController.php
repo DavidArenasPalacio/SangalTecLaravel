@@ -57,8 +57,6 @@ class VentasController extends Controller
     
     DB::beginTransaction();
 
-    $usuarios = User::all();
-
         $ventas = Ventas::create([
             'cliente_id' => $input["Documento"],
             'usuario_id' => auth()->user()->id,

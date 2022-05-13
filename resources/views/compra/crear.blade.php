@@ -141,10 +141,7 @@
                     </tfoot>
                 </table>
                 <button
-                    type="submit"
-                    id="btnGuardar"
-                    class="button w-full mr-1 mb-2 bg-theme-1 text-white"
-                >
+                    type="submit" class="button w-full mr-1 mb-2 bg-theme-1 text-white">
                     Registrar Compra
                 </button>
             </div>
@@ -171,7 +168,7 @@
             $("#tblCompra").append(`
                 <tr id="tr-${id}">
                 <td class="nombreProducto">
-                    <input type="hidden" name="idP[]" class="input w-full border mt-2" value="${id}">
+                    <input type="hidden" name="idP[]" value="${id}">
                     <input type="hidden" name="precios[]" value="${precio}">
                     <input type="hidden" name="cantidades[]" value="${cantidad}">
                     ${nombreProducto}

@@ -25,8 +25,7 @@ class SaveCompra extends FormRequest
     {
         return [
             'proveedor' => ['required'],
-            'nombreProducto' => ['required'],
-            'cantidad' => ['required','numeric']
+            'Cantidad' => ['required','numeric']
         ];
     }
 }

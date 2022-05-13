@@ -94,9 +94,9 @@ class ComprasController extends Controller
 
     public function save(Request $request)
     {;
-        $input = $request;
-        // try {
-        //     DB::beginTransaction();
+        $input = $request->all();
+        try {
+            DB::beginTransaction();
 
 
         $compra = Compra::create([
@@ -106,54 +106,36 @@ class ComprasController extends Controller
             "Estado" => 1
         ]);
 
-
-
-
+        
 
         foreach ($input["idP"] as $key => $value) {
 
 
-            $productoUpdate = Producto::where("productos.Nombre_Producto", $value)->first();
-
-
-
-            $productoUpdate->update(["Cantidad" => $productoUpdate->Cantidad + $input["cantidad"][$key]]);
-
-            /* 
-                $productoId = Producto::where("producto.nombre", "=", $value)->first();
- */
-            /* $producto = Producto::create([
-                    "categoria_id" => $input["categoria_id"][$key],
-                    "nombre" => $value,
-                    "precio" => $input["precio"][$key],
-                    "cantidad" => $input["cantidad"][$key],
-                    "estado" => 1
-                ]);  */
-            /* 
-                return response()->json($productoId["idProducto"]); */
-
-
-
             $detallecompra = DetallesCompra::create([
+
+                "producto_id" => $value,
                 "compra_id" => $compra->id,
-                "producto_id" => $productoUpdate["id"],
+                "Precio_unitario" => $input["precios"][$key],
                 "Cantidad" => $input["cantidades"][$key],
-                'Precio_unitario' => $input["precios"][$key],
                 "Sub_total" =>  $input["precios"][$key] * $input["cantidades"][$key]
             ]);
-            return dd($detallecompra);
+
+            $productoUpdate = Producto::findOrFail($value);
+
+            
+            $productoUpdate->update(["Cantidad" => $productoUpdate->Cantidad + $input["cantidades"][$key]]);
+            
+
         }
 
-
-
-        //     DB::commit();
-        //     alert()->success('Compra Registrada Exitosamente');
-        //     return redirect("/compra");
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     alert()->warning('Error', 'Error Al Registrar La Compra');
-        //     return redirect("/compra");
-        //}
+            DB::commit();
+            alert()->success('Compra Registrada Exitosamente');
+            return redirect("/compra");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            alert()->warning('Error', 'Error Al Registrar La Compra');
+            return redirect("/compra");
+        }
     }
 
 

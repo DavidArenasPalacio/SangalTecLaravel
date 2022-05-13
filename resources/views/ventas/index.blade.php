@@ -39,7 +39,7 @@
         Gestión Venta
     </h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/ventas/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Crear Venta</a>
+        <a href="/ventas/crear" class="button text-white bg-theme-1 shadow-md mr-2">Registrar Venta</a>
     </div>
 </div>               
 <div class="intro-y datatable-wrapper box p-5 mt-5">
@@ -119,13 +119,14 @@
             }
         },
         ajax: '/ventas/listar',
-        columns: [{
-                data: 'NombreUsuario',
-                name: 'NombreUsuario'
-            },
+        columns: [
             {
                 data: 'NombreCliente',
                 name: 'NombreCliente'
+            },
+            {
+                data: 'NombreUsuario',
+                name: 'NombreUsuario'
             },
             {
                 data: 'Precio_total',

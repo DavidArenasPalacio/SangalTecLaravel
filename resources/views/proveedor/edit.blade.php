@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1 class="text-center text-4xl font-medium">Modificar Proveedor</h1>
+<h1 class="text-center text-4xl font-medium">Editar Proveedor</h1>
 <form action="{{ route('proveedor.actualizar',$proveedor->id) }}" method="POST" id="form">
     @csrf
     <input type="hidden" name="id" value="{{$proveedor->id}}">
