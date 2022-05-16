@@ -16,7 +16,7 @@
 
             <thead>
                 <tr class="">
-                    <th class="border-b-2 whitespace-no-wrap"
+                    <th class="border-b-2 whitespace-no-wrap">
                     <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedo</th>
                     <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
                     <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
