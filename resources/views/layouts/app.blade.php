@@ -246,7 +246,7 @@
                 </li>
                 <li>
                     <a href="javascript:;"
-                        class="{{ Request::url() == route('clientes.index') || Request::url() == route('clientes.crear') || Request::url() == route('compra.index') || Request::url() == route('ventas.index') ? 'side-menu side-menu--active' : 'side-menu' }}">
+                        class="{{ Request::url() == route('clientes.index') || Request::url() == route('clientes.crear') || Request::url() == route('ventas.index') || Request::url() == route('ventas.index') ? 'side-menu side-menu--active' : 'side-menu' }}">
                         <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
                         <div class="side-menu__title"> Ventas <i data-feather="chevron-down"
                                 class="side-menu__sub-icon"></i> </div>
