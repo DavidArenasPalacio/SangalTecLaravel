@@ -24,7 +24,7 @@ class SaveRol extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required','alpha','unique:rol,Nombre_Rol'],
+            'nombre' => ['required','regex:/^[a-zA-Z\s]+$/u','unique:rol,Nombre_Rol'],
         ];
     }
 }

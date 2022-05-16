@@ -24,7 +24,7 @@ class SaveCategoria extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required','alpha','unique:categoria,Nombre_Categoria'],
+            'nombre' => ['required','regex:/^[a-zA-Z\s]+$/u','unique:categoria,Nombre_Categoria'],
         ];
     }
 }

@@ -24,7 +24,7 @@ class SaveProveedor extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required','unique:proveedor,Nombre_Proveedor'],
+            'nombre' => ['required','regex:/^[a-zA-Z\s]+$/u','unique:proveedor,Nombre_Proveedor'],
             'correo' => ['required','email:rfc,dns','unique:proveedor,Correo_Proveedor'],
             'telefono' => ['required','numeric','digits_between:7,10'],
             'direccion' => ['required']

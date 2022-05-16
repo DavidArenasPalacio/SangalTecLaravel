@@ -27,18 +27,17 @@
                 <div class="hidden xl:flex flex-col min-h-screen">
                     <a href="" class="-intro-x flex items-center pt-5">
                         <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="template/images/logo.svg">
-                        <span class="text-white text-lg ml-3"> Mid<span class="font-medium">One</span> </span>
+                        <span class="text-white text-lg ml-3"> Sangal<span class="font-medium">Tec</span> </span>
                     </a>
                     <div class="my-auto">
                         <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
                             src="template/images/illustration.svg">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            A few more clicks to
+                            Unos clics más para
                             <br>
-                            sign in to your account.
+                            Iniciar sesión en su cuenta.
                         </div>
-                        <div class="-intro-x mt-5 text-lg text-white">Manage all your e-commerce accounts in one place
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">

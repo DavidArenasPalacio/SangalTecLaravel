@@ -24,7 +24,7 @@ class SaveUser extends FormRequest
     public function rules()
     {
         return [
-            'nombre_usuario' => ['required','min:3'],
+            'nombre_usuario' => ['required','regex:/^[a-zA-Z\s]+$/u','min:3'],
             'documento_usuario' => ['required','numeric','digits_between:10, 15'],
             'telefono_usuario' => ['required','numeric','digits_between:7,10'],
             'direccion_usuario' => ['required'],
