@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 
-        {{-- {{auth()->user()->name}} --}}
+{{-- {{auth()->user()->name}} --}}
 
 
 @section('content')
 
 
 @if ($errors->any())
-    <div style=" margin-left: 30%; width: 40%;" class="alert alert-danger alert-dismissible fade show" role="alert">
+<div style=" margin-left: 30%; width: 40%;" class="alert alert-danger alert-dismissible fade show" role="alert">
     <ul>
         @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+        <li>{{ $error }}</li>
         @endforeach
     </ul>
-    <button  type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    </div>
+</div>
 @endif
 
 {{-- @if ($errors->any())
@@ -25,27 +25,27 @@
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    <button  type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
+@endforeach
+</ul>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
 @endif --}}
 
-
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-        Gestión Venta
-    </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/ventas/crear" class="button text-white bg-theme-1 shadow-md mr-2">Registrar Venta</a>
+<div class="w-full">
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Gestión Venta
+        </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a href="/ventas/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Venta</a>
+        </div>
     </div>
-</div>               
-<div class="intro-y datatable-wrapper box p-5 mt-5">
-    <table id="ventas" class="table table-report table-report--bordered display  ">
+    <div class="intro-y datatable-wrapper box p-5 mt-5">
+        <table id="ventas" class="table dtr-inline dt-responsive mb-2 mt-5  ">
             <thead>
-                <tr class="bg-gray-700 text-white">
+                <tr class="">
                     <th class="border-b-2 whitespace-no-wrap">Nombre Del Cliente</th>
                     <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Venta</th>
                     <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
@@ -58,19 +58,17 @@
 
             </tbody>
             <thead>
+    </div>
 </div>
 @endsection
 
 @section('script')
-    <script>
-
-        $(document).ready(function() {
-                $('.js-example-basic-single').select2();
-            });
-    </script>
-    <script>
-        
-
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+<script>
     //     $(document).ready(function(){
     //         $('#ventas').DataTable({
     //             processing: true,
@@ -91,7 +89,7 @@
 
 
 
-        $('#ventas').DataTable({
+    $('#ventas').DataTable({
         processing: true,
         serverSide: true,
         "language": {
@@ -119,8 +117,7 @@
             }
         },
         ajax: '/ventas/listar',
-        columns: [
-            {
+        columns: [{
                 data: 'NombreCliente',
                 name: 'NombreCliente'
             },
@@ -146,9 +143,6 @@
             }
         ]
     });
-        
-
-
 </script>
 
 
@@ -157,46 +151,45 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    $('#formVe').submit(function(e) {
 
-$('#formVe').submit(function(e){
+        e.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
 
-e.preventDefault();
-const swalWithBootstrapButtons = Swal.mixin({
-customClass: {
-    confirmButton: 'btn btn-success',
-    cancelButton: 'btn btn-danger'
-},
-buttonsStyling: true
-})
+        swalWithBootstrapButtons.fire({
+            title: '¿Desea Registrar La Venta?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Se Registró La Venta Correctamente',
+                    '',
+                    'success'
+                )
+                this.submit();
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'La Venta No Fue Registrada',
+                    '',
+                    'error'
+                )
+            }
+        })
 
-swalWithBootstrapButtons.fire({
-title: '¿Desea Registrar La Venta?',
-text: "",
-icon: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Aceptar',
-cancelButtonText: 'Cancelar',
-reverseButtons: false
-}).then((result) => {
-if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire(
-    'Se Registró La Venta Correctamente',
-    '',
-    'success'
-    )
-    this.submit();
-} else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-) {
-    swalWithBootstrapButtons.fire(
-    'La Venta No Fue Registrada',
-    '',
-    'error'
-    )
-}
-})
-
-});
-    </script>
-@endsection 
+    });
+</script>
+@endsection

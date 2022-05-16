@@ -2,19 +2,20 @@
 
 
 @section('content')
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-        Gestión De Proveedores
-    </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/proveedor/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Registrar Proveedor</a>
-    </div>
+<div class="w-full">
 
-</div>
-<div class="intro-y datatable-wrapper  box p-5 mt-5">
-        <table id="tbl_proveedor" class="table table-report table-report--bordered display nowrap">
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Gestión de Proveedores
+        </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a href="/proveedor/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear un nuevo Proveedor</a>
+        </div>
+    </div>
+    <div class="intro-y datatable-wrapper  box p-5 mt-5">
+        <table id="tbl_proveedor" class="table  display dtr-inline dt-responsive mb-2 mt-5">
             <thead>
-                <tr class="bg-gray-700 text-white">
+                <tr class="">
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Correo</th>
                     <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
@@ -26,6 +27,7 @@
             <tbody>
             </tbody>
         </table>
+    </div>
 </div>
 
 @endsection
@@ -93,11 +95,10 @@
                 sClass: 'text-center'
             }
         ]
-    }
-    );
+    });
 
     $('#btnGuardar').click((e) => {
-    let form = $('#form');
+        let form = $('#form');
         e.preventDefault();
         Swal.fire({
             title: '¿Desea crear el producto?',

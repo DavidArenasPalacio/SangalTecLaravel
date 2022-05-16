@@ -2,14 +2,17 @@
 
 
 @section('content')
-    <h1 class="text-center text-4xl font-medium">Registrar Un Producto</h1>
+<div class="box p-5">
+<div class="border-b border-gray-200">
+<h1 class="text-center text-4xl font-medium">Registrar un Producto</h1>
+</div>
     <form action="/producto/guardar" method="POST" class="mb-5 py-5" id="form">
         @csrf
         <div class="flex flex-col sm:flex-row items-center sm:mt-2">
             <div class=" w-full mr-2">
                 <label for="nombre">Nombre:</label>
 
-                <input type="text" id="Nombre_Producto" name="nombre"
+                <input type="text" id="nombre" name="nombre"
                     class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror"
                     placeholder="Ingrese el nombre del producto" value="{{ old('nombre') }}" minlength="2">
                 @error('nombre')
@@ -36,9 +39,9 @@
 
         <div class="flex flex-col sm:flex-row items-center sm:mt-2">
             <div class="w-full mr-2">
-                <label for="precio">Precio Compra:</label>
+                <label for="precio_compra">Precio Compra:</label>
 
-                <input type="number" id="precio" name="precio_compra"
+                <input type="number" id="precio_compra" name="precio_compra"
                     class="input w-full border mt-2 @error('precio_compra') border-theme-6 @enderror"
                     placeholder="Ingrese el precio unitario en el que se comprará el producto"
                     value="{{ old('precio_compra') }}">
@@ -47,9 +50,9 @@
                 @enderror
             </div>
             <div class="w-full mr-2">
-                <label for="precio">Precio Venta:</label>
+                <label for="precio_venta">Precio Venta:</label>
 
-                <input type="number" id="precio" name="precio_venta"
+                <input type="number" id="precio_venta" name="precio_venta"
                     class="input w-full border mt-2 @error('precio_venta') border-theme-6 @enderror"
                     placeholder="Ingrese el precio unitario en el que se venderá el producto"
                     value="{{ old('precio_venta') }}">
@@ -73,18 +76,40 @@
             <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Produto</button>
         </div>
     </form>
+</div>
 @endsection
 
 @section('script')
     <script>
         $(document).ready(function() {
+            $.validator.addMethod("formAlphanumeric", function(value, element) {
+            var pattern = /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i;
+            return this.optional(element) || pattern.test(value);
+        }, "El campo debe tener un valor alfanumérico (azAZ09)");
 
             $('#form').validate({ // initialize the plugin
                 rules: {
+                    nombre: {
+                        required: true,
+                    formAlphanumeric: true
+                    },
                     categoria_id: {
                         required: true,
                         number: true
                     },
+                    precio_compra: {
+                        required: true,
+                        number: true
+                    },
+                    precio_venta: {
+                        required: true,
+                        number: true
+                    },
+                    cantidad: {
+                        required: true,
+                        number: true
+                    }
+
                 },
                 messages: {
                     categoria_id: "Seleccione una opción",

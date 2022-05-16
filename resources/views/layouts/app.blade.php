@@ -341,8 +341,8 @@
                 </div>
             </div>
 
-            <div class="intro-y mt-5 col-span-12 lg:col-span-12">
-                <div class="intro-y box p-5 ">
+            <div class="intro-y mt-5 p-5  col-span-12 lg:col-span-12" >
+                <div class=" ">
                     @yield('content')
                 </div>
             </div>

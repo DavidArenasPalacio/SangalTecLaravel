@@ -2,36 +2,38 @@
 
 
 @section('content')
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-        Gestión De Categorías
-    </h2>
+<div class="m-auto" style="width: 80% !important">
+    <div class="intro-y flex flex-col sm:flex-row items-center  mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Gestión de Categoría
+        </h2>
 
-    @if (auth()->user()->rol_id == 1)
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/categoria/crear" class="button text-white bg-theme-1 shadow-md mr-2">Registrar Categoría </a>
+        @if (auth()->user()->rol_id == 1)
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a href="/categoria/crear" class="button flex text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Categoría </a>
+        </div>
+        @endif
     </div>
-    @endif
-      
-</div>
-<div class="intro-y datatable-wrapper box p-5 mt-5">
-    <table id="tbl_categoria" class="table table-report table-report--bordered display   w-full">
 
-        <thead>
-            <tr class="bg-gray-700 text-white">
-                
-                <th class="border-b-2 whitespace-no-wrap">Nombre</th>
+    <div class="intro-y datatable-wrapper box p-5 mt-5">
+        <table id="tbl_categoria" class="table display dtr-inline dt-responsive   mt-5 mb-2">
 
-                @if(auth()->user()->rol_id == 1)       
-                <th class="border-b-2 text-center whitespace-no-wrap">Acciones</th>
+            <thead>
+                <tr class="border-t-2 ">
 
-                @endif
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <thead>
+                    <th class="whitespace-no-wrap">Nombre</th>
 
+                    @if(auth()->user()->rol_id == 1)
+                    <th class="text-center whitespace-no-wrap">Acciones</th>
+
+                    @endif
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <thead>
+
+    </div>
 </div>
 @endsection
 
@@ -68,26 +70,23 @@
             }
         },
         ajax: '/categoria/listar',
-        columns: [
-            {
+        columns: [{
                 data: 'Nombre_Categoria',
                 name: 'Nombre_Categoria'
             },
-            @if(auth()->user()->rol_id == 1 )
-            {
+            @if(auth()->user()->rol_id == 1) {
                 data: 'acciones',
                 name: 'acciones',
                 orderable: false,
                 serachable: false,
                 sClass: 'text-center'
-            }       
+            }
             @endif
         ]
-    }
-    );
+    });
 
     $('#btnGuardar').click((e) => {
-    let form = $('#form');
+        let form = $('#form');
         e.preventDefault();
         Swal.fire({
             title: '¿Desea crear la categoría?',
@@ -103,9 +102,5 @@
             }
         })
     });
-
-
-
-    
 </script>
 @endsection

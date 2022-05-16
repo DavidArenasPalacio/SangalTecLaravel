@@ -1,34 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="w-full">
 
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-        Gestión De Compra
-    </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <a href="/compra/crear" class="button text-white bg-theme-1 shadow-md mr-2"> Registrar Compra</a>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Gestión de Compras
+        </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a href="/compra/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Compra</a>
+        </div>
+    </div>
+    <div class="intro-y datatable-wrapper box p-5 mt-5">
+        <table id="tbl_compras" class="table dtr-inline dt-responsive mb-2 mt-5  ">
+
+            <thead>
+                <tr class="">
+                    <th class="border-b-2 whitespace-no-wrap"
+                    <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedo</th>
+                    <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
+                    <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
+                    <th class="border-b-2 whitespace-no-wrap">Estado</th>
+                    <th class="border-b-2 whitespace-no-wrap">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <thead>
     </div>
 </div>
-<div class="intro-y datatable-wrapper box p-5 mt-5">
-    <table id="tbl_compras" class="table table-report table-report--bordered display  ">
-
-        <thead>
-            <tr class="bg-gray-700 text-white">
-                <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
-                <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedo</th>
-                <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
-                <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
-                <th class="border-b-2 whitespace-no-wrap">Estado</th>
-                <th class="border-b-2 whitespace-no-wrap">Acciones</th>
-
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <thead>
-</div>
-
 
 
 @endsection
@@ -114,7 +115,7 @@
     });
 
 
-    function precioProducto(){
+    function precioProducto() {
         let precio = $("#nombreProducto option:selected").attr("precio");
         console.log(precio);
         $("#precio").val(precio);
@@ -133,8 +134,8 @@
         if (cantidad >= 0 && precio >= 0) {
 
 
-           
-                $("#tblCompra").append(`
+
+            $("#tblCompra").append(`
                 <tr id="tr-${cont}">
                 <input type="hidden" name="proveedor_id" value="${proveedor}">
                 <input type="hidden" name="nombreProducto[]" value="${nombreProducto}">
@@ -152,7 +153,7 @@
                 </td>
                 </tr>
             `);
-            
+
             /* let subtotal = parseInt($("#subtotal-"+cont).text()); */
 
             cont++;
@@ -161,8 +162,8 @@
 
 
             let precioTotal = $("#precioTotal").text() || "0";
-           
-         
+
+
             $("#precioTotal").text(parseInt(precioTotal) + parseInt(cantidad) * parseInt(precio));
             $("#precioTotalDb").val(parseInt(precioTotal) + parseInt(cantidad) * parseInt(precio));
 
@@ -180,14 +181,14 @@
         $("#precioTotal").text(parseInt(precioTotal) - subtotal);
     }
 
-   /*  function actualizarCantidad(id, cantidad) {
-        let cantidadTable = $("#cantidad-" + id).text(parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
-        let subtotal = $("#subtotal-"+id).text();
-        $("#subtotal-"+id).text(parseInt(subtotal)*parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
-        let precioTotal = $("#precioTotal").text() || "0";
-        $("#precioTotal").text(parseInt(precioTotal) +  parseInt(subtotal)*parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
-        console.log(cantidadTable);
-      
-    } */
+    /*  function actualizarCantidad(id, cantidad) {
+         let cantidadTable = $("#cantidad-" + id).text(parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
+         let subtotal = $("#subtotal-"+id).text();
+         $("#subtotal-"+id).text(parseInt(subtotal)*parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
+         let precioTotal = $("#precioTotal").text() || "0";
+         $("#precioTotal").text(parseInt(precioTotal) +  parseInt(subtotal)*parseInt(cantidad) + parseInt($("#cantidad-" + id).text()));
+         console.log(cantidadTable);
+       
+     } */
 </script>
 @endsection

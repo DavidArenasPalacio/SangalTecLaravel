@@ -1,5 +1,5 @@
 @extends('layouts.app') @section('content')
-
+<div class="box p-5">
 <form action="/compra/guardar" method="POST" class="mb-5 py-5" id="form">
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-4">
@@ -148,7 +148,7 @@
         </div>
     </div>
 </form>
-
+</div>
 @endsection @section('script')
 <script>
     function obtener_precio() {
