@@ -2,18 +2,22 @@
 
 
 @section('content')
-    <h1 class="text-center text-4xl font-medium">Registrar Un Cliente</h1>
-    <form id="formCl" action="{{ route('clientes.store') }}" method="POST" id="form">
+<div class="box p-5">
+    <div class="border-b border-gray-200">
+        <h1 class="text-center text-4xl font-medium">Registrar un Cliente</h1>
+    </div>
+    <form id="formCl" action="{{ route('clientes.store') }}" method="POST" id="form" class="mt-5">
         @csrf
         <div class="flex flex-col sm:flex-row items-center">
 
             <div class="w-full mr-2">
                 <label for="nombre">Nombre:</label>
 
-                <input type="text" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror"
+                <input type="text" name="nombre"
+                    class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror"
                     placeholder="Ingrese el nombre del cliente" maxlength="125" value="{{ old('nombre') }}">
                 @error('nombre')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
             </div>
 
@@ -24,7 +28,7 @@
                     class="input w-full border mt-2 @error('documento') border-theme-6 @enderror"
                     placeholder="Ingrese el documento del cliente" value="{{ old('documento') }}">
                 @error('documento')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
             </div>
         </div>
@@ -38,7 +42,7 @@
                     class="input w-full border mt-2 @error('telefono') border-theme-6 @enderror"
                     placeholder="Ingrese el teléfono del cliente" maxlength="50" value="{{ old('telefono') }}">
                 @error('telefono')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
             </div>
 
@@ -49,7 +53,7 @@
                     class="input w-full border mt-2 @error('direccion') border-theme-6 @enderror"
                     placeholder="Ingrese la dirección del cliente" value="{{ old('direccion') }}">
                 @error('direccion')
-                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
             </div>
         </div>
@@ -58,8 +62,9 @@
             <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Cliente</button>
         </div>
     </form>
+</div>
 @endsection
 
 @section('script')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
