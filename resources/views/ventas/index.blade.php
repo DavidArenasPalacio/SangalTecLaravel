@@ -7,7 +7,7 @@
 @section('content')
 
 
-@if ($errors->any())
+{{-- @if ($errors->any())
 <div style=" margin-left: 30%; width: 40%;" class="alert alert-danger alert-dismissible fade show" role="alert">
     <ul>
         @foreach ($errors->all() as $error)
@@ -18,28 +18,16 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-@endif
-
-{{-- @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-@endforeach
-</ul>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
-</div>
 @endif --}}
+
 
 <div class="w-full">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestión Venta
+            Gestión de ventas
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="/ventas/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Venta</a>
+            <a href="/ventas/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Registrar una nueva venta</a>
         </div>
     </div>
     <div class="intro-y datatable-wrapper box p-5 mt-5">

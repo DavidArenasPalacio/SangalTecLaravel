@@ -68,10 +68,10 @@ class ProductoController extends Controller
                 "Cantidad" => $input["cantidad"], 
                 "Estado" => 1
             ]);
-            alert()->success('Producto Registrado Exitosamente');
+            alert()->success('Producto registrado exitosamente');
             return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Registrar El Producto');
+            alert()->warning('Error', 'Error al registrar el producto');
             return redirect("/producto");
         }
     }
@@ -100,7 +100,7 @@ class ProductoController extends Controller
 
             if ($producto == null) {
                 
-                alert()->warning('Error', 'Error Al Editar El Producto');
+                alert()->warning('Error', 'Error al editar el producto');
                 return redirect("/producto");
             }
 
@@ -112,10 +112,10 @@ class ProductoController extends Controller
                 "Precio_Venta" => $input["precio_venta"],  
             ]);
             
-            alert()->success('Producto Editado Exitosamente');
+            alert()->success('Producto editado exitosamente');
             return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Editar El Producto');
+            alert()->warning('Error', 'Error al editar el producto');
             return redirect("/producto");
         }
     }
@@ -124,23 +124,27 @@ class ProductoController extends Controller
     {
         
 
-        $producto = Producto::where("productos.id", "=", $id);
+        $producto = Producto::findOrFail($id);
+
+        if ($producto->Cantidad != 0) {
+            alert()->warning('Error', 'Solo se puede actualizar el estado si la cantidad de '. $producto->Nombre_Producto .' es 0');
+            return redirect("/producto");
+        }
 
         if ($producto == null) {
         
-            alert()->warning('Error', 'Error Al Actualizar Estado');
+            alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/producto");
         }
 
         try {
 
             $producto->update(["Estado" => $estado]);
-            alert()->success('Estado Actualizado Exitosamente');
+            alert()->success('Estado actualizado exitosamente');
             return redirect("/producto");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Actualizar Estado');
+            alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/producto");
         }
     }
 }
- 

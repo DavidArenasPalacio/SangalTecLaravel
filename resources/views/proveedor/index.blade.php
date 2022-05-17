@@ -6,10 +6,10 @@
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestión de Proveedores
+            Gestión de proveedores
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="/proveedor/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear un nuevo Proveedor</a>
+            <a href="/proveedor/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Registrar un nuevo proveedor</a>
         </div>
     </div>
     <div class="intro-y datatable-wrapper  box p-5 mt-5">
@@ -95,24 +95,6 @@
                 sClass: 'text-center'
             }
         ]
-    });
-
-    $('#btnGuardar').click((e) => {
-        let form = $('#form');
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Desea crear el producto?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
     });
 </script>
 @endsection

@@ -25,7 +25,7 @@ class SaveCliente extends FormRequest
     {
         return [
             'nombre' => ['required','regex:/^[a-zA-Z\s]+$/u','min:3'],
-            'documento' => ['required','numeric','digits_between:10, 15','unique:clientes,Documento_Cliente'],
+            'documento' => ['required','numeric','digits_between:6, 12','unique:clientes,Documento_Cliente'],
             'telefono' => ['required','numeric','digits_between:7,10'],
             'direccion' => ['required'] 
         ];

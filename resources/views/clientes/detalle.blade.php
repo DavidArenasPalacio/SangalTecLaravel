@@ -9,10 +9,10 @@
         <table class="table table-report table-report--bordered display  ">
             <thead>
                 <tr class="bg-gray-700 text-white">
-                    <th>Nombre Del Cliente</th>
+                    <th>Nombre</th>
                     <th>Documento</th>
-                    <th>Telefono Del Cliente</th>
-                    <th>Direccion Del Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
                 </tr>
             </thead>
             <tbody>

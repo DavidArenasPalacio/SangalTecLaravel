@@ -5,12 +5,12 @@
 <div class="m-auto" style="width: 80% !important">
     <div class="intro-y flex flex-col sm:flex-row items-center  mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestión de Categoría
+            Gestión de categorías
         </h2>
 
         @if (auth()->user()->rol_id == 1)
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="/categoria/crear" class="button flex text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Categoría </a>
+            <a href="/categoria/crear" class="button flex text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Registrar una nueva categoría </a>
         </div>
         @endif
     </div>
@@ -85,22 +85,5 @@
         ]
     });
 
-    $('#btnGuardar').click((e) => {
-        let form = $('#form');
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Desea crear la categoría?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
-    });
 </script>
 @endsection

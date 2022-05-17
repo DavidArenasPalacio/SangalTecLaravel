@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="box p-5">
     <form action="/ventas/guardar" method="POST" class="mb-5 py-5" id="form">
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="intro-y col-span-12 lg:col-span-4">
-                <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar Una Venta</h2>
+                <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar una venta</h2>
 
                 @csrf
                 <div class="preview mt-5">
@@ -99,7 +100,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Registrar Venta</button>
+                    <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Guardar</button>
                 </div>
             </div>
         </div>

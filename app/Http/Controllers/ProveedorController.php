@@ -61,10 +61,10 @@ class ProveedorController extends Controller
             ]);
 
 
-            alert()->success('Proveedor Registrado Exitosamente');
+            alert()->success('Proveedor registrado exitosamente');
             return redirect("/proveedor");
         } catch (\Exception $e) {
-            alert()->warning('error', 'Error Al Registrar EL Proveedor');
+            alert()->warning('error', 'Error al registrar eL proveedor');
             return redirect("/proveedor");
         }
     }
@@ -92,7 +92,7 @@ class ProveedorController extends Controller
             $proveedor = Proveedor::find($id);
 
             if ($proveedor == null) {
-                alert()->warning('error', 'Error Al Editar El Proveedor');
+                alert()->warning('error', 'Error al editar eL proveedor');
                 return redirect("/proveedor");
             }
 
@@ -103,11 +103,11 @@ class ProveedorController extends Controller
                 "Direccion_Proveedor" => $input["direccion"],
             ]);
 
-            alert()->success('Proveedor Editado Exitosamente');
+            alert()->success('Proveedor editado exitosamente');
             return redirect("/proveedor");
 
         } catch (\Exception $e) {
-            alert()->warning('error', 'Error Al Editar El Proveedor');
+            alert()->warning('error', 'Error al editar eL proveedor');
             return redirect("/proveedor");
         }
     }
@@ -128,7 +128,7 @@ class ProveedorController extends Controller
 
         if ($proveedor == null) {
         
-            alert()->warning('Error', 'Error Al Actualizar Estado');
+            alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/proveedor");
         }
 
@@ -136,10 +136,10 @@ class ProveedorController extends Controller
         try {
 
             $proveedor->update(["Estado" => $estado]);
-            alert()->success('Estado Actualizado Exitosamente');
+            alert()->success('Estado actualizado exitosamente');
             return redirect("/proveedor");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Actualizar Estado');
+            alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/proveedor");
         }
     }

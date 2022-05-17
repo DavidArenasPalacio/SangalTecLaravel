@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Stmt\Else_;
 use Yajra\Datatables\Datatables; 
 use App\Http\Requests\SaveUser;
+use App\Http\Requests\UpdateUserEmpleado;
 
 class UserController extends Controller
 {
@@ -56,9 +57,14 @@ class UserController extends Controller
                     else {
                         $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/1" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
                     }
+
+                    return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
+                }
+                else{
+                    return '<a href="/usuario/editarEmpleado/' . $users->id . '" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>';
                 }
 
-                return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
+                
             })
             ->rawColumns(['estado', 'acciones'])
             ->make(true);
@@ -90,35 +96,22 @@ class UserController extends Controller
             ]);
 
 
-            alert()->success('Usuario Registrado Exitosamente');
+            alert()->success('Usuario registrado exitosamente');
             return redirect("/usuario");
         } catch (\Exception $e) {
             return $e;
-            alert()->warning('Error', 'Error Al Registrar Usuario');
-            return redirect("/usuario/crear")->with('error', 'Error Al Registrar Usuario');
+            alert()->warning('Error', 'Error al registrar usuario');
+            return redirect("/usuario");
         }
     }
 
 
     public function edit($id)
     {
-        // if (Auth::user()->rol_id == 1) {
             $usuario = User::find($id);
 
-        // }
-        // else{
-        //     $usuario = User::select('users.*')
-        //     ->where("users.id",Auth::user()->id)
-        //     ->get();
-
-        //     if ($usuario == null) {
-        //         alert()->warning('Error', 'No existe el Usuario');
-        //     return redirect("/usuario");
-        //     }
-        // }
-
         if ($usuario == null) {
-            alert()->warning('Error', 'Error Al Editar Usuario');
+            alert()->warning('Error', 'Error al editar usuario');
             return redirect("/usuario");
         }
         $roles = Rol::all();
@@ -137,8 +130,9 @@ class UserController extends Controller
 
             if ($usuario == null) {
 
-                alert()->warning('Error', 'Error Al Editar Usuario');
-                return redirect("/usuario");            }
+                alert()->warning('Error', 'Error al editar usuario');
+                return redirect("/usuario");
+            }
 
             $usuario->update([
                 "rol_id" => $input["rol_usuario"],
@@ -151,13 +145,58 @@ class UserController extends Controller
             ]);
 
 
-            alert()->success('Usuario Editado Exitosamente');
+            alert()->success('Usuario editado exitosamente');
             return redirect("/usuario");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Editar Usuario');
+            alert()->warning('Error', 'Error al editar usuario');
             return redirect("/usuario");
         }
     }
+
+    //EDITAR DEL EMPLEADO
+    public function editEmpl($id)
+    {
+            $usuario = User::find($id);
+
+        if ($usuario == null) {
+            alert()->warning('Error', 'Error al editar usuario');
+            return redirect("/usuario");
+        }
+        
+        return view("usuario.editEmpl", compact("usuario"));
+    }
+
+    public function updateEmpl(UpdateUserEmpleado $request)
+    {
+
+        $input = $request->all();
+
+        try {
+            $usuario = User::find($input["id"]);
+
+
+            if ($usuario == null) {
+
+                alert()->warning('Error', 'Error al editar usuario');
+                return redirect("/usuario");
+            }
+
+            $usuario->update([
+                "telefono" => $input["telefono_usuario"],
+                "direccion" => $input["direccion_usuario"],
+                "email" => $input["email_usuario"],
+                "password" => Hash::make($input["password_usuario"]),
+            ]);
+
+
+            alert()->success('Usuario editado exitosamente');
+            return redirect("/usuario");
+        } catch (\Exception $e) {
+            alert()->warning('Error', 'Error al editar usuario');
+            return redirect("/usuario");
+        }
+    }
+
 
     public function updateState($id, $estado)
     {
@@ -166,7 +205,7 @@ class UserController extends Controller
         
         if ($user == null) {
         
-            alert()->warning('Error', 'Error Al Actualizar Estado');
+            alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/usuario");
         }
 
@@ -174,15 +213,15 @@ class UserController extends Controller
             try {
 
                 $user->update(["estado" => $estado]);
-                alert()->success('Estado Actualizado Exitosamente');
+                alert()->success('Estado actualizado exitosamente');
                 return redirect("/usuario");
             } catch (\Exception $e) {
-                alert()->warning('Error', 'Error Al Actualizar Estado');
-                return redirect("/usuario");
+                alert()->warning('Error', 'Error al actualizar estado');
+            return redirect("/usuario");
             }
         }
         else{
-            alert()->warning('Error', 'No Se Puede Actualizar El Estado De Un Usuario Con El Rol De Administrador');
+            alert()->warning('Error', 'No se puede actualizar el estado de un usuario con el rol de administrador');
                 return redirect("/usuario");
         }
     }

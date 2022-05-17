@@ -4,7 +4,7 @@
 @section('content')
 <div class="box p-5">
     <div class="border-b border-gray-200">
-        <h1 class="text-center text-4xl font-medium">Registrar un Cliente</h1>
+        <h1 class="text-center text-4xl font-medium">Registrar un cliente</h1>
     </div>
     <form id="formCl" action="{{ route('clientes.store') }}" method="POST" id="form" class="mt-5">
         @csrf
@@ -59,7 +59,7 @@
         </div>
         <div class="flex justify-between">
             <a href="/clientes" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-            <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Cliente</button>
+            <button type="submit" class="button bg-theme-1 text-white mt-5 ">Guardar</button>
         </div>
     </form>
 </div>

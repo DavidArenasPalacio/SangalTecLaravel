@@ -37,12 +37,12 @@ class ClientesController extends Controller
                 
             ]);
 
-            alert()->success('Cliente Registrado Exitosamente');
+            alert()->success('Cliente registrado exitosamente');
             return redirect("/clientes");
 
         } catch (\Throwable $e) {
             
-            alert()->warning('error', 'Error Al Registrar El Cliente');
+            alert()->warning('error', 'Error al registrar el cliente');
             return redirect("/clientes");
         }
         
@@ -94,12 +94,12 @@ class ClientesController extends Controller
 
             $clientes->save();
 
-            alert()->success('Cliente Editado Exitosamente');
+            alert()->success('Cliente editado exitosamente');
             return redirect("/clientes");
 
         } catch (\Throwable $e) {
             
-            alert()->warning('error', 'Error Al Editar El Cliente');
+            alert()->warning('error', 'Error al editar el cliente');
             return redirect("/clientes");
         }
 

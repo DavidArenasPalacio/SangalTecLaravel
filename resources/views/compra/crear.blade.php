@@ -4,7 +4,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-4">
             <h2 class="text-3xl text-center font-medium leading-none mt-3">
-                Registrar Una Compra
+                Registrar una compra
             </h2>
 
             @csrf
@@ -142,7 +142,7 @@
                 </table>
                 <button
                     type="submit" class="button w-full mr-1 mb-2 bg-theme-1 text-white">
-                    Registrar Compra
+                    Guardar
                 </button>
             </div>
         </div>

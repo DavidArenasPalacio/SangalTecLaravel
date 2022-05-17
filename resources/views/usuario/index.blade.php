@@ -6,12 +6,12 @@
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestión de Usuario
+            Gestión de usuarios
         </h2>
 
         @if (auth()->user()->rol_id == 1)
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="/usuario/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear un nuevo Usuario</a>
+            <a href="/usuario/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Registrar un nuevo usuario</a>
         </div>
         @endif
 
@@ -19,16 +19,16 @@
     <div class="intro-y datatable-wrapper box p-5 mt-5">
 
         <table id="tbl_usuarios" class="table 
-       w-full display  dtr-inline dt-responsive mb-2 mt-5">
+        w-full display  dtr-inline dt-responsive mb-2 mt-5">
 
             <thead>
                 <tr>
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Rol</th>
-                    <th class="border-b-2 whitespace-no-wrap"> Documento</th>
+                    <th class="border-b-2 whitespace-no-wrap">Documento</th>
                     <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
                     <th class="border-b-2 whitespace-no-wrap">Dirección</th>
-                    <th class="border-b-2 whitespace-no-wrap">Email</th>
+                    <th class="border-b-2 whitespace-no-wrap">Correo</th>
                     <th class="border-b-2 whitespace-no-wrap">Estado</th>
                     <th class="border-b-2 text-center whitespace-no-wrap">Acciones</th>
 
@@ -115,24 +115,6 @@
             }
         ]
     });
-    $('#btnGuardar').click((e) => {
-        let form = $('#form');
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Desea Crear El Usuario?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
 
-
-    });
 </script>
 @endsection

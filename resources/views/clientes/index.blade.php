@@ -4,23 +4,23 @@
 <div class="w-full">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestion De Clientes
+            Gestion de clientes
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a href="/clientes/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus"
-                    class="mx-auto"></i>    Crear un nuevo Cliente</a>
+                    class="mx-auto"></i>    Registrar un nuevo cliente</a>
         </div>
     </div>
     <div class="intro-y datatable-wrapper box p-5 mt-5">
         <table id="clientes" class="table 
-       w-full display  dtr-inline dt-responsive mb-2 mt-5">
+        w-full display  dtr-inline dt-responsive mb-2 mt-5">
             <thead>
                 <tr class="">
 
-                    <th class="border-b-2 whitespace-no-wrap">Nombre Del Cliente</th>
+                    <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Documento</th>
-                    <th class="border-b-2 whitespace-no-wrap">Telefono Del Cliente</th>
-                    <th class="border-b-2 whitespace-no-wrap">Direccion Del Cliente</th>
+                    <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
+                    <th class="border-b-2 whitespace-no-wrap">Dirección</th>
                     <th class="border-b-2 whitespace-no-wrap">Acciones</th>
                 </tr>
             </thead>

@@ -2,15 +2,14 @@
 
 
 @section('content')
-
 <div>
     <table  class="table table-report table-report--bordered display  ">
         <thead>
             <tr class="bg-gray-700 text-white">
-                <th class="border-b-2 whitespace-no-wrap">Nombre Del Producto</th>  
-                <th class="border-b-2 whitespace-no-wrap">Precio Unitario</th>                              
+                <th class="border-b-2 whitespace-no-wrap">Nombre del producto</th>  
+                <th class="border-b-2 whitespace-no-wrap">Precio unitario</th>                              
                 <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
-                <th class="border-b-2 whitespace-no-wrap">Sub Total</th>
+                <th class="border-b-2 whitespace-no-wrap">Subtotal</th>
             </tr>
         </thead>
         <tbody>

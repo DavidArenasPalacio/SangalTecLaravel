@@ -4,7 +4,7 @@
 @section('content')
 <div class="box p-5">
 <div class="border-b border-gray-200">
-<h1 class="text-center text-4xl font-medium">Registrar un Usuario</h1>
+<h1 class="text-center text-4xl font-medium">Registrar un usuario</h1>
 </div>
 <form action="/usuario/guardar" method="POST" id="form" class="mt-5">
     @csrf
@@ -77,6 +77,7 @@
             @error('password_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
+            <input class="input border-theme-6 mt-5" type="button" onclick="mostrar()" value="Mostrar/Ocultar">
         </div>
     </div>
 
@@ -87,7 +88,7 @@
     </div> -->
     <div class="flex justify-between">
         <a href="/usuario" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Registrar Usuario</button>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Guardar</button>
     </div>
 </form>
 </div>
@@ -95,6 +96,19 @@
 
 @section('script')
 <script>
+
+    function mostrar(){
+
+        var tipo = document.getElementById("password_usuario");
+
+        if(tipo.type == "password"){
+            tipo.type = "text";
+
+        }else{
+            tipo.type = "password";
+        }
+    }
+
     $(document).ready(function() {
         $.validator.addMethod("formAlphanumeric", function(value, element) {
             var pattern = /^[a-z áãâäàéêëèíîïìóõôöòúûüùçñ]+$/i;
@@ -113,7 +127,7 @@
                     required: true,
                     formAlphanumeric: true,
                     minlength: 2,
-                  
+                
                 },
                 rol_usuario: {
                     required: true,
@@ -128,7 +142,7 @@
                     number: true,
                     minlength: 2,
                     maxlength: 15,
-                   
+                
                 },
                 direccion_usuario: {
                     required: true
@@ -150,5 +164,6 @@
             errorElement: 'span',
         });
     });
+
 </script>
 @endsection

@@ -5,10 +5,10 @@
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Gestión de Compras
+            Gestión de compras
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <a href="/compra/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Crear una nueva Compra</a>
+            <a href="/compra/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2"><i data-feather="plus" class="mx-auto"></i> Registrar una nueva compra</a>
         </div>
     </div>
     <div class="intro-y datatable-wrapper box p-5 mt-5">
@@ -16,10 +16,10 @@
 
             <thead>
                 <tr class="">
-                    <th class="border-b-2 whitespace-no-wrap">Usuario Que Realizo La Compra</th>
-                    <th class="border-b-2 whitespace-no-wrap">Nombre Del Proveedor</th>
-                    <th class="border-b-2 whitespace-no-wrap">Precio Total</th>
-                    <th class="border-b-2 whitespace-no-wrap">Fecha De La Compra</th>
+                    <th class="border-b-2 whitespace-no-wrap">Usuario que realizo la compra</th>
+                    <th class="border-b-2 whitespace-no-wrap">Nombre del proveedor</th>
+                    <th class="border-b-2 whitespace-no-wrap">Precio total</th>
+                    <th class="border-b-2 whitespace-no-wrap">Fecha de la compra</th>
                     <th class="border-b-2 whitespace-no-wrap">Estado</th>
                     <th class="border-b-2 whitespace-no-wrap">Acciones</th>
 
@@ -94,24 +94,6 @@
                 sClass: 'text-center'
             }
         ]
-    });
-
-    $('#btnGuardar').click((e) => {
-        let form = $('#form');
-        e.preventDefault();
-        Swal.fire({
-            title: '¿Desea crear la compra?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Confirmar',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
     });
 
 

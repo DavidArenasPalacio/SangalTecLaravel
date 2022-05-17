@@ -24,7 +24,7 @@ class SaveProducto extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required','regex:/^[a-zA-Z\s]+$/u','unique:productos,Nombre_Producto'],
+            'nombre' => ['required','unique:productos,Nombre_Producto'],
             'precio_compra' => ['required','numeric'],
             'precio_venta' => ['required','numeric'],
             'cantidad' => ['required','numeric'],

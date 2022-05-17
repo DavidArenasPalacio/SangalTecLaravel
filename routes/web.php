@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     //RUTAS USUARIOS
     Route::get('/usuario/crear', [UserController::class, 'crear'])->name("usuario.crear");
     Route::post('/usuario/guardar', [UserController::class, 'save']);
+    Route::get('/usuario/editar/{id}', [UserController::class, 'edit']);
+    Route::post('/usuario/actualizar', [UserController::class, 'update']);
     Route::get('/usuario/cambiar/estado/{id}/{estado}', [UserController::class, 'updateState']);
     //FIN RUTAS USUARIOS
     
@@ -96,8 +98,8 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     //RUTAS USUARIOS
     Route::get('/usuario', [UserController::class, 'index'])->name("usuario.index");
     Route::get('/usuario/listar', [UserController::class, 'listar']);
-    Route::get('/usuario/editar/{id}', [UserController::class, 'edit']);
-    Route::post('/usuario/actualizar', [UserController::class, 'update']);
+    Route::get('/usuario/editarEmpleado/{id}', [UserController::class, 'editEmpl']);
+    Route::post('/usuario/actualizarEmpleado', [UserController::class, 'updateEmpl']);
     Route::get('/usuario/detalle/{id}', [UserController::class, 'detalle']);
     //FIN RUTAS USUARIOS
     

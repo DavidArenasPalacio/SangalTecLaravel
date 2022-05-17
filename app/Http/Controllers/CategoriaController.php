@@ -47,11 +47,11 @@ class CategoriaController extends Controller
                 "Nombre_Categoria"=> $input["nombre"],
             ]);
 
-            alert()->success('Categoría Registrada Exitosamente');
+            alert()->success('Categoría registrada exitosamente');
             return redirect("/categoria");
 
         } catch (\exception $e) {
-            alert()->warning('Error', 'Error Al Registrar La Categoría');
+            alert()->warning('Error', 'Error al registrar la categoría');
             return redirect("/categoria");
         }
     }
@@ -62,6 +62,7 @@ class CategoriaController extends Controller
 
         if ($categoria == null) {
             
+            alert()->warning('Error', 'Error al registrar la categoría');
             return redirect("/categoria");
         }
         return view("categoria.edit", compact("categoria"));
@@ -70,13 +71,7 @@ class CategoriaController extends Controller
 
     public function update(SaveCategoria $request)
     {
-
-        //  $request->validate(Categoria::$rules);
-
         $input = $request->all();
-
-        
-        
 
         try {
             $categoria = Categoria::find($input["id"]);
@@ -84,7 +79,7 @@ class CategoriaController extends Controller
 /*             return response()->json($categoria); */
             if ($categoria == null) {
                 
-                alert()->warning('Error', 'Error Al Editar La Categoría');;
+                alert()->warning('Error', 'Error al editar la categoría');
                 return redirect("/categoria");
             }
 
@@ -93,10 +88,10 @@ class CategoriaController extends Controller
             ]);
 
         
-            alert()->success('Categoría Editada Exitosamente');
+            alert()->success('Categoría editada exitosamente');
             return redirect("/categoria");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Editar La Categoría');;
+            alert()->warning('Error', 'Error al editar la categoría');
             return redirect("/categoria");
         }
     }

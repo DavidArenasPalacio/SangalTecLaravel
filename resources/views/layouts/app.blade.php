@@ -52,7 +52,7 @@
         </div>
         <ul class="border-t border-theme-24 py-5 hidden">
             <li>
-                <a href="index.html" class="menu menu--active">
+                <a href="" class="menu menu--active">
                     <div class="menu__icon"> <i data-feather="home"></i> </div>
                     <div class="menu__title"> Dashboard </div>
                 </a>
@@ -154,7 +154,7 @@
             <div class="side-nav__devider my-6"></div>
             <ul>
                 <li>
-                    <a href="index.html" class="side-menu ">
+                    <a href="" class="side-menu ">
                         <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                         <div class="side-menu__title"> Dashboard </div>
                     </a>
@@ -276,9 +276,7 @@
         <div class="content">
             <div class="top-bar">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href=""
-                        class="">Application</a> <i data-feather="chevron-right"
-                        class="breadcrumb__icon"></i> <a href="" class="breadcrumb--active">Dashboard</a> </div>
+                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"></div>
                 <!-- END: Breadcrumb -->
                 <div class="intro-x dropdown w-8 h-8 relative">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in">
@@ -307,25 +305,12 @@
 
 
                             </div>
-                            <div class="p-2">
-                                <a href=""
-                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                    <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                                <a href=""
-                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                    <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
-                                <a href=""
-                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                    <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
-                                <a href=""
-                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                    <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
-                            </div>
+                            
                             <div class="p-2 border-t border-theme-40">
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                     <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"" href="
                                         {{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                                                document.getElementById('logout-form').submit();">
                                         <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i>
                                         {{ __('Logout') }}
                                     </a>

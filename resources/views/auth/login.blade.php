@@ -37,7 +37,7 @@
                             <br>
                             Iniciar sesión en su cuenta.
                         </div>
-                       
+                    
                     </div>
                 </div>
                 <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
@@ -52,7 +52,7 @@
                             @csrf
                             <div class="intro-x mt-8">
                                 <div>
-                                    <label for="inputEmail">{{ __('Correo Electronico') }}</label>
+                                    <label for="inputEmail">{{ __('Correo Electrónico') }}</label>
                                     <input id="inputEmail" type="email"
                                         class="intro-x login__input input input--lg border border-gray-300 block @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" required autocomplete="email"
@@ -64,7 +64,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div>
+                                <div class="mt-6">
                                     <label for="inputPassword"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
                                     <input id="inputPassword" type="password"
@@ -79,7 +79,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="d-flex align-items-center justify-content-between mt-2 mb-0">
+                                <div class="d-flex align-items-center justify-content-between mt-8 mb-0">
                                     <button type="submit"
                                         class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
                                         {{ __('Iniciar Sesion') }}

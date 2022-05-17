@@ -46,9 +46,9 @@ class VentasController extends Controller
             $productosRecorridos = Producto::findOrFail($value);
 
             if ($input["cantidades"][$key] > $productosRecorridos->Cantidad) {
-                // return redirect('/ventas')->with('cantidad', 'El Stock De '. $productosRecorridos->Nombre_Producto .' Es Insuficiente');
+                // return redirect('/ventas')->with(Cantidad insuficiente', 'el stock de '. $productosRecorridos->Nombre_Producto .' es insuficiente');
             
-                alert()->warning('Cantidad Insuficiente', 'El Stock De '. $productosRecorridos->Nombre_Producto .' Es Insuficiente');
+                alert()->warning('Cantidad insuficiente', 'el stock de '. $productosRecorridos->Nombre_Producto .' es insuficiente');
                 return redirect("/ventas/crear");
             }
         } 
@@ -86,12 +86,12 @@ class VentasController extends Controller
 
         DB::commit();
 
-        alert()->success('Venta Registrada Exitosamente');
+        alert()->success('Venta registrada exitosamente');
         return redirect("/ventas");
 
         } catch (\Throwable $e) {
             
-            alert()->warning('error', 'Error Al Registrar La Venta');
+            alert()->warning('error', 'Error al registrar la venta');
             return redirect("/ventas");
         }
 
@@ -171,7 +171,7 @@ class VentasController extends Controller
         }
     
         $ventas->update(["Estado"=>$Estado]);
-        alert()->success('Venta Anulada Exitosamente');
+        alert()->success('Venta anulada exitosamente');
         return redirect("/ventas");
     }
 

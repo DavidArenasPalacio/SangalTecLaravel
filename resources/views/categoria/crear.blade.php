@@ -4,12 +4,12 @@
 
     <div class="w-64 m-auto  intro-y box p-5">
         <div class="border-b border-gray-200">
-            <h1 class="text-center text-3xl font-medium">Registrar una Categoría</h1>
+            <h1 class="text-center text-3xl font-medium">Registrar una categoría</h1>
         </div>
         <form action="/categoria/guardar" method="POST" id="form" class="mt-5">
             @csrf
             <div>
-                <label for="nombre">Nombre de la Categoría:</label>
+                <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre de la categoría" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror">
                 @error('nombre')
                 <span class="text-theme-6 mt-2" role="alert">
@@ -19,7 +19,7 @@
             </div>
             <div class="flex justify-between">
                 <a href="/categoria" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-                <button type="submit" class="button bg-theme-1 text-white mt-5">Registrar Categoría</button>
+                <button type="submit" class="button bg-theme-1 text-white mt-5">Guardar</button>
             </div>
         </form>
     </div>

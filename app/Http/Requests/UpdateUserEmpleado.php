@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveUser extends FormRequest
+class UpdateUserEmpleado extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class SaveUser extends FormRequest
     public function rules()
     {
         return [
-            'nombre_usuario' => ['required','regex:/^[a-zA-Z\s]+$/u','min:3'],
-            'documento_usuario' => ['required','numeric','digits_between:6, 12'],
             'telefono_usuario' => ['required','numeric','digits_between:7,10'],
             'direccion_usuario' => ['required'],
-            'email_usuario' => ['required','email:rfc,dns','unique:users,email'],
+            'email_usuario' => ['required','email:rfc,dns'],
             'password_usuario' => ['required','min:8'],
         ];
     }

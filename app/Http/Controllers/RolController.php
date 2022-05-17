@@ -45,10 +45,10 @@ class RolController extends Controller
             ]);
 
 
-            alert()->success('Rol Registrado Exitosamente');
+            alert()->success('Rol registrado exitosamente');
             return redirect("/rol");
         } catch (\exception $e) {
-            alert()->warning('Error', 'Error Al Registrar El Rol');
+            alert()->warning('Error', 'Error al registrar el rol');
             return redirect("/rol");
         }
     }
@@ -79,7 +79,7 @@ class RolController extends Controller
 
             if ($rol == null) {
 
-                alert()->warning('Error', 'Error Al Editar El Rol');;
+                alert()->warning('Error', 'Error al editar el rol');
                 return redirect("/rol");
             }
 
@@ -87,10 +87,10 @@ class RolController extends Controller
                 "Nombre_Rol" => $input["nombre"],
             ]);
 
-            alert()->success('Rol Editado Exitosamente');
+            alert()->success('Rol editado exitosamente');
             return redirect("/rol");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Editar El Rol');;
+            alert()->warning('Error', 'Error al editar el rol');
             return redirect("/rol");
         }
     }

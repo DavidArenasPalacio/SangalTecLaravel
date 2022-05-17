@@ -4,7 +4,7 @@
 @section('content')
 <div class="box p-5">
 <div class="border-b border-gray-200">
-<h1 class="text-center text-4xl font-medium">Modificar un Producto</h1>
+<h1 class="text-center text-4xl font-medium">Editar un producto</h1>
 </div>
     <form action="{{ route('producto.actualizar', $producto->id) }}" method="POST" class="mb-5 py-5" id="form">
         @csrf
@@ -72,7 +72,7 @@
         </div>
         <div class="flex justify-between">
             <a href="/producto" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-            <button type="submit" class="button bg-theme-1 text-white mt-5 ">Modificar Produto</button>
+            <button type="submit" class="button bg-theme-1 text-white mt-5 ">Guardar</button>
         </div>
     </form>
 </div>

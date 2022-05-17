@@ -129,11 +129,11 @@ class ComprasController extends Controller
         }
 
             DB::commit();
-            alert()->success('Compra Registrada Exitosamente');
+            alert()->success('Compra registrada exitosamente');
             return redirect("/compra");
         } catch (\Exception $e) {
             DB::rollBack();
-            alert()->warning('Error', 'Error Al Registrar La Compra');
+            alert()->warning('Error', 'Error al registrar la compra');
             return redirect("/compra");
         }
     }
@@ -145,7 +145,7 @@ class ComprasController extends Controller
         $compra = Compra::find($id);
 
         if ($compra == null) {
-            alert()->warning('Error', 'Error Al Anular La Compra');
+            alert()->warning('Error', 'Error al anular la compra');
             return redirect("/compra");
         }
 
@@ -168,10 +168,10 @@ class ComprasController extends Controller
             }
 
             $compra->update(["Estado" => $estado]);
-            alert()->success('Compra Anulada Exitosamente');
+            alert()->success('Compra anulada exitosamente');
             return redirect("/compra");
         } catch (\Exception $e) {
-            alert()->warning('Error', 'Error Al Anular La Compra');
+            alert()->warning('Error', 'Error al anular la compra');
             return redirect("/compra");
         }
     }

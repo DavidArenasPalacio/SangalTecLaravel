@@ -6,7 +6,7 @@
 
     <div class="w-64 m-auto  intro-y box p-5">
         <div class="border-b border-gray-200">
-            <h1 class="text-center text-3xl font-medium">Modificar Categoría</h1>
+            <h1 class="text-center text-3xl font-medium">Editar una categoría</h1>
         </div>
         <form action="/categoria/actualizar" method="POST" id="form" class="mt-5">
             @csrf
@@ -21,8 +21,8 @@
                 @enderror
             </div>
             <div class="flex justify-between">
-                <a href="/rol" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-                <button type="submit" class="button bg-theme-1 text-white mt-5">Modificar categoría</button>
+                <a href="/categoria" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
+                <button type="submit" class="button bg-theme-1 text-white mt-5">Guardar</button>
             </div>
         </form>
     </div>
