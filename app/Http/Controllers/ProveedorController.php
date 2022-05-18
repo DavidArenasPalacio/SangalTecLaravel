@@ -6,6 +6,7 @@ use App\Models\Proveedor;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\SaveProveedor;
+use App\Http\Requests\UpdateProveedor;
 
 class ProveedorController extends Controller
 {
@@ -83,7 +84,7 @@ class ProveedorController extends Controller
     }
 
 
-    public function update(SaveProveedor $request, $id)
+    public function update(UpdateProveedor $request, $id)
     {
         $input = $request->all();
 

@@ -11,6 +11,7 @@ use PhpParser\Node\Stmt\Else_;
 use Yajra\Datatables\Datatables; 
 use App\Http\Requests\SaveUser;
 use App\Http\Requests\UpdateUserEmpleado;
+use App\Http\Requests\UpdateUser;
 
 class UserController extends Controller
 {
@@ -119,7 +120,7 @@ class UserController extends Controller
         return view("usuario.edit", compact("usuario", "roles"));
     }
 
-    public function update(SaveUser $request)
+    public function update(UpdateUser $request)
     {
 
         $input = $request->all();
