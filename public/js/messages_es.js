@@ -1,4 +1,3 @@
-console.log("Holaa");
 $.extend( $.validator.messages, {
 	required: "Este campo es obligatorio.",
 	remote: "Por favor, rellena este campo.",

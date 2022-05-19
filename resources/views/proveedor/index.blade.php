@@ -38,7 +38,7 @@
 
 <script>
     $('#tbl_proveedor').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         "language": {
             "sProcessing": "Procesando...",
