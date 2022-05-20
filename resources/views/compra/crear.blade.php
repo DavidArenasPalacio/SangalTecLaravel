@@ -13,7 +13,7 @@
                         <label for="proveedor_id">Proveedor:</label>
 
                         <div class="mt-2">
-                            <select class="select2 input w-full" name="proveedor_id" id="proveedor">
+                            <select class="input  border w-full" name="proveedor_id" id="proveedor">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -30,7 +30,7 @@
                     <div>
                         <label for="">Producto:</label>
                         <div class="mt-2">
-                            <select class="select2 input w-full mr-2" onchange="obtener_precio()" id="nombreProducto">
+                            <select class="input  border w-full mr-2" onchange="obtener_precio()" id="nombreProducto">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -81,7 +81,7 @@
                     <h2 class="text-3xl text-center font-medium leading-none mt-3">
                         Productos agregados
                     </h2>
-                    <table class="table mt-5  dtr-inline dt-responsive">
+                    <table class="table mt-5  dtr-inline  dt-responsive" >
                         <thead>
                             <tr class="bg-gray-700 text-white">
                                 <th class="border-b-2 whitespace-no-wrap">
@@ -120,6 +120,8 @@
 </div>
 @endsection @section('script')
 <script>
+
+
 function obtener_precio() {
     let Precio_Compra = $("#nombreProducto option:selected").attr("precio");
     $("#precio").val(Precio_Compra);
@@ -133,6 +135,7 @@ function agregar() {
     let cantidad = $("#cantidad").val();
     let subtotal = parseInt(precio) * parseInt(cantidad);
     let cantidades = document.querySelectorAll(".cantidades");
+    let cantidadesDb = document.querySelectorAll(".cantidadesDb");
     let subTotal = document.querySelectorAll(".subtotal");
     let nombreProductos = document.querySelectorAll(".nombreProductos");
     let encontrado = true;
@@ -141,6 +144,9 @@ function agregar() {
         if (element.textContent.trim() === nombreProducto.trim()) {
             let nuevaCantidad = parseInt(cantidades[index].textContent) + parseInt(cantidad);
             cantidades[index].textContent = nuevaCantidad;
+            cantidadesDb[index].value = nuevaCantidad;
+            console.log(cantidadesDb[index].value);
+            cantidad = nuevaCantidad;
             subtotal = parseInt(precio) * nuevaCantidad;
             subTotal[index].textContent = subtotal;
             encontrado = false;
@@ -152,10 +158,11 @@ function agregar() {
         if (cantidad >= 0 && precio >= 0) {
             $("#tblCompra").append(`
                 <tr id="tr-${id}">
+                
+                <td class="nombreProductos">
                 <input type="hidden" name="idP[]" value="${id}">
                     <input type="hidden" name="precios[]" value="${precio}">
-                    <input type="hidden" name="cantidades[]" value="${cantidad}">
-                <td class="nombreProductos">
+                    <input type="text" name="cantidades[]" class="cantidadesDb"  value="${cantidad}">
                     ${nombreProducto}
                 </td>
                 <td class="cantidades">${cantidad}</td>
@@ -205,16 +212,4 @@ function eliminar(id) {
 }
 </script>
 
-<script>
-    $("select").select2({
-        language: {
-            noResults: function () {
-                return "No hay resultado";
-            },
-            searching: function () {
-                return "Buscando..";
-            },
-        },
-    });
-</script>
 @endsection
