@@ -145,8 +145,6 @@ function agregar() {
             let nuevaCantidad = parseInt(cantidades[index].textContent) + parseInt(cantidad);
             cantidades[index].textContent = nuevaCantidad;
             cantidadesDb[index].value = nuevaCantidad;
-            console.log(cantidadesDb[index].value);
-            cantidad = nuevaCantidad;
             subtotal = parseInt(precio) * nuevaCantidad;
             subTotal[index].textContent = subtotal;
             encontrado = false;
