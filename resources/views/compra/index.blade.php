@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             </tbody>
-            <thead>
+        </table>
     </div>
 </div>
 

@@ -35,7 +35,7 @@
                         <br>
                         No olvides tu contraseña.
                     </div>
-                   
+                
                 </div>
             </div>
             <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
@@ -52,10 +52,10 @@
                     {{ session('status') }}
                 </div>
                 @endif
-                <div class="intro-x mt-8">
+                
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
-
+                    <div class="intro-x mt-8">
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                         <input id="email" type="email" class="intro-x login__input input input--lg border border-gray-300 block @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         
@@ -68,16 +68,11 @@
 
 
                     <div class="d-flex align-items-rcente justify-content-between mt-2 mb-0">
-  
-                            <button type="submit" class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
-                                {{ __('Enviar enlace') }}
 
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-2 mb-0">
+                        <button type="submit" class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                            {{ __('Enviar enlace') }}  </button>
 
-                            <a href="/" class="button  border bg-gray-600 text-white mr-2 mt-5">Cancelar</a>
-                        </div>
-
+                        <a href="/" type="button" class="button button--lg w-full xl:w-32 border bg-gray-600 text-white mr-2 mt-5">Cancelar</a>
                         <!-- /.col -->
                     </div>
                 </form>

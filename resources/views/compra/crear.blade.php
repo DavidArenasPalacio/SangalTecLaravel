@@ -13,7 +13,7 @@
                         <label for="proveedor_id">Proveedor:</label>
 
                         <div class="mt-2">
-                            <select class="input  w-full" name="proveedor_id" id="proveedor">
+                            <select class="select2 input w-full" name="proveedor_id" id="proveedor">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -30,7 +30,7 @@
                     <div>
                         <label for="">Producto:</label>
                         <div class="mt-2">
-                            <select class="input w-full mr-2" onchange="obtener_precio()" id="nombreProducto">
+                            <select class="select2 input w-full mr-2" onchange="obtener_precio()" id="nombreProducto">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -146,7 +146,7 @@ function agregar() {
             encontrado = false;
         }
     });
-   
+
 
     if (encontrado) {
         if (cantidad >= 0 && precio >= 0) {
@@ -206,6 +206,15 @@ function eliminar(id) {
 </script>
 
 <script>
-
+    $("select").select2({
+        language: {
+            noResults: function () {
+                return "No hay resultado";
+            },
+            searching: function () {
+                return "Buscando..";
+            },
+        },
+    });
 </script>
 @endsection

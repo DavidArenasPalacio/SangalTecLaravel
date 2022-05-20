@@ -70,14 +70,17 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
-        <div class="w-full mr-2">
+        <div class="w-full mr-2" style="position: relative;">
             <label for="password">Contraseña:</label>
 
+            <span class="icon-eye" style="position: absolute; right: 1%; top: 55%;">
+                <i class="fas fa-eye" onclick="mostrar()"></i>
+            </span>
             <input type="password" id="password_usuario" name="password_usuario" class="input w-full border mt-2 @error('password_usuario') border-theme-6 @enderror" placeholder="Ingrese la contraseña">
             @error('password_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
-            <input class="input border-theme-6 mt-5" type="button" onclick="mostrar()" value="Mostrar/Ocultar">
+            {{-- <input class="input border-theme-6 mt-5" type="button"  value="Mostrar/Ocultar"> --}}
         </div>
     </div>
 
@@ -99,14 +102,37 @@
 
     function mostrar(){
 
-        var tipo = document.getElementById("password_usuario");
+        const iconEye = document.querySelector(".icon-eye");
 
-        if(tipo.type == "password"){
-            tipo.type = "text";
+        iconEye.addEventListener('click', function(){
+        
+            const icon = this.querySelector("i");
+            
 
-        }else{
-            tipo.type = "password";
-        }
+            if (this.nextElementSibling.type === "password") {
+                
+                this.nextElementSibling.type = "text";
+
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+
+            } else {
+                this.nextElementSibling.type = "password";
+
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+            
+        })
+
+        // var tipo = document.getElementById("password_usuario");
+
+        // if(tipo.type == "password"){
+        //     tipo.type = "text";
+
+        // }else{
+        //     tipo.type = "password";
+        // }
     }
 
     $(document).ready(function() {
