@@ -52,11 +52,6 @@
 
 @section('script')
 <script>
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2();
-    });
-</script>
-<script>
     //     $(document).ready(function(){
     //         $('#ventas').DataTable({
     //             processing: true,
@@ -78,7 +73,7 @@
 
 
     $('#ventas').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         "language": {
             "sProcessing": "Procesando...",

@@ -37,7 +37,7 @@
 @section('script')
 <script>
 $('#clientes').DataTable({
-    processing: true,
+    processing: false,
     serverSide: true,
     "language": {
         "sProcessing": "Procesando...",

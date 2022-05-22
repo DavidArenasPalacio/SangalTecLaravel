@@ -48,7 +48,7 @@
 
 <script>
     $('#tbl_usuarios').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         "language": {
             "sProcessing": "Procesando...",

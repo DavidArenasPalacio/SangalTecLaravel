@@ -36,7 +36,7 @@
 @section('script')
 <script>
     $('#tbl_rol').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         "language": {
             "sProcessing": "Procesando...",

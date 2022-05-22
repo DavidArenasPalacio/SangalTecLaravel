@@ -43,7 +43,7 @@
 
 <script>
     $('#tbl_categoria').DataTable({
-        processing: true,
+        processing: false,
         serverSide: true,
         "language": {
             "sProcessing": "Procesando...",

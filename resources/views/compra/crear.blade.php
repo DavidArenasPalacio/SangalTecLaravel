@@ -160,7 +160,7 @@ function agregar() {
                 <td class="nombreProductos">
                 <input type="hidden" name="idP[]" value="${id}">
                     <input type="hidden" name="precios[]" value="${precio}">
-                    <input type="text" name="cantidades[]" class="cantidadesDb"  value="${cantidad}">
+                    <input type="hidden" name="cantidades[]" class="cantidadesDb"  value="${cantidad}">
                     ${nombreProducto}
                 </td>
                 <td class="cantidades">${cantidad}</td>
@@ -168,9 +168,7 @@ function agregar() {
                 <td class="subtotal">${subtotal}</td>
 
                 <td>
-                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id}, ${parseInt(
-                subtotal
-            )})">x</button>
+                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id})">x</button>
                 </td>
                 </tr>
             `);

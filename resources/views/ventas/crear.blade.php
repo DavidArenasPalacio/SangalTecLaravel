@@ -14,7 +14,7 @@
                         <label for="">Documento Del Cliente:</label>
 
                         <div class="mt-2">
-                            <select class="select2   w-full " name="Documento" id="Documento" onchange="colocar_nombre()">
+                            <select class="input border  w-full " name="Documento" id="Documento" onchange="colocar_nombre()">
 
                                 <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                 @foreach($clientes as $value)
@@ -37,7 +37,7 @@
                     <div>
                         <label for="">Producto:</label>
                         <div class="mt-2">
-                            <select name="" id="Producto" class="select2  w-full  mr-2 " onchange="obtener_precio()">
+                            <select name="" id="Producto" class="input  border w-full  mr-2 " onchange="obtener_precio()">
 
                                 <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                 @foreach($productos as $value)
@@ -116,26 +116,6 @@
 
         let Precio_Compra = $("#Producto option:selected").attr("precio");
         $("#precio").val(Precio_Compra);
-
-        // let id = $("#producto option:selected").val();
-
-        // $.ajax({
-        //     url: `/compra/obtenerPrecio/${id}`,
-        //     type: 'GET',
-        //     success: function(respu) {
-        //         console.log(respu.Precio_Compra);
-        //         // $("#precio").val(respu.Precio);
-        //     }
-        // })
-        /* .done(function(respuesta) {
-                console.log(respuesta);
-                if (respuesta != 0) {
-                    $("#precio").val(respuesta);
-                }
-                
-            }).fail(function(error) {
-
-            }); */
     }
 
     function colocar_nombre(e) {
@@ -151,41 +131,55 @@
         let producto_text = $("#Producto option:selected").text();
         let cantidad = $("#cantidad").val();
         let precio = $("#precio").val();
-
         let subtotal = parseInt(precio) * parseInt(cantidad);
+        let cantidades = document.querySelectorAll(".cantidades");
+        let subTotal = document.querySelectorAll(".subtotal");
+        let cantidadesDb = document.querySelectorAll(".cantidadesDb");
+        let nombreProductos = document.querySelectorAll(".nombreProductos");
+        let encontrado = true;
 
-        // let separar = nombre.split("-");
+        nombreProductos.forEach((element, index) => {
+            if (element.textContent.trim() === producto_text.trim()) {
+                let nuevaCantidad = parseInt(cantidades[index].textContent) + parseInt(cantidad);
+                cantidades[index].textContent = nuevaCantidad;
+                cantidadesDb[index].value = nuevaCantidad;
+                subtotal = parseInt(precio) * nuevaCantidad;
+                subTotal[index].textContent = subtotal;
+                encontrado = false;
+            }
+        });
+        if (encontrado) {
+            if (cantidad >= 0 && precio >= 0) {
 
-        // if (parseInt(cantidad) <= parseInt($.trim(separar[1]))) {
-        if (cantidad >= 0 && precio >= 0) {
-
-            // if (parseInt(cantidad) > 0) {
-            //     let nuevaCantidad = parseInt($.trim(separar[1])) - parseInt(cantidad);
-            //     console.log(nuevaCantidad);
-            //     $("#producto option:selected").text($.trim(separar[0]) + " - " + nuevaCantidad);
 
 
-            $("#tbl_productos").append(`
-                <tr id="tr-${producto_id}">
-                <input type="hidden" name="Producto[]" value="${producto_id}" />
-                <input type="hidden" name="cantidades[]" value="${cantidad}" />
-                <input type="hidden" name="precios[]" value="${precio}" /> 
-            
 
-                <td>${producto_text}</td>
-                <td>${cantidad}</td>
-                <td>${precio}</td>
-                <td class="subtotal">${subtotal}</td>
+                $("#tbl_productos").append(`
+    <tr id="tr-${producto_id}">
+    
 
-                <td>
-                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id}, ${parseInt(subtotal)})">x</button>
-                </td>
-                </tr>
-            `);
 
-        } else {
-            swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
+    <td class="nombreProductos">
+    <input type="hidden" name="Producto[]" value="${producto_id}" />
+    <input type="text" name="cantidades[]" value="${cantidad}" class="cantidadesDb"  />
+    <input type="hidden" name="precios[]" value="${precio}" /> 
+    ${producto_text}
+    </td>
+    <td class="cantidades">${cantidad}</td>
+    <td>${precio}</td>
+    <td class="subtotal">${subtotal}</td>
+
+    <td>
+        <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id}, ${parseInt(subtotal)})">x</button>
+    </td>
+    </tr>
+`);
+
+            } else {
+                swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
+            }
         }
+
         _subtotal();
 
     }
@@ -220,19 +214,5 @@
     }
 </script>
 
-<script>
-    $('select').select2({
-        language: {
 
-            noResults: function() {
-
-                return "No hay resultado";
-            },
-            searching: function() {
-
-                return "Buscando..";
-            }
-        }
-    });
-</script>
 @endsection
