@@ -95,7 +95,7 @@ class ComprasController extends Controller
     public function save(Request $request)
     {;
         $input = $request->all();
-       //dd($input);
+
         try {
             DB::beginTransaction();
 

@@ -113,13 +113,11 @@
 @section('script')
 <script>
     function obtener_precio() {
-
         let Precio_Compra = $("#Producto option:selected").attr("precio");
         $("#precio").val(Precio_Compra);
     }
 
     function colocar_nombre(e) {
-
         let nombre = $("#Documento option:selected").attr("nombre");
         $("#nombre").val(nombre);
     }

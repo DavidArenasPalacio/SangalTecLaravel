@@ -10,10 +10,11 @@
                 @csrf
                 <div class="preview mt-5">
                     <div class="">
+                    <input type="hidden" name="proveedor_id" id="proveedorDb">
                         <label for="proveedor_id">Proveedor:</label>
 
                         <div class="mt-2">
-                            <select class="input  border w-full" name="proveedor_id" id="proveedor">
+                            <select class="input  border w-full" onchange="deshabilitar_proveedor()" id="proveedor">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -121,6 +122,10 @@
 @endsection @section('script')
 <script>
 
+function deshabilitar_proveedor(){
+    document.querySelector("#proveedor").setAttribute("disabled", "true");
+    document.querySelector("#proveedorDb").value = $("#proveedor option:selected").val();
+}
 
 function obtener_precio() {
     let Precio_Compra = $("#nombreProducto option:selected").attr("precio");
@@ -128,7 +133,7 @@ function obtener_precio() {
 }
 
 function agregar() {
-    let proveedor = $("#proveedor option:selected").val();
+    let proveedor_id = $("#proveedor option:selected").val();
     let id = $("#nombreProducto option:selected").val();
     let nombreProducto = $("#nombreProducto option:selected").text();
     let precio = $("#precio").val();
@@ -155,6 +160,7 @@ function agregar() {
     if (encontrado) {
         if (cantidad >= 0 && precio >= 0) {
             $("#tblCompra").append(`
+            
                 <tr id="tr-${id}">
                 
                 <td class="nombreProductos">
