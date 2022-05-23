@@ -125,12 +125,6 @@ class ProductoController extends Controller
         
 
         $producto = Producto::findOrFail($id);
-
-        if ($producto->Cantidad != 0) {
-            alert()->warning('Error', 'Solo se puede actualizar el estado si la cantidad de '. $producto->Nombre_Producto .' es 0');
-            return redirect("/producto");
-        }
-
         if ($producto == null) {
         
             alert()->warning('Error', 'Error al actualizar estado');

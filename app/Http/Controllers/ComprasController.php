@@ -37,10 +37,10 @@ class ComprasController extends Controller
 
         return DataTables::of($compra)
             ->editColumn('estado', function ($compra) {
-                return $compra->Estado == 1 ? '<a class="btn btn-success">Activa</a>' : '<a class="btn btn-danger">Anulada</a>';
+                return $compra->Estado == 1 ? '<a class="cursorBtn  button   mb-2 bg-theme-1 text-white">Activa</a>' : '<a class="cursorBtn button  mb-2 bg-theme-6 text-white">Anulada</a>';
             })
             ->editColumn('created_at', function ($compra) {
-                return $compra->created_at->toDateTimeString();
+                return $compra->created_at->toDateString();
             })
             ->addColumn('acciones', function ($compra) {
                 $estado = '';
@@ -48,13 +48,13 @@ class ComprasController extends Controller
                 if (Auth::user()->rol_id == 1) {
 
                     if ($compra->Estado == 1) {
-                        $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
                     } else {
                         $estado = '<a  class="btn btn-success btn-sm btnEstado"><i class="fas fa-ban"></i></a>';
                     }
                 }
 
-                return '<a href="/compra/detalle/' . $compra->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
+                return '<a href="/compra/detalle/' . $compra->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-eye"></i></a>' . '      ' . $estado;
             })
             ->rawColumns(['estado', 'acciones'])
             ->make(true);

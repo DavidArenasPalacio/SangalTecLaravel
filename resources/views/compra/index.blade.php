@@ -76,7 +76,8 @@
             },
             {
                 data: 'Precio_total',
-                name: 'Precio_total'
+                name: 'Precio_total',
+                render: $.fn.dataTable.render.number( ',', 2 )
             },
             {
                 data: 'created_at',
