@@ -57,7 +57,7 @@ class ClientesController extends Controller
         return DataTables::of($clientes)
 
             ->addColumn('acciones', function ($clientes) {
-                return '<a href="/clientes/editar/'.$clientes->id.'" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.'<a href="/clientes/detalle/' . $clientes->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>';
+                return '<a href="/clientes/editar/'.$clientes->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>'.' '.'<a href="/clientes/detalle/' . $clientes->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>';
             })
             
             ->rawColumns(['acciones'])

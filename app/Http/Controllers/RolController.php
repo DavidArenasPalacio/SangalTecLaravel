@@ -21,7 +21,7 @@ class RolController extends Controller
 
         return DataTables::of($rol)
             ->addColumn('acciones', function ($rol) {
-                return '<a href="/rol/editar/' . $rol->id . '" class="btn btn-primary btn-sm"><i class="fas fa-edit""></i></a>';
+                return '<a href="/rol/editar/' . $rol->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit""></i></a>';
             })
             ->rawColumns(['acciones'])
             ->make(true);

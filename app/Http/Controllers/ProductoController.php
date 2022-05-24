@@ -26,19 +26,19 @@ class ProductoController extends Controller
        // return response()->json($producto);
         return DataTables::of($producto)
         ->editColumn('estado', function($producto){
-            return $producto->Estado == 1 ? '<span class="bg-primary p-1 rounded">Disponible</span>' : '<span class="bg-danger p-1 rounded">No Disponible</span>';
+            return $producto->Estado == 1 ? '<a class="cursorBtn button mb-2 bg-theme-1 text-white">Disponible</a>' : '<a class="cursorBtn button mb-2 bg-theme-6 text-white">No Disponible</a>';
         })
         ->addColumn('acciones', function($producto) {
             $estado = ''; 
             
             if($producto->Estado == 1) {
-                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
+                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
             }
             else {
-                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/1" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
+                $estado = '<a href="/producto/cambiar/estado/'.$producto->id.'/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
             }
             
-            return '<a href="/producto/editar/'.$producto->id.'" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.$estado;
+            return '<a href="/producto/editar/'.$producto->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>'.' '.$estado;
         })
         
         ->rawColumns(['estado', 'acciones'])
@@ -125,6 +125,12 @@ class ProductoController extends Controller
         
 
         $producto = Producto::findOrFail($id);
+
+        if ($producto->Cantidad != 0) {
+            alert()->warning('Error', 'Solo se puede actualizar el estado si la cantidad de '. $producto->Nombre_Producto .' es 0');
+            return redirect("/producto");
+        }
+
         if ($producto == null) {
         
             alert()->warning('Error', 'Error al actualizar estado');

@@ -25,7 +25,7 @@ class CategoriaController extends Controller
             
             if (Auth::user()->rol_id == 1) {
 
-                return '<a href="/categoria/editar/'.$categoria->id.'" class="btn btn-primary btn-sm"><i class="fas fa-edit""></i></a>';    
+                return '<a href="/categoria/editar/'.$categoria->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit""></i></a>';    
             }
 
         })

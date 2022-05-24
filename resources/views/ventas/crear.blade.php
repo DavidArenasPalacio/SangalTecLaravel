@@ -11,6 +11,7 @@
                 @csrf
                 <div class="preview mt-5">
                     <div class="">
+                        <input type="hidden" name="Documento" id="Documentodb">
                         <label for="">Documento Del Cliente:</label>
 
                         <div class="mt-2">
@@ -31,6 +32,12 @@
                             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                             @enderror
                         </div>
+                        @if (auth()->user()->rol_id == 1)
+                        <div class="mt-5">
+                            <a href="/clientes/crear">¿No tienes al cliente registrado? ¡Registralo aqui!</a>
+                        </div>    
+                        @endif
+                        
                     </div>
                 </div>
                 <div class="preview mt-5">
@@ -112,6 +119,7 @@
 
 @section('script')
 <script>
+
     function obtener_precio() {
         let Precio_Compra = $("#Producto option:selected").attr("precio");
         $("#precio").val(Precio_Compra);
@@ -120,6 +128,9 @@
     function colocar_nombre(e) {
         let nombre = $("#Documento option:selected").attr("nombre");
         $("#nombre").val(nombre);
+
+        document.querySelector("#Documento").setAttribute("disabled", "true");
+        document.querySelector("#Documentodb").value = $("#Documento option:selected").val();
     }
 
     let cont = 0;

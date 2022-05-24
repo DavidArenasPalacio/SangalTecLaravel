@@ -50,7 +50,7 @@ class ComprasController extends Controller
                     if ($compra->Estado == 1) {
                         $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
                     } else {
-                        $estado = '<a  class="btn btn-success btn-sm btnEstado"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a  class="btn btn-success btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
                     }
                 }
 

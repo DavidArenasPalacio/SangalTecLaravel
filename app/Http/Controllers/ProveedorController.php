@@ -22,17 +22,17 @@ class ProveedorController extends Controller
 
         return DataTables::of($proveedor)
             ->editColumn('estado', function ($proveedor) {
-                return $proveedor->Estado == 1 ? '<a class="btn btn-success">Habilitado</a>' : '<a class="btn btn-danger">Deshabilitado</a>';
+                return $proveedor->Estado == 1 ? '<a class="cursorBtn button mb-2 bg-theme-1 text-white">Habilitado</a>' : '<a class="cursorBtn button mb-2 bg-theme-6 text-white">Deshabilitado</a>';
             })
             ->addColumn('acciones', function ($proveedor) {
                 $estado = '';
 
                 if ($proveedor->Estado == 1) {
-                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
+                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
                 } else {
-                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/1" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i></a>';
+                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
                 }
-                return '<a href="/proveedor/editar/'.$proveedor->id.'" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-edit"></i></a>'.' '.'<a href="/proveedor/detalle/' . $proveedor->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
+                return '<a href="/proveedor/editar/'.$proveedor->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>'.' '.'<a href="/proveedor/detalle/' . $proveedor->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
             })
             
             ->rawColumns(['estado', 'acciones'])

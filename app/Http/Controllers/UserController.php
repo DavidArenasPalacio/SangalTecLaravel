@@ -45,7 +45,7 @@ class UserController extends Controller
         //  return response()->json($users);
         return DataTables::of($users)
             ->editColumn('estado', function ($users) {
-                return $users->estado == 1 ? '<span class="bg-primary p-1 rounded">Habilitado</span>' : '<span class="bg-danger p-1 rounded">Deshabilitado</span>';
+                return $users->estado == 1 ? '<a class="cursorBtn button mb-2 bg-theme-1 text-white">Habilitado</a>' : '<a class="cursorBtn button mb-2 bg-theme-6 text-white">Deshabilitado</a>';
             })
             ->addColumn('acciones', function ($users) {
                 $estado = '';
@@ -53,16 +53,16 @@ class UserController extends Controller
 
                 if(Auth::user()->rol_id == 1){
                     if($users->estado == 1) {
-                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>';
+                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i>';
                     }
                     else {
-                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/1" class="btn btn-primary btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
+                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
                     }
 
-                    return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
+                    return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
                 }
                 else{
-                    return '<a href="/usuario/editarEmpleado/' . $users->id . '" class="btn btn-success btn-sm btnEstado"><i class="fas fa-edit"></i></a>';
+                    return '<a href="/usuario/editarEmpleado/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>';
                 }
 
                 

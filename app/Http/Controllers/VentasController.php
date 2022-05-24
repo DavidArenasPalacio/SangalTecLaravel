@@ -109,7 +109,10 @@ class VentasController extends Controller
         
         return DataTables::of($ventas)
             ->editColumn('estado', function ($ventas) {
-                return $ventas->Estado == 1 ? '<a class="btn btn-success">Activa</a>' : '<a class="btn btn-danger">Anulada</a>';
+                return $ventas->Estado == 1 ? '<a class="cursorBtn button mb-2 bg-theme-1 text-white">Activa</a>' : '<a class="cursorBtn button mb-2 bg-theme-6 text-white">Anulada</a>';
+            })
+            ->editColumn('created_at', function ($ventas) {
+                return $ventas->created_at->toDateString();
             })
             ->addColumn('acciones', function ($ventas) {
                 $estado = '';
@@ -117,14 +120,14 @@ class VentasController extends Controller
                 if (Auth::user()->rol_id == 1) {
 
                     if ($ventas->Estado == 1) {
-                        $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
                     } else {
-                        $estado = '<a class="btn btn-success btn-sm btnEstado"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a class="btn btn-success btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
                     }
                     
                 }
 
-                return '<a href="/ventas/verproductos/' . $ventas->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
+                return '<a href="/ventas/verproductos/' . $ventas->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
             })
             ->rawColumns(['estado', 'acciones'])
             ->make(true);

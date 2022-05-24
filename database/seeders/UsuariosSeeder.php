@@ -49,7 +49,7 @@ class UsuariosSeeder extends Seeder
             "email" => "yefersonloaiza43@gmail.com",
             "password" => Hash::make("123456789"),
             "estado" => 1,
-            "rol_id" => 1,
+            "rol_id" => 2,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

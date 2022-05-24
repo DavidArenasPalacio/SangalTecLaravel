@@ -92,7 +92,7 @@
                 </span>
                 <input type="password" id="password_usuario" name="password_usuario"
                     class="input w-full border mt-2 @error('password_usuario') border-theme-6 @enderror"
-                    placeholder="Ingrese la contraseña">
+                    placeholder="Ingrese la contraseña" >
                 @error('password_usuario')
                 <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror

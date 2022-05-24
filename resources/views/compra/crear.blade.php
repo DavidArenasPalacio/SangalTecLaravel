@@ -25,6 +25,12 @@
                                 @endforeach
                             </select>
                         </div>
+                        @if (auth()->user()->rol_id == 1)
+                        <div class="mt-5">
+                            <a href="/proveedor/crear">¿No tienes al proveedor registrado? ¡Registralo aqui!</a>
+                        </div>
+                        @endif
+                        
                     </div>
                 </div>
                 <div class="preview mt-5">

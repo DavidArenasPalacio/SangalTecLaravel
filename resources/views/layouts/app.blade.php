@@ -64,12 +64,15 @@
                     </div>
                 </a>
                 <ul class="">
+                    @if (auth()->user()->rol_id == 1)
                     <li>
                         <a href="/rol" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
                             <div class="menu__title"> Gestión de roles </div>
                         </a>
-                    </li>
+                    </li>        
+                    @endif
+                    
                     <li>
                         <a href="/usuario" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
@@ -106,12 +109,15 @@
                     </div>
                 </a>
                 <ul class="">
+                    @if (auth()->user()->rol_id == 1)
                     <li>
                         <a href="/proveedor" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
                             <div class="menu__title"> Gestión de proveedores </div>
                         </a>
-                    </li>
+                    </li>        
+                    @endif
+                    
                     <li>
                         <a href="/compra" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
