@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ControlExistenciaController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 
 //RUTAS SOLO PARA ADMINISTRADOR
@@ -141,4 +142,7 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::post('/ventas/guardar', [VentasController::class, 'store'])->name('ventas.store');
     Route::get('/ventas/verproductos/{id}', [VentasController::class, 'listardetalle'])->name('ventas.detalle');
     //FIN RUTAS VENTAS
+     //RUTAS DASHBOARD
+     Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard.index");
+     //FIN RUTAS DASHBOARD
     });
