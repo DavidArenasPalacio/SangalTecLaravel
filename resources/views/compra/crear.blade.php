@@ -10,7 +10,7 @@
                 @csrf
                 <div class="preview mt-5">
                     <div class="">
-                    <input type="hidden" name="proveedor_id" id="proveedorDb">
+                        <input type="hidden" name="proveedor_id" id="proveedorDb">
                         <label for="proveedor_id">Proveedor:</label>
 
                         <div class="mt-2">
@@ -30,7 +30,7 @@
                             <a href="/proveedor/crear">¿No tienes al proveedor registrado? ¡Registralo aqui!</a>
                         </div>
                         @endif
-                        
+
                     </div>
                 </div>
                 <div class="preview mt-5">
@@ -88,7 +88,7 @@
                     <h2 class="text-3xl text-center font-medium leading-none mt-3">
                         Productos agregados
                     </h2>
-                    <table class="table mt-5  dtr-inline  dt-responsive" >
+                    <table class="table mt-5  dtr-inline  dt-responsive">
                         <thead>
                             <tr class="bg-gray-700 text-white">
                                 <th class="border-b-2 whitespace-no-wrap">
@@ -127,8 +127,7 @@
 </div>
 @endsection @section('script')
 <script>
-
-function deshabilitar_proveedor(){
+function deshabilitar_proveedor() {
     document.querySelector("#proveedor").setAttribute("disabled", "true");
     document.querySelector("#proveedorDb").value = $("#proveedor option:selected").val();
 }
@@ -219,5 +218,6 @@ function eliminar(id) {
     $("#total").text(total);
 }
 </script>
+
 
 @endsection

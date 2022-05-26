@@ -142,14 +142,6 @@
             
         })
 
-        // var tipo = document.getElementById("password_usuario");
-
-        // if(tipo.type == "password"){
-        //     tipo.type = "text";
-
-        // }else{
-        //     tipo.type = "password";
-        // }
     }   
 
 $(document).ready(function() {
