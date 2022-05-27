@@ -157,14 +157,22 @@ class UserController extends Controller
     //EDITAR DEL EMPLEADO
     public function editEmpl($id)
     {
-            $usuario = User::find($id);
 
-        if ($usuario == null) {
-            alert()->warning('Error', 'Error al editar usuario');
-            return redirect("/usuario");
+        $usuario = User::Find($id);
+
+        if (Auth::user()->id == $id) {
+
+            if ($usuario == null) {
+                alert()->warning('Error', 'Error al editar usuario');
+                return redirect("/usuario");
+            }
+            
+            return view("usuario.editEmpl", compact("usuario"));
         }
         
-        return view("usuario.editEmpl", compact("usuario"));
+          alert()->warning('Error', 'No puedes editar este usuario');
+         return redirect("/usuario");
+
     }
 
     public function updateEmpl(UpdateUserEmpleado $request)

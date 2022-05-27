@@ -200,7 +200,7 @@
                         <tr id="tr-${producto_id}">
                         <td class="nombreProductos">
                         <input type="hidden" name="Producto[]" value="${producto_id}" />
-                        <input type="text" name="cantidades[]" value="${cantidad}" class="cantidadesDb"  />
+                        <input type="hidden" name="cantidades[]" value="${cantidad}" class="cantidadesDb"  />
                         <input type="hidden" name="precios[]" value="${precio}" /> 
                         ${producto_text}
                         </td>

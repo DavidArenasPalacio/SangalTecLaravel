@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div>
+<div class="box  p-5">
     <table class="table table-report table-report--bordered display  ">
         <thead>
             <tr class="bg-gray-700 text-white">                        

@@ -164,6 +164,7 @@ class ComprasController extends Controller
 
                     $productos = Producto::find($value->Productos);
 
+                        
                     $productos->update(["Cantidad" => $productos->Cantidad - $value->Cantidad]);
                 }
             }
