@@ -82,9 +82,15 @@ class VentasController extends Controller
             $productCant = Producto::findOrFail($value);
 
             $productCant->update(["Cantidad" => $productCant->Cantidad - $input["cantidades"][$key]]);
+
+            // if ($productCant->Cantidad == 0) {
+            //     $productCant->Estado = 2;
+            // }
         }
 
         DB::commit();
+
+
 
         alert()->success('Venta registrada exitosamente');
         return redirect("/ventas");
@@ -168,7 +174,11 @@ class VentasController extends Controller
 
                 $productos = Producto::find($value->Productos);
 
+                $productos->Estado = 1;
+                
                 $productos->update(["Cantidad"=> $productos->Cantidad + $value->Cantidad]);
+
+                
             }
             
         }
