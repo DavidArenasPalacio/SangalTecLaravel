@@ -18,4 +18,7 @@ class Ventas extends Model
         'Estado'
     ];
 
+    public $timestamps = true;
+
+
 }

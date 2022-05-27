@@ -38,7 +38,7 @@
             <div class="w-full mr-2">
                 <label for="precio_compra">Precio Compra:</label>
 
-                <input type="number" id="precio_compra" name="precio_compra" class="input w-full border mt-2 @error('precio_compra') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se comprará el producto" value="{{ old('precio_compra') }}" min="1">
+                <input type="number" id="precio_compra" name="precio_compra" class="input w-full border mt-2 @error('precio_compra') border-theme-6 @enderror" placeholder="Ingrese el precio unitario en el que se comprará el producto" value="{{ old('precio_compra') }}">
                 @error('precio_compra')
                 <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
@@ -54,7 +54,7 @@
             <div class="w-full">
                 <label for="cantidad">Cantidad:</label>
 
-                <input type="number" id="cantidad" name="cantidad" class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" value="{{ old('cantidad') }}" min="1">
+                <input type="number" id="cantidad" name="cantidad" class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" value="{{ old('cantidad') }}" >
                 @error('cantidad')
                 <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                 @enderror
@@ -98,7 +98,7 @@
                 cantidad: {
                     required: true,
                     number: true,
-                    minlength: 1,
+                    
                 }
 
             },

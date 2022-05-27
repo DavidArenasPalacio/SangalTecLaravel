@@ -65,7 +65,7 @@
                 <div class="mt-5">
                     <label for="cantidad">Cantidad:</label>
 
-                    <input type="number" id="cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{ old('Cantidad') }}" />
+                    <input type="number" id="cantidad" class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror" placeholder="Ingrese la cantidad del producto" min="1" value="{{ old('Cantidad') }}"  onkeyup="validarCantidad()"/>
                     @error('Cantidad')
                     <div class="text-theme-6 mt-2">
                         <strong>{{ $message }}</strong>
@@ -160,6 +160,17 @@
         $("#precio").val(Precio_Compra);
     }
 
+
+    const validarCantidad  = () => {
+        let cantidad = $("#cantidad").val();
+
+        let cantidadCadena = cantidad.split('');
+
+        if(parseInt(cantidadCadena[0]) === 0){
+            swal.fire("No se puede comenzar con un 0");
+        }
+
+    }
     function agregar() {
         let proveedor_id = $("#proveedor option:selected").val();
         let id = $("#nombreProducto option:selected").val();

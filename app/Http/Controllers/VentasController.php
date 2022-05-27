@@ -40,7 +40,7 @@ class VentasController extends Controller
     {
     
         $input = $request->all();
-
+       /*  dd($input); */
         //validacion para que la cantidad a vender no sea mayor al stock disponible
         foreach ($input["Producto"] as $key => $value) {
             $productosRecorridos = Producto::findOrFail($value);
