@@ -45,7 +45,7 @@
     <div class="mobile-menu md:hidden">
         <div class="mobile-menu-bar">
             <a href="" class="flex mr-auto">
-                <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="/template/images/logo.svg">
+                <img alt="Midone Tailwind HTML Admin Template" class="w-20" src="/template/images/logo.png">
             </a>
             <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2"
                     class="w-8 h-8 text-white transform -rotate-90"></i> </a>
@@ -65,14 +65,14 @@
                 </a>
                 <ul class="">
                     @if (auth()->user()->rol_id == 1)
-                    <li>
-                        <a href="/rol" class="menu">
-                            <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
-                            <div class="menu__title"> Gestión de roles </div>
-                        </a>
-                    </li>        
+                        <li>
+                            <a href="/rol" class="menu">
+                                <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
+                                <div class="menu__title"> Gestión de roles </div>
+                            </a>
+                        </li>
                     @endif
-                    
+
                     <li>
                         <a href="/usuario" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
@@ -110,14 +110,14 @@
                 </a>
                 <ul class="">
                     @if (auth()->user()->rol_id == 1)
-                    <li>
-                        <a href="/proveedor" class="menu">
-                            <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
-                            <div class="menu__title"> Gestión de proveedores </div>
-                        </a>
-                    </li>        
+                        <li>
+                            <a href="/proveedor" class="menu">
+                                <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
+                                <div class="menu__title"> Gestión de proveedores </div>
+                            </a>
+                        </li>
                     @endif
-                    
+
                     <li>
                         <a href="/compra" class="menu">
                             <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
@@ -153,9 +153,7 @@
         <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
             <a href="" class="intro-x flex items-center pl-5 pt-4">
-                <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="/template/images/logo.svg">
-                <span class="hidden xl:block text-white text-lg ml-3"> Sangal<span class="font-medium">Tec</span>
-                </span>
+                <img alt="Midone Tailwind HTML Admin Template" class="w-30" src="/template/images/logo.png">
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -301,8 +299,7 @@
                                         @endif
                                     @else
                                         <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link" data-toggle="dropdown"" href="
-                                                #">
+                                            <a id="navbarDropdown" class="nav-link" data-toggle="dropdown">
                                                 {{ Auth::user()->name }}
                                             </a>
                                         </li>
@@ -311,10 +308,10 @@
 
 
                             </div>
-                            
+
                             <div class="p-2 border-t border-theme-40">
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"" href="
+                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md" href="
                                         {{ route('logout') }}" onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                         <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i>
@@ -332,7 +329,7 @@
                 </div>
             </div>
 
-            <div class="intro-y mt-5 p-5  col-span-12 lg:col-span-12" >
+            <div class="intro-y mt-5 p-5  col-span-12 lg:col-span-12">
                 <div class=" ">
                     @yield('content')
                 </div>
@@ -371,8 +368,8 @@
 
 
     <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>>
 
     <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->

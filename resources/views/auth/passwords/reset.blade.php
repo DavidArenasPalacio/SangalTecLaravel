@@ -24,17 +24,14 @@
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="" class="-intro-x flex items-center pt-5">
-                        <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="/template/images/logo.svg">
-                        <span class="text-white text-lg ml-3"> Sangal<span class="font-medium">Tec</span> </span>
-                    </a>
+
                     <div class="my-auto">
                         <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
-                            src="/template/images/illustration.svg">
+                            src="/template/images/logo.png">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            Unos clics más para
+                            Recuerda ingresar
                             <br>
-                            Iniciar sesión en su cuenta.
+                            Una contraseña segura.
                         </div>
 
                     </div>
@@ -48,57 +45,91 @@
                         <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to
                             your account. Manage all your e-commerce accounts in one place</div>
                         <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+                            @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                            <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="intro-x mt-8">
-                            
-                                <input id="inputEmail" type="hidden" class="intro-x login__input input input--lg border border-gray-300 block @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                            <div class="intro-x mt-8">
+
+                                <input id="inputEmail" type="hidden"
+                                    class="intro-x login__input input input--lg border border-gray-300 block @error('email') is-invalid @enderror"
+                                    name="email" value="{{ $email ?? old('email') }}" required autocomplete="email"
+                                    autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            
-                                <label for="inputEmail" style="display:none; class="col-md-4 col-form-label text-md-right">{{ __('Correo Electronico') }}</label>
-                        </div>
 
-                        <div class="mt-6">
-                        
-                            <input id="inputPassword" type="password" class="intro-x login__input input input--lg border border-gray-300 block @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                            <label for="inputPassword" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-                        </div>
-
-                        <div class="mt-6">
-                            
-                            <input id="password-confirm" type="password" class="fintro-x login__input input input--lg border border-gray-300 block" name="password_confirmation" required autocomplete="new-password">
-                            
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mt-8 mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="button button--lg w-full text-white bg-theme-1 xl:mr-3">
-                                    {{ __('Restaurar Contraseña') }}
-                                </button>
+                                <label for="inputEmail" style="display:none; class="
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    col-md-4 col-form-label text-md-right">{{ __('Correo Electronico') }}</label>
                             </div>
-                        </div>
-                    </form>
+
+                            <div class="mt-6">
+
+                                <input id="inputPassword" type="password"
+                                    class="intro-x login__input input input--lg border border-gray-300 block @error('password') is-invalid @enderror"
+                                    name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                                <label for="inputPassword"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+                            </div>
+
+                            <div class="mt-6">
+
+                                <input id="password-confirm" type="password"
+                                    class="fintro-x login__input input input--lg border border-gray-300 block"
+                                    name="password_confirmation" required autocomplete="new-password">
+
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Contraseña') }}</label>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between mt-8 mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit"
+                                        class="button button--lg w-full text-white bg-theme-1 xl:mr-3">
+                                        {{ __('Restaurar Contraseña') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-    
+
         <script src="../template/js/app.js"></script>
     </body>
 
