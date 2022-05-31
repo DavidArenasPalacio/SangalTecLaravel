@@ -14,7 +14,7 @@
                         <label for="proveedor_id">Proveedor:</label>
 
                         <div class="mt-2">
-                            <select class="input  border w-full" onchange="deshabilitar_proveedor()" id="proveedor">
+                            <select class="input  border w-full"  id="proveedor">
                                 <option selected="true" disabled="disabled">
                                     ------ Seleccione -----
                                 </option>
@@ -109,7 +109,7 @@
                         <tfoot>
                             <tr>
                                 <th colspan="5" class="text-center">
-                                    Total: <b id="total">0</b>
+                                    Total: $<b id="total">0</b>
                                 </th>
                             </tr>
                         </tfoot>
@@ -158,6 +158,8 @@
     function obtener_precio() {
         let Precio_Compra = $("#nombreProducto option:selected").attr("precio");
         $("#precio").val(Precio_Compra);
+
+        deshabilitar_proveedor()
     }
 
 
@@ -211,7 +213,7 @@
                     ${nombreProducto}
                 </td>
                 <td class="cantidades">${cantidad}</td>
-                <td>${precio}</td>
+                <td>$${precio}</td>
                 <td class="subtotal">${subtotal}</td>
 
                 <td>

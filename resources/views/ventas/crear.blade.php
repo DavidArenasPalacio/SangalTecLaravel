@@ -10,29 +10,29 @@
                     @csrf
                     <div class="preview mt-5">
                         <div class="">
-                            <input type="hidden" name="Documento" id="Documentodb">
-                            <label for="">Documento Del Cliente:</label>
+                            <input type="hidden" name="nombreC" id="nombreCdb">
+                            <label for="">Nombre Del Cliente:</label>
 
                             <div class="mt-2">
-                                <select class="input border  w-full " name="Documento" id="Documento"
+                                <select class="input border  w-full " name="nombreC" id="nombreC"
                                     onchange="colocar_nombre()">
 
                                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                     @foreach ($clientes as $value)
-                                        <option nombre="{{ $value->Nombre_Cliente }}" value="{{ $value->id }} "
-                                            {{ old('Documento') == $value->id ? 'selected' : '' }}>
-                                            {{ $value->Documento_Cliente }}</option>
+                                        <option documento="{{ $value->Documento_Cliente }}" value="{{ $value->id }} "
+                                            {{ old('nombreC') == $value->id ? 'selected' : '' }}>
+                                            {{ $value->Nombre_Cliente }}</option>
                                     @endforeach
 
                                 </select>
                             </div>
                             <div class="mt-5">
-                                <label for="">Nombre Del Cliente:</label>
+                                <label for="">Documento Del Cliente:</label>
 
-                                <input type="text" id="nombre" readonly name="nombreC"
-                                    class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('nombreC') border-theme-6 @enderror"
-                                    min="1" value="{{ old('nombreC') }}">
-                                @error('nombreC')
+                                <input type="text" id="documento" readonly name="Documento"
+                                    class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Documento') border-theme-6 @enderror"
+                                    min="1" value="{{ old('Documento') }}">
+                                @error('Documento')
                                     <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                                 @enderror
                             </div>
@@ -114,7 +114,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="5" class="text-center">
-                                        Total: <b id="total">0</b>
+                                        Total: $<b id="total">0</b>
                                     </th>
                                 </tr>
                             </tfoot>
@@ -132,17 +132,23 @@
 
 @section('script')
     <script>
+
+        function deshabilitar_cliente(){
+            document.querySelector("#nombreC").setAttribute("disabled", "true");
+            document.querySelector("#nombreCdb").value = $("#nombreC option:selected").val();
+        }
+
         function obtener_precio() {
             let Precio_Compra = $("#Producto option:selected").attr("precio");
             $("#precio").val(Precio_Compra);
+
+            deshabilitar_cliente()
         }
 
         function colocar_nombre(e) {
-            let nombre = $("#Documento option:selected").attr("nombre");
-            $("#nombre").val(nombre);
+            let documento = $("#nombreC option:selected").attr("documento");
+            $("#documento").val(documento);
 
-            document.querySelector("#Documento").setAttribute("disabled", "true");
-            document.querySelector("#Documentodb").value = $("#Documento option:selected").val();
         }
 
 
@@ -209,7 +215,7 @@
                         <td class="subtotal">${subtotal}</td>
 
                         <td>
-                            <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id}, ${parseInt(subtotal)})">x</button>
+                            <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id})">x</button>
                         </td>
                         </tr>
                     `);
@@ -243,13 +249,14 @@
             console.log(total);
         }
 
-        function eliminar(id, subtotal) {
-
+        function eliminar(id) {
             $("#tr-" + id).remove();
+            let total = 0;
+            $(".subtotal").each(function(i, e) {
+                total -= total - parseInt(e.innerHTML);
+            })
 
-            let total = $("#total").text();
-            console.log(total);
-            $("#total").text(parseInt(total) - subtotal);
+            $("#total").text(total);
         }
     </script>
 @endsection

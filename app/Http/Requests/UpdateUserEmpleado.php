@@ -26,8 +26,8 @@ class UpdateUserEmpleado extends FormRequest
         return [
             'telefono_usuario' => ['required','numeric','digits_between:7,10'],
             'direccion_usuario' => ['required'],
-            'email_usuario' => ['required','email:rfc,dns'],
-            'password_usuario' => ['required','min:8'],
+            'correo_usuario' => ['required','email:rfc,dns'],
+            'contraseña_usuario' => ['required','min:8'],
         ];
     }
 }

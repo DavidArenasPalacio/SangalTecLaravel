@@ -74,10 +74,10 @@
                 <div class="w-full">
                     <label for="email">Correo:</label>
 
-                    <input type="email" id="email" name="email_usuario"
-                        class="input w-full border mt-2 @error('email_usuario') border-theme-6 @enderror"
+                    <input type="email" id="email" name="correo_usuario"
+                        class="input w-full border mt-2 @error('correo_usuario') border-theme-6 @enderror"
                         placeholder="Ingrese el teléfono" maxlength="225" value="{{ $usuario->email }}">
-                    @error('email_usuario')
+                    @error('correo_usuario')
                         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                     @enderror
                 </div>
@@ -90,10 +90,10 @@
                     <span class="icon-eye" style="position: absolute; right: 1%; top: 55%;">
                         <i class="fas fa-eye" onclick="mostrar()"></i>
                     </span>
-                    <input type="password" id="password_usuario" name="password_usuario"
-                        class="input w-full border mt-2 @error('password_usuario') border-theme-6 @enderror"
+                    <input type="password" id="contraseña_usuario" name="contraseña_usuario"
+                        class="input w-full border mt-2 @error('contraseña_usuario') border-theme-6 @enderror"
                         placeholder="Ingrese la contraseña">
-                    @error('password_usuario')
+                    @error('contraseña_usuario')
                         <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                     @enderror
                     {{-- <input class="input border-theme-6 mt-5" type="button" onclick="mostrar()" value="Mostrar/Ocultar"> --}}
@@ -141,14 +141,6 @@
 
             })
 
-            // var tipo = document.getElementById("password_usuario");
-
-            // if(tipo.type == "password"){
-            //     tipo.type = "text";
-
-            // }else{
-            //     tipo.type = "password";
-            // }
         }
 
         $(document).ready(function() {
@@ -189,14 +181,14 @@
                     direccion_usuario: {
                         required: true
                     },
-                    email_usuario: {
+                    correo_usuario: {
                         required: true,
                         formEmail: true,
                         /*                     normalizer: function(value) {
                                                 return $.trim(value);
                                             } */
                     },
-                    password_usuario: {
+                    contraseña_usuario: {
                         required: true
                     }
                 },

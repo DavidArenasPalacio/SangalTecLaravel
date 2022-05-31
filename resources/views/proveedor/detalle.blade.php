@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="box  p-5">
-    <table class="table table-report table-report--bordered display  ">
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h1 class="text-lg font-medium mr-auto">
+        Detalle del proveedor
+    </h1>   
+</div>
+<div class="box  p-5 mt-10">
+<div class="overflow-x-auto">
+    <table class="table table-report table-report--bordered display table--sm">
         <thead>
             <tr class="bg-gray-700 text-white">                        
                 <th class="border-b-2 whitespace-no-wrap">Nombre</th>
@@ -14,18 +19,18 @@
         </thead>
         <tbody>                     
             <tr>        
-                <td>{{$proveedor->Nombre_Proveedor}}</td>
-                <td>{{$proveedor->Correo_Proveedor}}</td>
-                <td>{{$proveedor->Telefono_Proveedor}}</td>
-                <td>{{$proveedor->Direccion_Proveedor}}</td>  
+                <td class="border-b ">{{$proveedor->Nombre_Proveedor}}</td>
+                <td class="border-b ">{{$proveedor->Correo_Proveedor}}</td>
+                <td class="border-b ">{{$proveedor->Telefono_Proveedor}}</td>
+                <td class="border-b ">{{$proveedor->Direccion_Proveedor}}</td>  
             </tr> 
 
         </tbody>                
-        </table>
+    </table>
 </div>
     
-<div class="flex justify-between">
-    <a href="/proveedor" class="button border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-</div>
+    <div class="flex justify-between">
+        <a href="/proveedor" class="button border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
+    </div>
 </div>
 @endsection

@@ -91,8 +91,8 @@ class UserController extends Controller
                 "documento" => $input["documento_usuario"],
                 "telefono" => $input["telefono_usuario"],
                 "direccion" => $input["direccion_usuario"],
-                "email" => $input["email_usuario"],
-                "password" => Hash::make($input["password_usuario"]),
+                "email" => $input["correo_usuario"],
+                "password" => Hash::make($input["contraseña_usuario"]),
                 "estado" => 1
             ]);
 
@@ -141,8 +141,8 @@ class UserController extends Controller
                 "documento" => $input["documento_usuario"],
                 "telefono" => $input["telefono_usuario"],
                 "direccion" => $input["direccion_usuario"],
-                "email" => $input["email_usuario"],
-                "password" => Hash::make($input["password_usuario"]),
+                "email" => $input["correo_usuario"],
+                "password" => Hash::make($input["contraseña_usuario"]),
             ]);
 
 
@@ -193,8 +193,8 @@ class UserController extends Controller
             $usuario->update([
                 "telefono" => $input["telefono_usuario"],
                 "direccion" => $input["direccion_usuario"],
-                "email" => $input["email_usuario"],
-                "password" => Hash::make($input["password_usuario"]),
+                "email" => $input["correo_usuario"],
+                "password" => Hash::make($input["contraseña_usuario"]),
             ]);
 
 

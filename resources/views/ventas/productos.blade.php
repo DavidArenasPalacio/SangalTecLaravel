@@ -5,8 +5,12 @@ Productos Vendidos
 @endsection
 
 @section('content')
-
-<div class="box p-5 ">
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h1 class="text-lg font-medium mr-auto">
+        Detalle de la venta
+    </h1>   
+</div>
+<div class="box p-5 mt-10">
 <div class="overflow-x-auto">
     <table class="table table-report table-report--bordered display  table--sm">
         <thead>
@@ -21,9 +25,9 @@ Productos Vendidos
             @foreach ($ventasdetalle as $value)
             <tr>
                 <td class="border-b ">{{$value->Productos}}</td>
-                <td class="border-b ">{{$value->Precio_unitario}}</td>
+                <td class="border-b ">${{$value->Precio_unitario}}</td>
                 <td class="border-b ">{{$value->Cantidad}}</td>
-                <td class="border-b "> {{$value->SubTotal}}</td>
+                <td class="border-b ">${{$value->SubTotal}}</td>
             </tr>
             @endforeach
         </tbody>

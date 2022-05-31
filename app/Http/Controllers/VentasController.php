@@ -58,7 +58,7 @@ class VentasController extends Controller
     DB::beginTransaction();
 
         $ventas = Ventas::create([
-            'cliente_id' => $input["Documento"],
+            'cliente_id' => $input["nombreC"],
             'usuario_id' => auth()->user()->id,
             'Precio_total' => $input["total"],
             'Estado' => 1,
@@ -90,8 +90,11 @@ class VentasController extends Controller
 
         DB::commit();
 
-
-
+        if ($productCant->Cantidad == 0) {
+            // $productCant->Estado = 0;
+            alert()->success('Venta registrada exitosamente pero el stock de '. $productCant->Nombre_Producto .' se encuentra en 0');
+            return redirect("/ventas");
+        }
         alert()->success('Venta registrada exitosamente');
         return redirect("/ventas");
 
