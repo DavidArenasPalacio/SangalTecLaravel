@@ -92,6 +92,11 @@ class VentasController extends Controller
 
         if ($productCant->Cantidad == 0) {
             // $productCant->Estado = 0;
+            // dd($productCant);
+            $productCant->update([
+
+                "Estado"=>0,
+            ]);
             alert()->success('Venta registrada exitosamente pero el stock de '. $productCant->Nombre_Producto .' se encuentra en 0');
             return redirect("/ventas");
         }

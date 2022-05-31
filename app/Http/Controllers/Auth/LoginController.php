@@ -46,8 +46,17 @@ class LoginController extends Controller
         ->where("users.email", "=", $request["email"])
         ->first();
         
+        if($usuario === null) 
+        {
+            
+            alert()->warning('Advertencia', 'El usuario no esta registrado en el sistema');
+            return redirect("/login");
+        }
         if($usuario->estado != 1){
-            return redirect("/login")->with('error', 'El usuario está deshabilitado');
+
+            alert()->warning('Advertencia', 'El usuario está deshabilitado');
+            return redirect("/login");
+            
         }
 
 
