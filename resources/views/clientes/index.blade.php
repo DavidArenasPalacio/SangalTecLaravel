@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-full">
+<div class="m-auto" style="width: 80% !important">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Gestion de clientes
@@ -15,12 +15,11 @@
         <table id="clientes" class="table 
         w-full display  dtr-inline dt-responsive mb-2 mt-5">
             <thead>
-                <tr class="">
+                <tr class="border-t-2">
 
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Documento</th>
-                    <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
-                    <th class="border-b-2 whitespace-no-wrap">Dirección</th>
+                    
                     <th class="border-b-2 whitespace-no-wrap">Acciones</th>
                 </tr>
             </thead>
@@ -71,14 +70,6 @@ $('#clientes').DataTable({
         {
             data: 'Documento_Cliente',
             name: 'Documento_Cliente'
-        },
-        {
-            data: 'Telefono_Cliente',
-            name: 'Telefono_Cliente'
-        },
-        {
-            data: 'Direccion_Cliente',
-            name: 'Direccion_Cliente'
         },
         {
             data: 'acciones',

@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="w-full">
+<div class="m-auto" style="width: 80% !important">
 
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
@@ -18,8 +18,7 @@
                 <tr class="">
                     <th class="border-b-2 whitespace-no-wrap">Nombre</th>
                     <th class="border-b-2 whitespace-no-wrap">Correo</th>
-                    <th class="border-b-2 whitespace-no-wrap">Teléfono</th>
-                    <th class="border-b-2 whitespace-no-wrap">Dirección</th>
+                    
                     <th class="border-b-2 whitespace-no-wrap">Estado</th>
                     <th class="border-b-2 whitespace-no-wrap">Acciones</th>
                 </tr>
@@ -73,14 +72,7 @@
                 data: 'Correo_Proveedor',
                 name: 'Correo_Proveedor'
             },
-            {
-                data: 'Telefono_Proveedor',
-                name: 'Telefono_Proveedor'
-            },
-            {
-                data: 'Direccion_Proveedor',
-                name: 'Direccion_Proveedor'
-            },
+            
             {
                 data: 'estado',
                 name: 'estado',
