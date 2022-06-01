@@ -49,9 +49,7 @@ class ComprasController extends Controller
 
                     if ($compra->Estado == 1) {
                         $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
-                    } else {
-                        $estado = '<a  class="btn btn-success btn-sm btnEstado"><i class="fas fa-check-circle"></i></a>';
-                    }
+                    } 
                 }
 
                 return '<a href="/compra/detalle/' . $compra->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-eye"></i></a>' . '      ' . $estado;
@@ -74,9 +72,7 @@ class ComprasController extends Controller
     public function crear()
     {
 
-        $productos = Producto::select("productos.*")
-            ->where("productos.Estado", "=", 1)
-            ->get();
+        $productos = Producto::all();
 
         $proveedores = Proveedor::select("proveedor.*")
             ->where("proveedor.Estado", "=", 1)
@@ -126,6 +122,14 @@ class ComprasController extends Controller
             
             $productoUpdate->update(["Cantidad" => $productoUpdate->Cantidad + $input["cantidades"][$key]]);
             
+            if ($productoUpdate->Cantidad > 0) {
+                // $productCant->Estado = 0;
+                // dd($productCant);
+                $productoUpdate->update([
+                    "Estado"=>1,
+                ]);
+               
+            }
 
         }
 
@@ -166,6 +170,15 @@ class ComprasController extends Controller
 
                         
                     $productos->update(["Cantidad" => $productos->Cantidad - $value->Cantidad]);
+
+                    if ($productos->Cantidad == 0) {
+                        // $productCant->Estado = 0;
+                        // dd($productCant);
+                        $productos->update([
+                            "Estado"=>0,
+                        ]);
+                       
+                    }
                 }
             }
 

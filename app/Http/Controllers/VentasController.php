@@ -83,21 +83,20 @@ class VentasController extends Controller
 
             $productCant->update(["Cantidad" => $productCant->Cantidad - $input["cantidades"][$key]]);
 
-            // if ($productCant->Cantidad == 0) {
-            //     $productCant->Estado = 2;
-            // }
+            if ($productCant->Cantidad == 0) {
+                // $productCant->Estado = 0;
+                // dd($productCant);
+                $productCant->update([
+                    "Estado"=>0,
+                ]);
+               
+            }
         }
 
         DB::commit();
 
         if ($productCant->Cantidad == 0) {
-            // $productCant->Estado = 0;
-            // dd($productCant);
-            $productCant->update([
-
-                "Estado"=>0,
-            ]);
-            alert()->success('Venta registrada exitosamente pero el stock de '. $productCant->Nombre_Producto .' se encuentra en 0');
+            alert()->success('Venta registrada exitosamente pero  el stock de algunos productos  se encuentra en 0');
             return redirect("/ventas");
         }
         alert()->success('Venta registrada exitosamente');
