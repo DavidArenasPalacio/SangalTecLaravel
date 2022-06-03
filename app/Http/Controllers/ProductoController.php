@@ -22,7 +22,6 @@ class ProductoController extends Controller
     public function listar(){
         $producto = Producto::select("productos.*", "categoria.Nombre_Categoria as categoria")
         ->join("categoria", "categoria.id", "=", "productos.categoria_id")
-        ->where("categoria.Estado", 1)
         ->get();
        // return response()->json($producto);
         return DataTables::of($producto)

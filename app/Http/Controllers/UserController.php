@@ -33,7 +33,6 @@ class UserController extends Controller
 
         $users = User::select("users.id", "users.name as nombre", "users.documento", "users.telefono", "users.direccion", "users.email", "users.estado", "rol.Nombre_Rol as rol")
             ->join("rol", "rol.id", "=", "users.rol_id")
-            ->where("rol.Estado",1)
             ->get();
         }
         else{

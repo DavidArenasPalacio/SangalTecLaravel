@@ -103,8 +103,7 @@
             {
                 data: 'estado',
                 name: 'estado',
-                orderable: false,
-                serachable: false
+
             },
             {
                 data: 'acciones',

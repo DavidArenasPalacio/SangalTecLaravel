@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Rol;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\SaveRol;
+use App\Models\User;
 
 class RolController extends Controller
 {
@@ -113,10 +114,9 @@ class RolController extends Controller
     public function updateState($id, $estado)
     {
         
-
         $rol = Rol::findOrFail($id);
+        $usuarios = User::all();
 
-        
         if ($rol == null) {
         
             alert()->warning('Error', 'Error al actualizar estado');
@@ -130,6 +130,15 @@ class RolController extends Controller
 
                 $rol->update(["Estado" => $estado]);
 
+                foreach ($usuarios as $value) {
+                
+                    if ($value->rol_id  == $id) {
+                        $usuario = User::find($value->id);
+                        $usuario->update([
+                            'estado' => $estado
+                        ]);
+                    }
+                }
                 alert()->success('Estado actualizado exitosamente');
                     return redirect("/rol");
 

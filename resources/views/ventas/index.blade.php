@@ -123,7 +123,10 @@
             },
             {
                 data: 'acciones',
-                name: 'acciones'
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
             }
         ]
     });

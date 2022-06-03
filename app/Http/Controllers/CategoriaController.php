@@ -7,6 +7,8 @@ use App\Models\Categoria;
 use Yajra\Datatables\Datatables; 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SaveCategoria;
+use App\Models\Producto;
+
 class CategoriaController extends Controller
 {
 
@@ -115,7 +117,7 @@ class CategoriaController extends Controller
         
 
         $categoria = Categoria::findOrFail($id);
-
+        $productos = Producto::all();
         
         if ($categoria == null) {
         
@@ -123,11 +125,29 @@ class CategoriaController extends Controller
             return redirect("/categoria");
         }
 
+
+        //$productos->update(["Estado" => $estado]);
+    
+
         try {
 
-            $categoria->update(["Estado" => $estado]);
+            $categoria->update([
+                'Estado' => $estado
+            ]);
+            
+            foreach ($productos as $value) {
+                
+                if ($value->categoria_id  == $id) {
+                    $producto = Producto::find($value->id);
+                    $producto->update([
+                        'Estado' => $estado
+                    ]);
+                }
+            }
             alert()->success('Estado actualizado exitosamente');
             return redirect("/categoria");
+
+            
         } catch (\Exception $e) {
             alert()->warning('Error', 'Error al actualizar estado');
             return redirect("/categoria");
