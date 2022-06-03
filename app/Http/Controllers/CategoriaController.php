@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Yajra\Datatables\Datatables; 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SaveCategoria;
