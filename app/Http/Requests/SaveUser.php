@@ -29,7 +29,7 @@ class SaveUser extends FormRequest
             'telefono_usuario' => ['required','numeric','digits_between:7,10'],
             'direccion_usuario' => ['required'],
             'correo_usuario' => ['required','email:rfc,dns','unique:users,email'],
-            'contraseña_usuario' => ['required','min:8', 'max:15'],
+            'contraseña_usuario' => ['required','min:8', 'max:15', 'confirmed'],
         ];
     }
 }

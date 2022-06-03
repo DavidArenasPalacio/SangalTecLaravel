@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
-        <div class="w-full mr-2" style="position: relative;">
+        <div class="w-ful mr-2" style="position: relative;">
             <label for="password">Contraseña:</label>
 
             <span class="icon-eye" style="position: absolute; right: 1%; top: 55%;">
@@ -80,6 +80,12 @@
             @error('contraseña_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
+            {{-- <input class="input border-theme-6 mt-5" type="button"  value="Mostrar/Ocultar"> --}}
+        </div>
+        <div class="w-ful " style="position: relative;">
+            <label for="confirm_password">Confirmar contraseña:</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="input w-full border mt-2 @error('confirm_password') border-theme-6 @enderror" placeholder="Ingrese la contraseña">
+    
             {{-- <input class="input border-theme-6 mt-5" type="button"  value="Mostrar/Ocultar"> --}}
         </div>
     </div>

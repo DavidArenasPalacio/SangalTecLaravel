@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Producto;
 use Yajra\Datatables\Datatables; 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SaveCategoria;
@@ -124,8 +125,24 @@ class CategoriaController extends Controller
         }
 
         try {
-
+            $producto = Producto::select("productos.*")
+            ->join("categoria", "categoria.id", "=", "productos.categoria_id")
+            ->where("categoria.id", $id)->first();
+             
             $categoria->update(["Estado" => $estado]);
+
+           //dd($categoria->Estado);
+            if($categoria->Estado == 1){
+                $producto->update([
+                    "Estado"=>1,
+                ]);
+            }
+            else {
+                $producto->update([
+                    "Estado"=>0,
+                ]);
+            }
+
             alert()->success('Estado actualizado exitosamente');
             return redirect("/categoria");
         } catch (\Exception $e) {
