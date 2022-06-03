@@ -27,7 +27,7 @@ class CreateCompraTable extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('users');
             $table->foreignId('proveedor_id')->constrained('proveedor');
-            $table->double('Precio_total');
+            $table->float('Precio_total', 11,2);
             $table->tinyInteger('Estado');
             $table->timestamps();
         });
@@ -36,9 +36,9 @@ class CreateCompraTable extends Migration
             $table->id();
             $table->foreignId('compra_id')->constrained('compra');
             $table->foreignId('producto_id')->constrained('productos');
-            $table->double('Precio_unitario');
+            $table->float('Precio_unitario', 11,2);
             $table->bigInteger('Cantidad');
-            $table->double('Sub_total');
+            $table->float('Sub_total', 11,2);
             $table->timestamps();
         });
     }

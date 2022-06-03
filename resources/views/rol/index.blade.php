@@ -18,6 +18,7 @@
             <thead>
                 <tr class="border-t-2 ">
                     <th class="border-t-2 whitespace-no-wrap">Nombre</th>
+                    <th class="border-t-2 whitespace-no-wrap">Estado</th>
                     <th class="border-t-2 text-center whitespace-no-wrap">Acciones</th>
 
                 </tr>
@@ -67,6 +68,12 @@
                 data: 'Nombre_Rol',
                 name: 'Nombre_Rol',
 
+            },
+            {
+                data: 'estado',
+                name: 'estado',
+                orderable: false,
+                serachable: false,
             },
             {
                 data: 'acciones',

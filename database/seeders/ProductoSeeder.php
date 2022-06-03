@@ -26,7 +26,7 @@ class ProductoSeeder extends Seeder
         ]);
         
         Producto::create([
-            "Nombre_Producto" => "Audífonos",
+            "Nombre_Producto" => "Audifonos",
             "Precio_Compra" => 10000,
             "Precio_Venta" => 14000,
             "Cantidad" => 20,

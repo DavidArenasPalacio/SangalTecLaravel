@@ -26,7 +26,7 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->foreignId('cliente_id')->constrained('clientes');
             $table->foreignId('usuario_id')->constrained('users');
-            $table->decimal('Precio_total');
+            $table->float('Precio_total', 11,2);
             $table->tinyInteger('Estado');
             $table->timestamps();
         });
@@ -35,9 +35,9 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->foreignId('venta_id')->constrained('ventas');
             $table->foreignId('producto_id')->constrained('productos');
-            $table->decimal('Precio_unitario');
+            $table->float('Precio_unitario', 11,2);
             $table->bigInteger('Cantidad');
-            $table->decimal('Sub_total');
+            $table->float('Sub_total', 11,2);
             $table->timestamps();
         });
     }

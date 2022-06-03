@@ -22,7 +22,8 @@
                 <tr class="border-t-2 ">
 
                     <th class="whitespace-no-wrap">Nombre</th>
-
+                    <th class="whitespace-no-wrap">Estado</th>
+                    
                     @if(auth()->user()->rol_id == 1)
                     <th class="text-center whitespace-no-wrap">Acciones</th>
 
@@ -73,6 +74,12 @@
         columns: [{
                 data: 'Nombre_Categoria',
                 name: 'Nombre_Categoria'
+            },
+            {
+                data: 'estado',
+                name: 'estado',
+                orderable: false,
+                serachable: false,
             },
             @if(auth()->user()->rol_id == 1) {
                 data: 'acciones',

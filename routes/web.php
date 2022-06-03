@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::post('/rol/guardar', [RolController::class, 'save']);
     Route::get('/rol/editar/{id}', [RolController::class, 'edit']);
     Route::post('/rol/actualizar', [RolController::class, 'update']);
+    Route::get('/rol/cambiar/estado/{id}/{estado}', [RolController::class, 'updateState']);
+
     //FIN RUTAS ROLES
     
     
@@ -59,6 +61,7 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
     Route::post('/categoria/guardar', [CategoriaController::class, 'save']);
     Route::get('/categoria/editar/{id}', [CategoriaController::class, 'edit']);
     Route::post('/categoria/actualizar', [CategoriaController::class, 'update']);
+    Route::get('/categoria/cambiar/estado/{id}/{estado}', [CategoriaController::class, 'updateState']);
     //FIN RUTAS CATEGORIAS
     
     

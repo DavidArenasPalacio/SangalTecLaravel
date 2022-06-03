@@ -72,7 +72,9 @@ class ComprasController extends Controller
     public function crear()
     {
 
-        $productos = Producto::all();
+        $productos = Producto::select("productos.*")
+        ->where("productos.Estado", "=", 1)
+        ->get();
 
         $proveedores = Proveedor::select("proveedor.*")
             ->where("proveedor.Estado", "=", 1)
@@ -128,7 +130,7 @@ class ComprasController extends Controller
                 $productoUpdate->update([
                     "Estado"=>1,
                 ]);
-               
+            
             }
 
         }
@@ -177,7 +179,7 @@ class ComprasController extends Controller
                         $productos->update([
                             "Estado"=>0,
                         ]);
-                       
+                    
                     }
                 }
             }

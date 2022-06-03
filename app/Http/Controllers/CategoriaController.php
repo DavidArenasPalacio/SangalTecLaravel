@@ -21,15 +21,28 @@ class CategoriaController extends Controller
         //return response()->json($categoria);
         return DataTables::of($categoria)
         
+        ->editColumn('estado', function($categoria){
+            return $categoria->Estado == 1 ? '<a class="cursorBtn button mb-2 bg-theme-1 text-white">Disponible</a>' : '<a class="cursorBtn button mb-2 bg-theme-6 text-white">No Disponible</a>';
+        })
+
         ->addColumn('acciones', function($categoria) {
-            
+            $estado = '';
+
             if (Auth::user()->rol_id == 1) {
 
-                return '<a href="/categoria/editar/'.$categoria->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit""></i></a>';    
+                if($categoria->Estado == 1) {
+                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
+                    
+                }
+                else {
+                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
+                }
+
+                return '<a href="/categoria/editar/'.$categoria->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit""></i></a>'.' '.$estado;    
             }
 
         })
-        ->rawColumns(['acciones'])
+        ->rawColumns(['acciones','estado'])
         ->make(true);
     }
 
@@ -45,6 +58,7 @@ class CategoriaController extends Controller
 
             Categoria::create([
                 "Nombre_Categoria"=> $input["nombre"],
+                "Estado"=> 1
             ]);
 
             alert()->success('Categoría registrada exitosamente');
@@ -96,7 +110,29 @@ class CategoriaController extends Controller
         }
     }
 
+    public function updateState($id, $estado)
+    {
+        
 
+        $categoria = Categoria::findOrFail($id);
+
+        
+        if ($categoria == null) {
+        
+            alert()->warning('Error', 'Error al actualizar estado');
+            return redirect("/categoria");
+        }
+
+        try {
+
+            $categoria->update(["Estado" => $estado]);
+            alert()->success('Estado actualizado exitosamente');
+            return redirect("/categoria");
+        } catch (\Exception $e) {
+            alert()->warning('Error', 'Error al actualizar estado');
+            return redirect("/categoria");
+        }
+    }
 
 
 }

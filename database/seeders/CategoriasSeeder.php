@@ -16,24 +16,28 @@ class CategoriasSeeder extends Seeder
     {
         Categoria::create([
             "Nombre_Categoria" => "Piñateria",
+            "Estado" => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         Categoria::create([
-            "Nombre_Categoria" => "Tecnología ",
+            "Nombre_Categoria" => "Tecnologia ",
+            "Estado" => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         Categoria::create([
             "Nombre_Categoria" => "Sentimiento ",
+            "Estado" => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         Categoria::create([
-            "Nombre_Categoria" => "Académico",
+            "Nombre_Categoria" => "Academico",
+            "Estado" => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

@@ -11,7 +11,7 @@ class Rol extends Model
     protected $table = 'rol';
 
 
-    protected $fillable = ['Nombre_Rol'];
+    protected $fillable = ['Nombre_Rol','Estado'];
 
 
     public static $rules = [ 

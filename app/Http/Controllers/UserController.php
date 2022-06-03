@@ -33,6 +33,7 @@ class UserController extends Controller
 
         $users = User::select("users.id", "users.name as nombre", "users.documento", "users.telefono", "users.direccion", "users.email", "users.estado", "rol.Nombre_Rol as rol")
             ->join("rol", "rol.id", "=", "users.rol_id")
+            ->where("rol.Estado",1)
             ->get();
         }
         else{
@@ -73,7 +74,10 @@ class UserController extends Controller
 
     public function crear()
     {
-        $roles = Rol::all();
+        $roles = Rol::select("rol.*")
+        ->where("rol.Estado", "=", 1)
+        ->get();
+        
 
         return view("usuario.crear", compact("roles"));
     }
@@ -109,13 +113,16 @@ class UserController extends Controller
 
     public function edit($id)
     {
+            $roles = Rol::select("rol.*")
+            ->where("rol.Estado", "=", 1)
+            ->get();
+
             $usuario = User::find($id);
 
         if ($usuario == null) {
             alert()->warning('Error', 'Error al editar usuario');
             return redirect("/usuario");
         }
-        $roles = Rol::all();
         
         return view("usuario.edit", compact("usuario", "roles"));
     }

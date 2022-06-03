@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('rol', function (Blueprint $table) {
             $table->id();
             $table->string('Nombre_Rol', 50);
+            $table->tinyInteger('Estado');
             $table->timestamps();
         });
 
