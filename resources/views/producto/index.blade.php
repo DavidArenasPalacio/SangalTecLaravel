@@ -81,13 +81,13 @@
             {
                 data: 'Precio_Compra',
                 name: 'Precio_Compra',
-                render: $.fn.dataTable.render.number( ',', 2 )
+                render: $.fn.dataTable.render.number( '.', '.', 0, '$' )
 
             },
             {
                 data: 'Precio_Venta',
                 name: 'Precio_Venta',
-                render: $.fn.dataTable.render.number( ',', 2 )
+                render: $.fn.dataTable.render.number( '.', '.', 0, '$' )
 
             },
             {

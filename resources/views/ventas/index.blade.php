@@ -111,7 +111,7 @@
             {
                 data: 'Precio_total',
                 name: 'Precio_total',
-                render: $.fn.dataTable.render.number( ',', 2 )
+                render:  $.fn.dataTable.render.number( '.', '.', 0, '$' )
             },
             {
                 data: 'created_at',

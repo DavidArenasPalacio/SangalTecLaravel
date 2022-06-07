@@ -22,9 +22,9 @@
         @foreach($detal as $value)
             <tr>
                 <td class="border-b ">{{$value->producto}}</td>
-                <td class="border-b ">${{$value->Precio_unitario}}</td>
+                <td class="border-b formatoPeso">{{$value->Precio_unitario}}</td>
                 <td class="border-b ">{{$value->Cantidad}}</td>
-                <td class="border-b ">${{$value->Sub_total}}</td>        
+                <td class="border-b formatoPeso">{{$value->Sub_total}}</td>        
             </tr>
 
         @endforeach
@@ -39,3 +39,25 @@
 </div>
 
 @endsection
+
+
+@section("script")
+<script>
+let formatoPeso = document.querySelectorAll(".formatoPeso");
+const formatterPeso = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0
+})
+
+
+formatoPeso.forEach(e => {
+    e.textContent = formatterPeso.format(e.textContent)
+})
+
+
+</script>
+@endsection
+
+
+</script>
