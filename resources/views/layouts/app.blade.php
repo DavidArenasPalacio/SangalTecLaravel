@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
 
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/responsive.bootstrap.min.css">
 
     {{-- Plantilla --}}
     <link rel="stylesheet" href="/template/css/app.css" />
@@ -58,15 +58,15 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;" class="menu">
+                <a href="javascript:;" class="tooltip menu" title="Gestión de rol y usuario" >
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <div class="menu__title"> Usuarios <i data-feather="chevron-down" class="menu__sub-icon"></i>
+                    <div class="menu__title " > Usuarios <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
                 <ul class="">
                     @if (auth()->user()->rol_id == 1)
                         <li>
-                            <a href="/rol" class="menu">
+                            <a href="/rol" class=" menu " >
                                 <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
                                 <div class="menu__title"> Gestión de roles </div>
                             </a>
@@ -166,7 +166,7 @@
                 <li>
 
                     <a href="javascript:;"
-                        class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu side-menu--active' : 'side-menu' }}">
+                        class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu side-menu--active' : 'side-menu' }} " >
 
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                         <div class="side-menu__title"> Usuarios <i data-feather="chevron-down"
@@ -178,9 +178,9 @@
                         @if (auth()->user()->rol_id == 1)
                             <li>
                                 <a href="/rol"
-                                    class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') ? 'side-menu side-menu--active' : 'side-menu' }}">
+                                    class=" {{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') ? 'side-menu side-menu--active' : 'side-menu' }}" >
                                     <div class="side-menu__icon"> <i data-feather="hexagon"></i> </div>
-                                    <div class="side-menu__title"> Gestión de roles </div>
+                                    <div class="side-menu__title tooltip" title="This is awesome tooltip example!" data-placement="right"> Gestión de roles </div>
                                 </a>
                             </li>
                         @endif
@@ -340,12 +340,12 @@
 
     </div>
 
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    <script src="/js/markerclusterer.js">
     </script>
 
     <!-- ./wrapper -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    <script src="/js/sweetalert2.all.min.js"></script>
     @include('sweetalert::alert')
     <!-- jQuery -->
     <script src="/plugins/jquery/jquery.min.js"></script>
@@ -353,10 +353,10 @@
     <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <!-- Jquery Validate -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    <script src="/js/jquery.validate.min.js"
         integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"
+    <script src="/js/additional-methods.min.js"
         integrity="sha512-XZEy8UQ9rngkxQVugAdOuBRDmJ5N4vCuNXCh8KlniZgDKTvf7zl75QBtaVG1lEhMFe2a2DuA22nZYY+qsI2/xA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -367,9 +367,9 @@
     <!-- Bootstrap 4 -->
 
 
-    <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>>
+    <script src="/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/js/dataTables.responsive.min.js"></script>
+    <script src="/js/responsive.bootstrap.min.js"></script>>
 
     <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->

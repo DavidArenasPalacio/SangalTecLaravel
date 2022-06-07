@@ -53,6 +53,18 @@ class UsuariosSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
+        User::create([
+            "name" => "julian",
+            "documento" => "2387763898",
+            "telefono" => "7465542",
+            "direccion" => "Cr 23 #50",
+            "email" => "yjloaiza1@misena.edu.co",
+            "password" => Hash::make("123456789"),
+            "estado" => 1,
+            "rol_id" => 2,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
         User::create([
             "name" => "sebastian",
