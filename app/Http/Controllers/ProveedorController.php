@@ -28,11 +28,11 @@ class ProveedorController extends Controller
                 $estado = '';
 
                 if ($proveedor->Estado == 1) {
-                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
+                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/0" class="btn btn-danger btn-sm text-red-600" title="Click aqui para deshabilitar este proveedor"><i class="fas fa-ban"></i></a>';
                 } else {
-                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
+                    $estado = '<a href="/proveedor/cambiar/estado/' . $proveedor->id . '/1" class="btn btn-danger btn-sm text-green-600" title="Click aqui para habilitar este proveedor"><i class="fas fa-check-circle"></i></a>';
                 }
-                return '<a href="/proveedor/editar/'.$proveedor->id.'" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>'.' '.'<a href="/proveedor/detalle/' . $proveedor->id . '" class="btn btn-secondary btn-sm"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
+                return '<a href="/proveedor/editar/'.$proveedor->id.'" class="btn btn-secondary btn-sm text-blue-800" title="Click aqui para editar este proveedor"><i class="fas fa-edit"></i></a>'.' '.'<a href="/proveedor/detalle/' . $proveedor->id . '" class="btn btn-secondary btn-sm" title="Click aqui para ver el detalle de este proveedor"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
             })
             
             ->rawColumns(['estado', 'acciones'])

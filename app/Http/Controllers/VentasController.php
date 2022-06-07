@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveVenta;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Models\User;
@@ -36,10 +37,15 @@ class VentasController extends Controller
         return view('ventas.crear', compact('productos','clientes'));
     }
 
-    public function store(Request $request)
+    public function store(SaveVenta $request)
     {
     
         $input = $request->all();
+        if ($input == null) {
+            alert()->warning('error', 'Error al registrar la venta');
+            return redirect("/ventas");
+        }
+        
        /*  dd($input); */
         //validacion para que la cantidad a vender no sea mayor al stock disponible
         foreach ($input["Producto"] as $key => $value) {
@@ -67,7 +73,8 @@ class VentasController extends Controller
         
 
         foreach ($input["Producto"] as $key => $value) {
-            
+
+          
             $ventasdetalle = VentasDetalle::create([
 
                 'producto_id' => $value,
@@ -103,7 +110,7 @@ class VentasController extends Controller
         return redirect("/ventas");
 
         } catch (\Throwable $e) {
-            
+            DB::rollBack();
             alert()->warning('error', 'Error al registrar la venta');
             return redirect("/ventas");
         }
@@ -133,12 +140,12 @@ class VentasController extends Controller
                 if (Auth::user()->rol_id == 1) {
 
                     if ($ventas->Estado == 1) {
-                        $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a href="/ventas/cambiarEstado/' . $ventas->id . '/0" class="btn btn-danger btn-sm text-red-600" title="Click aqui para anular esta venta"><i class="fas fa-ban"></i></a>';
                     }
                     
                 }
 
-                return '<a href="/ventas/verproductos/' . $ventas->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
+                return '<a href="/ventas/verproductos/' . $ventas->id . '" class="btn btn-secondary btn-sm text-blue-800" title="Click aqui para ver detalle de esta venta"><i class="fas fa-eye"></i></a>' . ' ' . $estado;
             })
             ->rawColumns(['estado', 'acciones'])
             ->make(true);

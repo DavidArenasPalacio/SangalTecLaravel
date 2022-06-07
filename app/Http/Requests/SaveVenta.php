@@ -24,8 +24,8 @@ class SaveVenta extends FormRequest
     public function rules()
     {
         return [
-            'Documento' => ['required'],
-            'Producto' => ['required'],
+            'nombreC' => ['required'],
+            'producto' => ['required'],
             'cantidad' => ['required','numeric']
             // 'precio' => ['required'],  
             // 'precioTotal' => ['required'] 

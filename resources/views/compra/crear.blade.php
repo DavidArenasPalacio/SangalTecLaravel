@@ -10,11 +10,12 @@
                     @csrf
                     <div class="preview mt-5">
                         <div class="">
-                            <input type="hidden" name="proveedor_id" id="proveedorDb">
+                            <input type="hidden" name="proveedor" id="proveedorDb">
                             <label for="proveedor_id">Proveedor:</label>
 
                             <div class="mt-2">
-                                <select class="input  border w-full" id="proveedor">
+                                <select class="input  border w-full @error('proveedor') border-theme-6 @enderror"
+                                    id="proveedor">
                                     <option selected="true" disabled="disabled">
                                         ------ Seleccione -----
                                     </option>
@@ -24,6 +25,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('proveedor')
+                                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                                @enderror
                             </div>
                             @if (auth()->user()->rol_id == 1)
                                 <div class="mt-5">
@@ -37,7 +41,9 @@
                         <div>
                             <label for="">Producto:</label>
                             <div class="mt-2">
-                                <select class="input  border w-full mr-2" onchange="obtener_precio()" id="nombreProducto">
+                                <select name="producto"
+                                    class="input  border w-full mr-2 @error('producto') border-theme-6 @enderror"
+                                    onchange="obtener_precio()" id="nombreProducto">
                                     <option selected="true" disabled="disabled">
                                         ------ Seleccione -----
                                     </option>
@@ -47,6 +53,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('producto')
+                                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -67,10 +76,9 @@
                     <div class="mt-5">
                         <label for="cantidad">Cantidad:</label>
 
-                        <input type="number" id="cantidad"
+                        <input name="Cantidad" type="number" id="cantidad"
                             class="input w-full border mt-2 @error('Cantidad') border-theme-6 @enderror"
-                            placeholder="Ingrese la cantidad del producto" min="1" value="{{ old('Cantidad') }}"
-                            onkeyup="validarCantidad()" />
+                            placeholder="Ingrese la cantidad del producto" min="1" onkeyup="validarCantidad()" />
                         @error('Cantidad')
                             <div class="text-theme-6 mt-2">
                                 <strong>{{ $message }}</strong>
@@ -78,8 +86,10 @@
                         @enderror
                     </div>
                     <div class="flex justify-between">
-                        <a href="/compra" class="button border bg-gray-600 text-white mr-2 mt-5">Volver</a>
-                        <button type="button" class="button bg-theme-1 text-white mt-5" onclick="agregar()">
+                        <a href="/compra" class="button border bg-gray-600 text-white mr-2 mt-5 tooltip"
+                            title="Click aqui para volver a la lista de las compras">Volver</a>
+                        <button type="button" class="button bg-theme-1 text-white mt-5 tooltip"
+                            title="Click aqui para agregar el producto a la compra" onclick="agregar()">
                             Agregar Producto
                         </button>
                     </div>
@@ -120,7 +130,8 @@
                                 </tfoot>
                             </table>
                         </div>
-                        <button type="submit" class="button w-full mr-1 mb-2 bg-theme-1 text-white">
+                        <button type="submit" class="button w-full mr-1 mb-2 bg-theme-1 text-white tooltip"
+                            title="Click aqui para guardar el registro de la compra">
                             Guardar
                         </button>
                     </div>
@@ -129,7 +140,7 @@
         </form>
     </div>
     @endsection @section('script')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#form').validate({ // initialize the plugin
                 rules: {
@@ -153,7 +164,7 @@
 
             });
         });
-    </script>
+    </script> --}}
     <script>
         function deshabilitar_proveedor() {
             document.querySelector("#proveedor").setAttribute("disabled", "true");
@@ -223,7 +234,7 @@
                 <td class="subtotal">${subtotal}</td>
 
                 <td>
-                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${id})">x</button>
+                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white tooltip" title="Click aqui para eliminar este producto de la compra" onclick="eliminar(${id})">x</button>
                 </td>
                 </tr>
             `);

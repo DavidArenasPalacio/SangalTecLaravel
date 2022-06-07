@@ -58,15 +58,17 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;" class="tooltip menu" title="Gestión de rol y usuario" >
+                <a href="javascript:;" class="tooltip menu" title="Gestión de rol y usuario">
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
-                    <div class="menu__title " > Usuarios <i data-feather="chevron-down" class="menu__sub-icon"></i>
+                    <div class="menu__title tooltip"
+                        title="Se podrá registrar, visualizar, editar y cambiar estado de los usuarios y roles registrados en el sistema, ">
+                        Usuarios <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
                 <ul class="">
                     @if (auth()->user()->rol_id == 1)
                         <li>
-                            <a href="/rol" class=" menu " >
+                            <a href="/rol" class=" menu ">
                                 <div class="menu__icon"> <i data-feather="hexagon"></i> </div>
                                 <div class="menu__title"> Gestión de roles </div>
                             </a>
@@ -84,7 +86,8 @@
             <li>
                 <a href="javascript:;" class="menu">
                     <div class="menu__icon"> <i data-feather="package"></i> </div>
-                    <div class="menu__title"> Productos <i data-feather="chevron-down" class="menu__sub-icon"></i>
+                    <div class="menu__title tooltip" title="El sistema permitirá registrar, visualizar, editar y actualizar estado de un producto y una categoría, además se deberá colocar la categoría a la que pertenece la cual debe estar previamente registrada.
+                    "> Productos <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
                 <ul class="">
@@ -105,7 +108,8 @@
             <li>
                 <a href="javascript:;" class="menu">
                     <div class="menu__icon"> <i data-feather="shopping-cart"></i> </div>
-                    <div class="menu__title"> Compras <i data-feather="chevron-down" class="menu__sub-icon"></i>
+                    <div class="menu__title tooltip" title="El sistema permitirá registrar, visualizar, y actualizar estado de una compra y se podrá gestionar la información de la misma, además permitirá registrar, visualizar, buscar y editar información acerca de los proveedores.
+                    "> Compras <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
                 <ul class="">
@@ -129,7 +133,9 @@
             <li>
                 <a href="javascript:;" class="menu">
                     <div class="menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                    <div class="menu__title"> Ventas <i data-feather="chevron-down" class="menu__sub-icon"></i>
+                    <div class="menu__title tooltip"
+                        title="El sistema deberá permitir a los usuarios registrar una venta con sus respectivos datos e información del cliente. Cuando se registre o se cancele una venta se actualizará la cantidad del producto">
+                        Ventas <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
                 <ul class="">
@@ -166,11 +172,14 @@
                 <li>
 
                     <a href="javascript:;"
-                        class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu side-menu--active' : 'side-menu' }} " >
+                        class=" {{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu side-menu--active' : 'side-menu' }} ">
+
 
                         <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                        <div class="side-menu__title"> Usuarios <i data-feather="chevron-down"
-                                class="side-menu__sub-icon"></i> </div>
+                        <div class="side-menu__title tooltip"
+                            title="Se podrá registrar, visualizar, editar y actualizar estado de los usuarios y roles registrados en el sistema">
+                            Usuarios <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+
                     </a>
                     <ul
                         class="{{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') || Request::url() == route('usuario.index') || Request::url() == route('usuario.crear') ? 'side-menu__sub-open' : '' }}">
@@ -178,9 +187,9 @@
                         @if (auth()->user()->rol_id == 1)
                             <li>
                                 <a href="/rol"
-                                    class=" {{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') ? 'side-menu side-menu--active' : 'side-menu' }}" >
+                                    class=" {{ Request::url() == route('rol.index') || Request::url() == route('rol.crear') ? 'side-menu side-menu--active' : 'side-menu' }}">
                                     <div class="side-menu__icon"> <i data-feather="hexagon"></i> </div>
-                                    <div class="side-menu__title tooltip" title="This is awesome tooltip example!" data-placement="right"> Gestión de roles </div>
+                                    <div class="side-menu__title" data-placement="right"> Gestión de roles </div>
                                 </a>
                             </li>
                         @endif
@@ -198,8 +207,8 @@
                     <a href="javascript:;"
                         class="{{ Request::url() == route('categoria.index') || Request::url() == route('categoria.crear') || Request::url() == route('producto.index') || Request::url() == route('producto.crear') ? 'side-menu side-menu--active' : 'side-menu' }}">
                         <div class="side-menu__icon"> <i data-feather="package"></i> </div>
-                        <div class="side-menu__title"> Productos <i data-feather="chevron-down"
-                                class="side-menu__sub-icon"></i> </div>
+                        <div class="side-menu__title tooltip" title="El sistema permitirá registrar, visualizar, editar y actualizar estado de un producto y una categoría, además se deberá colocar la categoría a la que pertenece la cual debe estar previamente registrada.
+                        "> Productos <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
                     <ul
                         class="{{ Request::url() == route('categoria.index') || Request::url() == route('categoria.crear') || Request::url() == route('producto.index') || Request::url() == route('producto.crear') ? 'side-menu__sub-open' : '' }}">
@@ -223,8 +232,8 @@
                     <a href="javascript:;"
                         class="{{ Request::url() == route('proveedor.index') || Request::url() == route('proveedor.crear') || Request::url() == route('compra.index') || Request::url() == route('compra.crear') ? 'side-menu side-menu--active' : 'side-menu' }}">
                         <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
-                        <div class="side-menu__title"> Compras <i data-feather="chevron-down"
-                                class="side-menu__sub-icon"></i> </div>
+                        <div class="side-menu__title tooltip" title="El sistema permitirá registrar, visualizar, y actualizar estado de una compra y se podrá gestionar la información de la misma, además permitirá registrar, visualizar, buscar y editar información acerca de los proveedores.
+                        "> Compras <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
                     <ul
                         class="{{ Request::url() == route('proveedor.index') || Request::url() == route('proveedor.crear') || Request::url() == route('compra.index') ? 'side-menu__sub-open' : '' }}">
@@ -252,8 +261,9 @@
                     <a href="javascript:;"
                         class="{{ Request::url() == route('clientes.index') || Request::url() == route('clientes.crear') || Request::url() == route('ventas.index') || Request::url() == route('ventas.index') ? 'side-menu side-menu--active' : 'side-menu' }}">
                         <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                        <div class="side-menu__title"> Ventas <i data-feather="chevron-down"
-                                class="side-menu__sub-icon"></i> </div>
+                        <div class="side-menu__title tooltip"
+                            title="El sistema deberá permitir a los usuarios registrar una venta con sus respectivos datos e información del cliente. Cuando se registre o se cancele una venta se actualizará la cantidad del producto">
+                            Ventas <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                     </a>
                     <ul
                         class="{{ Request::url() == route('clientes.index') || Request::url() == route('clientes.crear') || Request::url() == route('ventas.index') ? 'side-menu__sub-open' : '' }}">
@@ -311,7 +321,8 @@
 
                             <div class="p-2 border-t border-theme-40">
                                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md" href="
+                                    <a class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"
+                                        href="
                                         {{ route('logout') }}" onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                         <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i>
@@ -340,8 +351,7 @@
 
     </div>
 
-    <script src="/js/markerclusterer.js">
-    </script>
+    <script src="/js/markerclusterer.js"></script>
 
     <!-- ./wrapper -->
     <script src="/js/sweetalert.min.js"></script>

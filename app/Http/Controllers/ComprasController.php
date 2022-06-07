@@ -48,11 +48,11 @@ class ComprasController extends Controller
                 if (Auth::user()->rol_id == 1) {
 
                     if ($compra->Estado == 1) {
-                        $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
+                        $estado = '<a href="/compra/cambiar/estado/' . $compra->id . '/0" class="btn btn-danger btn-sm text-red-600" title="Click aqui para anular esta compra"><i class="fas fa-ban"></i></a>';
                     } 
                 }
 
-                return '<a href="/compra/detalle/' . $compra->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-eye"></i></a>' . '      ' . $estado;
+                return '<a href="/compra/detalle/' . $compra->id . '" class="btn btn-secondary btn-sm text-blue-800" title="Click aqui para ver detalle de esta compra"><i class="fas fa-eye"></i></a>' . '      ' . $estado;
             })
             ->rawColumns(['estado', 'acciones'])
             ->make(true);
@@ -90,8 +90,8 @@ class ComprasController extends Controller
     //     return $obtenterPrecio;
     // }
 
-    public function save(Request $request)
-    {;
+    public function save(SaveCompra $request)
+    {
         $input = $request->all();
 
         try {
@@ -100,7 +100,7 @@ class ComprasController extends Controller
 
         $compra = Compra::create([
             "usuario_id" => Auth()->user()->id,
-            "proveedor_id" => $input['proveedor_id'],
+            "proveedor_id" => $input['proveedor'],
             "Precio_total" =>  $input["total"],
             "Estado" => 1
         ]);

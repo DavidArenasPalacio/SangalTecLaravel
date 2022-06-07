@@ -14,8 +14,8 @@
                             <label for="">Nombre Del Cliente:</label>
 
                             <div class="mt-2">
-                                <select class="input border  w-full " name="nombreC" id="nombreC"
-                                    onchange="colocar_nombre()">
+                                <select class="input border  w-full @error('nombreC') border-theme-6 @enderror"
+                                    name="nombreC" id="nombreC" onchange="colocar_nombre()">
 
                                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                     @foreach ($clientes as $value)
@@ -25,8 +25,12 @@
                                     @endforeach
 
                                 </select>
+                                @error('nombreC')
+                                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                                @enderror
                             </div>
-                            <div class="mt-5">
+                            <div class="
+                                    mt-5">
                                 <label for="">Documento Del Cliente:</label>
 
                                 <input type="text" id="documento" readonly name="Documento"
@@ -48,7 +52,8 @@
                         <div>
                             <label for="">Producto:</label>
                             <div class="mt-2">
-                                <select name="" id="Producto" class="input  border w-full  mr-2 "
+                                <select name="producto" id="Producto"
+                                    class="input  border w-full  mr-2 @error('producto') border-theme-6 @enderror"
                                     onchange="obtener_precio()">
 
                                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
@@ -60,6 +65,9 @@
                                     @endforeach
 
                                 </select>
+                                @error('producto')
+                                    <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+                                @enderror
                             </div>
 
                         </div>
@@ -82,14 +90,16 @@
 
                         <input type="number" onkeyup="ValidadExistencia()" id="cantidad" name="cantidad"
                             class="input w-full border mt-2 @error('cantidad') border-theme-6 @enderror"
-                            placeholder="Ingrese la cantidad del producto" min="1" value="{{ old('cantidad') }}">
+                            placeholder="Ingrese la cantidad del producto" min="1">
                         @error('cantidad')
                             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                         @enderror
                     </div>
                     <div class="flex justify-between">
-                        <a href="/ventas" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-                        <button type="button" class="button bg-theme-1 text-white mt-5 " onclick="agregar()">Agregar
+                        <a href="/ventas" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip"
+                            title="Click aqui para volver a la lista de las ventas">Volver</a>
+                        <button type="button" class="button bg-theme-1 text-white mt-5 tooltip"
+                            title="Click aqui para agregar el producto a la venta" onclick="agregar()">Agregar
                             Producto</button>
                     </div>
                 </div>
@@ -119,8 +129,8 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <button type="submit" id="btnGuardar"
-                            class="button w-full mr-1 mb-2 bg-theme-1 text-white ">Guardar</button>
+                        <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white tooltip"
+                            title="Click aqui para guardar el registro de la venta">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -132,8 +142,7 @@
 
 @section('script')
     <script>
-
-        function deshabilitar_cliente(){
+        function deshabilitar_cliente() {
             document.querySelector("#nombreC").setAttribute("disabled", "true");
             document.querySelector("#nombreCdb").value = $("#nombreC option:selected").val();
         }
@@ -215,7 +224,7 @@
                         <td class="subtotal">${subtotal}</td>
 
                         <td>
-                            <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" onclick="eliminar(${producto_id})">x</button>
+                            <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" title="Click aqui para eliminar este producto de la venta" onclick="eliminar(${producto_id})">x</button>
                         </td>
                         </tr>
                     `);
