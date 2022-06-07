@@ -29,6 +29,8 @@ class UserController extends Controller
 
     public function listar()
     {
+        
+
         if(Auth::user()->rol_id == 1){
 
         $users = User::select("users.id", "users.name as nombre", "users.documento", "users.telefono", "users.direccion", "users.email", "users.estado", "rol.Nombre_Rol as rol")
@@ -53,16 +55,16 @@ class UserController extends Controller
 
                 if(Auth::user()->rol_id == 1){
                     if($users->estado == 1) {
-                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i>';
+                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/0" class="btn btn-danger btn-sm text-red-600 tooltip" title="Click aqui para deshabilitar este usuario"><i class="fas fa-ban"></i>';
                     }
                     else {
-                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
+                        $estado = '<a href="/usuario/cambiar/estado/'.$users->id.'/1" class="btn btn-danger btn-sm text-green-600 tooltip" title="Click aqui para habilitar este usuario"><i class="fas fa-check-circle"></i></a>';
                     }
 
-                    return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
+                    return '<a href="/usuario/editar/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800 tooltip" title="Click aqui para editar este usuario"><i class="fas fa-edit"></i></a>' . ' ' . $estado;
                 }
                 else{
-                    return '<a href="/usuario/editarEmpleado/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit"></i></a>';
+                    return '<a href="/usuario/editarEmpleado/' . $users->id . '" class="btn btn-secondary btn-sm text-blue-800 tooltip" title="Click aqui para editar este usuario"><i class="fas fa-edit"></i></a>';
                 }
 
                 

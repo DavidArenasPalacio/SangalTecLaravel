@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:mt-2">
-        <div class="w-ful mr-2" style="position: relative;">
+        <div class="w-full mr-2" style="position: relative;">
             <label for="password">Contraseña:</label>
 
             <span class="icon-eye" style="position: absolute; right: 1%; top: 55%;">
@@ -80,15 +80,21 @@
             @error('contraseña_usuario')
             <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
             @enderror
-            {{-- <input class="input border-theme-6 mt-5" type="button"  value="Mostrar/Ocultar"> --}}
         </div>
-        <div class="w-ful " style="position: relative;">
+        <div class="w-full" style="position: relative;">
+
             <label for="confirm_password">Confirmar contraseña:</label>
-            <input type="password" id="confirm_password" name="confirm_password" class="input w-full border mt-2 @error('confirm_password') border-theme-6 @enderror" placeholder="Ingrese la contraseña">
-    
-            {{-- <input class="input border-theme-6 mt-5" type="button"  value="Mostrar/Ocultar"> --}}
+
+            {{-- <span class="icon-eye" style="position: absolute; right: 1%; top: 55%;">
+                <i class="fas fa-eye" onclick="mostrar()"></i>
+            </span> --}}
+            <input type="password" id="confirm_password" name="confirm_password" class="input w-full border mt-2 @error('confirm_password') border-theme-6 @enderror" placeholder="Confirme la contraseña">
+            @error('confirm_password')
+            <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+            @enderror
         </div>
     </div>
+    
 
 
     <!--  <div class="flex justify-between ">
@@ -96,8 +102,8 @@
         <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
     </div> -->
     <div class="flex justify-between">
-        <a href="/usuario" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Guardar</button>
+        <a href="/usuario" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip" title="Click aqui para volver a la lista de los usuarios">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Click aqui para guardar el registro del usuario">Guardar</button>
     </div>
 </form>
 </div>

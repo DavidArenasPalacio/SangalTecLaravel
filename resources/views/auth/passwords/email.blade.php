@@ -28,9 +28,9 @@
                     <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
                         src="../template/images/logo.png">
                     <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                        Para la proxima!
+                        Para la próxima
                         <br>
-                        No olvides tu contraseña.
+                        no olvides tu contraseña.
                     </div>
 
                 </div>

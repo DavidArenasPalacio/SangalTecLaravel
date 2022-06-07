@@ -29,14 +29,14 @@ class RolController extends Controller
                 $estado = '';
 
                 if($rol->Estado == 1) {
-                    $estado = '<a href="/rol/cambiar/estado/'.$rol->id.'/0" class="btn btn-danger btn-sm text-red-600"><i class="fas fa-ban"></i></a>';
+                    $estado = '<a href="/rol/cambiar/estado/'.$rol->id.'/0" class="btn btn-danger btn-sm text-red-600 tooltip" title="Click aqui para dejar el rol inavtivo"><i class="fas fa-ban"></i></a>';
                     
                 }
                 else {
-                    $estado = '<a href="/rol/cambiar/estado/'.$rol->id.'/1" class="btn btn-danger btn-sm text-green-600"><i class="fas fa-check-circle"></i></a>';
+                    $estado = '<a href="/rol/cambiar/estado/'.$rol->id.'/1" class="btn btn-danger btn-sm text-green-600 tooltip" title="Click aqui para dejar el rol avtivo"><i class="fas fa-check-circle"></i></a>';
                 }
 
-                return '<a href="/rol/editar/' . $rol->id . '" class="btn btn-secondary btn-sm text-blue-800"><i class="fas fa-edit""></i></a>'.' '.$estado; 
+                return '<a href="/rol/editar/' . $rol->id . '" class="btn btn-secondary btn-sm text-blue-800 tooltip" title="Click aqui para editar este rol"><i class="fas fa-edit""></i></a>'.' '.$estado; 
             })
             ->rawColumns(['acciones','estado'])
             ->make(true);

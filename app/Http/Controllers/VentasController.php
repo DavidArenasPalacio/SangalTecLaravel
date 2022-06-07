@@ -89,7 +89,7 @@ class VentasController extends Controller
                 $productCant->update([
                     "Estado"=>0,
                 ]);
-               
+            
             }
         }
 

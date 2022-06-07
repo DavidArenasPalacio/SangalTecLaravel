@@ -44,9 +44,9 @@
                         <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
                             src="template/images/logo.png">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            Unos clics más para
+                            Unos clicks más para
                             <br>
-                            Iniciar sesión en su cuenta.
+                            iniciar sesión en su cuenta.
                         </div>
 
                     </div>
