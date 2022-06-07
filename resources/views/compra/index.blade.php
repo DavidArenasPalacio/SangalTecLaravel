@@ -64,37 +64,42 @@
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            ajax: '/compra/listar',
-            columns: [{
-                    data: 'users',
-                    name: 'users'
-                },
-                {
-                    data: 'proveedor',
-                    name: 'proveedor'
-                },
-                {
-                    data: 'Precio_total',
-                    name: 'Precio_total',
-                    render: $.fn.dataTable.render.number('.', '.', 0, '$')
-                },
-                {
-                    data: 'created_at',
-                    name: 'created_at'
-                },
-                {
-                    data: 'estado',
-                    name: 'estado'
-                },
-                {
-                    data: 'acciones',
-                    name: 'acciones',
-                    orderable: false,
-                    serachable: false,
-                    sClass: 'text-center'
-                }
-            ]
-        });
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        ajax: '/compra/listar',
+        columns: [{
+                data: 'users',
+                name: 'users'
+            },
+            {
+                data: 'proveedor',
+                name: 'proveedor'
+            },
+            {
+                data: 'Precio_total',
+                name: 'Precio_total',
+                render:  $.fn.dataTable.render.number( '.', '.', 0, '$' )
+            },
+            {
+                data: 'created_at',
+                name: 'created_at'
+            },
+            {
+                data: 'estado',
+                name: 'estado'
+            },
+            {
+                data: 'acciones',
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
+            }
+        ]
+    });
 
 
         function precioProducto() {

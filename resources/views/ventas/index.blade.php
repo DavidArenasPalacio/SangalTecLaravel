@@ -99,38 +99,43 @@
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            ajax: '/ventas/listar',
-            columns: [{
-                    data: 'NombreCliente',
-                    name: 'NombreCliente'
-                },
-                {
-                    data: 'NombreUsuario',
-                    name: 'NombreUsuario'
-                },
-                {
-                    data: 'Precio_total',
-                    name: 'Precio_total',
-                    render: $.fn.dataTable.render.number('.', '.', 0, '$')
-                },
-                {
-                    data: 'created_at',
-                    name: 'created_at'
-                },
-                {
-                    data: 'estado',
-                    name: 'estado'
-                },
-                {
-                    data: 'acciones',
-                    name: 'acciones',
-                    orderable: false,
-                    serachable: false,
-                    sClass: 'text-center'
-                }
-            ]
-        });
-    </script>
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        ajax: '/ventas/listar',
+        columns: [{
+                data: 'NombreCliente',
+                name: 'NombreCliente'
+            },
+            {
+                data: 'NombreUsuario',
+                name: 'NombreUsuario'
+            },
+            {
+                data: 'Precio_total',
+                name: 'Precio_total',
+                render:  $.fn.dataTable.render.number( '.', '.', 0, '$' )
+            },
+            {
+                data: 'created_at',
+                name: 'created_at'
+            },
+            {
+                data: 'estado',
+                name: 'estado'
+            },
+            {
+                data: 'acciones',
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
+            }
+        ]
+    });
+</script>
 
 
     {{-- Sweetalert2 --}}

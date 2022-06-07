@@ -100,14 +100,74 @@
                     serachable: false
                 },
 
-                {
-                    data: 'acciones',
-                    name: 'acciones',
-                    orderable: false,
-                    serachable: false,
-                    sClass: 'text-center'
-                }
-            ]
-        });
-    </script>
+<script>
+    $('#tbl_productos').DataTable({
+        processing: false,
+        serverSide: true,
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        ajax: '/producto/listar',
+        columns: [{
+                data: 'Nombre_Producto',
+                name: 'Nombre_Producto'
+            },
+            {
+                data: 'categoria',
+                name: 'categoria'
+            },
+            {
+                data: 'Precio_Compra',
+                name: 'Precio_Compra',
+                render: $.fn.dataTable.render.number( '.', '.', 0, '$' )
+
+            },
+            {
+                data: 'Precio_Venta',
+                name: 'Precio_Venta',
+                render: $.fn.dataTable.render.number( '.', '.', 0, '$' )
+
+            },
+            {
+                data: 'Cantidad',
+                name: 'Cantidad'
+            },
+            {
+                data: 'estado',
+                name: 'estado',
+                orderable: false,
+                serachable: false
+            },
+
+            {
+                data: 'acciones',
+                name: 'acciones',
+                orderable: false,
+                serachable: false,
+                sClass: 'text-center'
+            }
+        ]
+    });
+</script>
 @endsection
