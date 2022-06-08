@@ -33,11 +33,11 @@ class CategoriaController extends Controller
             if (Auth::user()->rol_id == 1) {
 
                 if($categoria->Estado == 1) {
-                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/0" class="btn btn-danger btn-sm text-red-600 tooltip" title="Click aqui para dejar la categoria en no dispnible"><i class="fas fa-ban"></i></a>';
+                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/0" class="btn btn-danger btn-sm text-red-600 tooltip" title="Click aqui para dejar la categoria en no disponible"><i class="fas fa-ban"></i></a>';
                     
                 }
                 else {
-                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/1" class="btn btn-danger btn-sm text-green-600 tooltip" title="Click aqui para dejar la categoria en dispnible"><i class="fas fa-check-circle"></i></a>';
+                    $estado = '<a href="/categoria/cambiar/estado/'.$categoria->id.'/1" class="btn btn-danger btn-sm text-green-600 tooltip" title="Click aqui para dejar la categoria en disponible"><i class="fas fa-check-circle"></i></a>';
                 }
 
                 return '<a href="/categoria/editar/'.$categoria->id.'" class="btn btn-secondary btn-sm text-blue-800 tooltip" title="Click aqui para editar esta categoria"><i class="fas fa-edit""></i></a>'.' '.$estado;    
