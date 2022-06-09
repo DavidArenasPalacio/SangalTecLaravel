@@ -40,6 +40,8 @@
 </div>
 </form>
 
+
+
 <figure class="highcharts-figure">
   <div id="container"></div>
   <p class="highcharts-description">

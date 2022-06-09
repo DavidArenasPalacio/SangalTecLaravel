@@ -1,31 +1,11 @@
-<table>
+<table border="1">
     <thead>
     <tr>
-        <th>Cliente</th>
-        <th>Usuario</th>
-        <th>Precio Total Venta</th>
-        <th>Fecha y Hora de Venta</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($ventas as $venta)
-        <tr>
-            <td>{{ $venta->cliente_id }}</td>
-            <td>{{ $venta->usuario_id }}</td>
-            <td>{{ $venta->Precio_total }}</td>
-            <td>{{ $venta->created_at }}</td>
-
-        </tr>
-    @endforeach
-    </tbody>
-</table>
-
-<table>
-    <thead>
-    <tr>
+        <th>id compra</th>
         <th>Usuario</th>
         <th>Proveedor</th>
         <th>Precio Total Compra</th>
+        <th>Productos</th>  
         <th>Fecha y Hora de Compra</th>
         
     </tr>
@@ -33,9 +13,19 @@
     <tbody>
     @foreach($compra as $compra)
         <tr>
-            <td>{{ $compra->usuario_id }}</td>
-            <td>{{ $compra->proveedor_id }}</td>
+            <td>{{$compra->id}}</td>
+            <td>{{ $compra->name }}</td>
+            <td>{{ $compra->Nombre_proveedor }}</td>
             <td>{{ $compra->Precio_total }}</td>
+            <td>
+                <?php 
+                    foreach ($productos as $key => $value) {
+                        if($compra->id == $value->id){
+                            echo $value->Nombre_Producto. '<br>';
+                        }
+                    }    
+                ?>
+            </td>
             <td>{{ $compra->created_at }}</td>
             
         </tr>

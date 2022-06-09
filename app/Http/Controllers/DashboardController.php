@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 class DashboardController extends Controller
 {
     public function filtrar(Request $request){
-// dd($request);
         return Excel::download(new ReportesExport($request->fechainicio, $request->fechafin), 'reporte.xlsx');
 
     }
