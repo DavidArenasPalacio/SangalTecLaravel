@@ -6,9 +6,16 @@ use App\Models\Compra;
 use App\Models\Ventas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ReportesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
+    public function filtrar(Request $request){
+// dd($request);
+        return Excel::download(new ReportesExport($request->fechainicio, $request->fechafin), 'reporte.xlsx');
+
+    }
     public function index(){
         $ventasChart = Ventas::select(DB::raw('COUNT(*) as count'))
             ->whereYear('created_at', date('Y'))
@@ -20,6 +27,7 @@ class DashboardController extends Controller
             ->whereYear('created_at', date('Y'))
             ->groupBy(DB::raw('Month(created_at)'))
             ->pluck('month');
+        
             
         $ventasData = array(0, 0, 0, 0, 0,0,0,0,0,0,0,0);
         foreach ($ventasMonths as $index => $month) {

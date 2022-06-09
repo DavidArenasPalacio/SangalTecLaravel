@@ -8,6 +8,38 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<form  action="/export" method="POST" id="form" class="mt-5">
+  @csrf
+  <div class="flex flex-col sm:flex-row items-center">
+
+      <div class="w-full mr-2">
+          <label for="nombre">Fecha Inicio:</label>
+
+          <input type="date" id="fechainicio" name="fechainicio"
+              class="input w-full border mt-2 @error('fechainicio') border-theme-6 @enderror"
+              placeholder="Seleccione la fecha de inicio" maxlength="125" value="{{ old('fechainicio') }}">
+          @error('fechainicio')
+          <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+          @enderror
+      </div>
+
+      <div class="w-full mr-2">
+          <label for="documento">Fecha Fin:</label>
+
+          <input type="date" id="fechafin" name="fechafin"
+              class="input w-full border mt-2 @error('fechafin') border-theme-6 @enderror"
+              placeholder="Seleccione la fecha de fin" value="{{ old('fecha fin') }}">
+          @error('fechafin')
+          <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
+          
+          @enderror
+      </div>
+  </div>
+  <div class="flex justify-between" >
+    <button type="submit" class="button bg-theme-1 text-white mt-5">Filtrar</button>
+</div>
+</form>
+
 <figure class="highcharts-figure">
   <div id="container"></div>
   <p class="highcharts-description">

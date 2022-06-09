@@ -148,4 +148,5 @@ Route::group(['middleware' => ['auth','validacionRol']], function () {
      //RUTAS DASHBOARD
      Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard.index");
      //FIN RUTAS DASHBOARD
+     Route::post('/export', [DashboardController::class, 'filtrar']);
     });
