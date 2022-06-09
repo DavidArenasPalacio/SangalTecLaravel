@@ -12,7 +12,7 @@
             @csrf
             <input type="hidden" name="id" value="{{$categoria->id}}">
             <div>
-                <label for="nombre">Nombre de la categoría:</label>
+                <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" class="input w-full border mt-2 @error('nombre') border-theme-6 @enderror" value="{{$categoria->Nombre_Categoria}}">
 
 

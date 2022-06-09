@@ -60,6 +60,11 @@
                 @enderror
                 {{-- <input class="input border-theme-6 mt-3" type="button" onclick="mostrar()" value="Mostrar/Ocultar"> --}}
             </div>
+            <div class="w-full ">
+                <label for="confirm_password">Confirmar contraseña:</label>
+                <input type="password" id="contrasenaconfirmar" name="contrasenaconfirmar"
+                    class="input w-full border mt-2" placeholder="Confirmar contraseña">
+            </div>
         </div>
 
         <!--  <div class="flex justify-between ">
@@ -139,7 +144,8 @@ $(document).ready(function() {
                 },
                 contraseña_usuario: {
                     required: true
-                }
+                },
+                contrasenaconfirmar: {required:true,equalTo:"#contraseña_usuario"}
             },
             errorElement: 'span',
         });
