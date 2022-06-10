@@ -27,8 +27,16 @@ class ReportesExport implements FromView,ShouldAutoSize
         ->join('users','compra.usuario_id','=','users.id')
         ->join('proveedor','compra.proveedor_id','=','proveedor.id')
         ->whereBetween('compra.created_at',[$this->date1,$this->date2])->get();
+
+        $productos1= DB::table('ventas')->select('ventas.id','productos.Nombre_Producto')
+        ->join('ventasdetalle','ventas.id','=','ventasdetalle.venta_id')->join('productos','ventasdetalle.producto_id','productos.id')->whereBetween('ventas.created_at',[$this->date1,$this->date2])->get();
+        
+        $ventas= DB::table('ventas')->select('ventas.id','users.name','clientes.Nombre_Cliente','ventas.Precio_total','ventas.created_at')
+        ->join('users','ventas.usuario_id','=','users.id')
+        ->join('clientes','ventas.cliente_id','=','clientes.id')
+        ->whereBetween('ventas.created_at',[$this->date1,$this->date2])->get();
     
-        return view('exports.exports', compact('compra','productos'));
+        return view('exports.exports', compact('compra','productos','ventas','productos1'));
         
     }
 }

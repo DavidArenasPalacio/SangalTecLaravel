@@ -32,3 +32,38 @@
     @endforeach
     </tbody>
 </table>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id venta</th>
+        <th>Usuario</th>
+        <th>Cliente</th>
+        <th>Precio Total Venta</th>
+        <th>Productos</th>  
+        <th>Fecha y Hora de Venta</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($ventas as $ventas)
+        <tr>
+            <td>{{$ventas->id}}</td>
+            <td>{{ $ventas->name }}</td>
+            <td>{{ $ventas->Nombre_Cliente }}</td>
+            <td>{{ $ventas->Precio_total }}</td>
+            <td>
+                <?php 
+                    foreach ($productos1 as $key => $value) {
+                        if($ventas->id == $value->id){
+                            echo $value->Nombre_Producto. '<br>';
+                        }
+                    }    
+                ?>
+            </td>
+            <td>{{ $ventas->created_at }}</td>
+            
+        </tr>
+    @endforeach
+    </tbody>
+</table>
