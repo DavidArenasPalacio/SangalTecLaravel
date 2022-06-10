@@ -54,7 +54,7 @@
             <li>
                 <a href="" class="menu menu--active">
                     <div class="menu__icon"> <i data-feather="home"></i> </div>
-                    <div class="menu__title"> Dashboard </div>
+                    <div class="menu__title tooltip" title="Aca podra visualizar graficas de compras y ventas mensual y generar reportes por fechas."> Dashboard </div>
                 </a>
             </li>
             <li>

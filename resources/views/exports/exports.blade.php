@@ -1,11 +1,11 @@
 <table border="1">
     <thead>
     <tr>
-        <th>id compra</th>
+        <th>#compra</th>
         <th>Usuario</th>
         <th>Proveedor</th>
         <th>Precio Total Compra</th>
-        <th>Productos</th>  
+        <th>Productos Y Cantidad</th>  
         <th>Fecha y Hora de Compra</th>
         
     </tr>
@@ -21,7 +21,8 @@
                 <?php 
                     foreach ($productos as $key => $value) {
                         if($compra->id == $value->id){
-                            echo $value->Nombre_Producto. '<br>';
+                            echo $value->Nombre_Producto. ' '. $value->Cantidad.'<br>';
+                            echo  '<br>';
                         }
                     }    
                 ?>
@@ -36,11 +37,11 @@
 <table border="1">
     <thead>
     <tr>
-        <th>id venta</th>
+        <th>#venta</th>
         <th>Usuario</th>
         <th>Cliente</th>
         <th>Precio Total Venta</th>
-        <th>Productos</th>  
+        <th>Productos Y Cantidad</th>  
         <th>Fecha y Hora de Venta</th>
         
     </tr>
@@ -56,7 +57,9 @@
                 <?php 
                     foreach ($productos1 as $key => $value) {
                         if($ventas->id == $value->id){
-                            echo $value->Nombre_Producto. '<br>';
+                            echo $value->Nombre_Producto. ' ' .$value->Cantidad. '<br>';
+                         
+                        
                         }
                     }    
                 ?>
