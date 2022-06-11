@@ -36,7 +36,7 @@
       </div>
   </div>
   <div class="flex justify-between" >
-    <button type="submit" class="button bg-theme-1 text-white mt-5">Filtrar</button>
+    <button type="submit" class="button bg-theme-1 text-white mt-5">Generar Reporte</button>
 </div>
 </form>
 

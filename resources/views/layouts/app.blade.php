@@ -54,14 +54,14 @@
             <li>
                 <a href="" class="menu menu--active">
                     <div class="menu__icon"> <i data-feather="home"></i> </div>
-                    <div class="menu__title tooltip" title="Aca podra visualizar graficas de compras y ventas mensual y generar reportes por fechas."> Dashboard </div>
+                    <div class="menu__title tooltip" title="Aca podra visualizar graficas de compras y ventas mensual y generar reportes"> Dashboard </div>
                 </a>
             </li>
             <li>
                 <a href="javascript:;" class="tooltip menu" title="Gestión de rol y usuario">
                     <div class="menu__icon"> <i data-feather="users"></i> </div>
                     <div class="menu__title tooltip"
-                        title="Se podrá registrar, visualizar, editar y cambiar estado de los usuarios y roles registrados en el sistema, ">
+                        title="Se podrá registrar, visualizar, editar y cambiar estado de los usuarios y roles registrados en el sistema">
                         Usuarios <i data-feather="chevron-down" class="menu__sub-icon"></i>
                     </div>
                 </a>
@@ -166,7 +166,7 @@
                 <li>
                     <a href="/dashboard" class="side-menu ">
                         <div class="side-menu__icon"> <i data-feather="home"></i> </div>
-                        <div class="side-menu__title"> Dashboard </div>
+                        <div class="side-menu__title tooltip" title="Aca podra visualizar graficas de compras y ventas mensual y generar reportes"> Dashboard </div>
                     </a>
                 </li>
                 <li>
