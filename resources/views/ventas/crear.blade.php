@@ -4,8 +4,10 @@
     <div class="box p-5">
         <form action="/ventas/guardar" method="POST" class="mb-5 py-5" id="form">
             <div class="grid grid-cols-12 gap-6 mt-5">
-                <div class="intro-y col-span-12 lg:col-span-4">
-                    <h2 class="text-3xl text-center font-medium leading-none mt-3">Registrar una venta</h2>
+                <div class="intro-y col-span-12 lg:col-span-6">
+                    <h2 class="text-3xl text-center font-medium leading-none mt-3">
+                        Registrar una venta
+                    </h2>
 
                     @csrf
                     <div class="preview mt-5">
@@ -14,8 +16,8 @@
                             <label for="">Nombre Del Cliente:</label>
 
                             <div class="mt-2">
-                                <select class="input border  w-full @error('nombreC') border-theme-6 @enderror"
-                                    name="nombreC" id="nombreC" onchange="colocar_nombre()">
+                                <select class="input border select2  @error('nombreC') border-theme-6 @enderror"
+                                    name="nombreC" id="nombreC" onchange="colocar_nombre()" style="width: 100%">
 
                                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                     @foreach ($clientes as $value)
@@ -53,8 +55,8 @@
                             <label for="">Producto:</label>
                             <div class="mt-2">
                                 <select name="producto" id="Producto"
-                                    class="input  border w-full  mr-2 @error('producto') border-theme-6 @enderror"
-                                    onchange="obtener_precio()">
+                                    class="input select2 border mr-2 @error('producto') border-theme-6 @enderror"
+                                    onchange="obtener_precio()" style="width: 100%">
 
                                     <option selected="true" disabled="disabled">------ Seleccione -----</option>
                                     @foreach ($productos as $value)
@@ -104,31 +106,35 @@
                     </div>
                 </div>
 
-                <div class="intro-y col-span-12 lg:col-span-8">
+                <div class="intro-y col-span-12 lg:col-span-6">
                     <div class="mt-5">
-                        <h2 class="text-3xl text-center font-medium leading-none mt-3">Productos agregados</h2>
-                        <table class="table mt-5">
-
-                            <thead>
-                                <tr class="bg-gray-700 text-white">
-                                    <th class="border-b-2 whitespace-no-wrap">Producto</th>
-                                    <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
-                                    <th class="border-b-2 whitespace-no-wrap">Precio</th>
-                                    <th class="border-b-2 whitespace-no-wrap">Subtotal</th>
-                                    <th class="border-b-2 whitespace-no-wrap">Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbl_productos">
-
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="5" class="text-center">
-                                        Total: $<b id="total">0</b>
-                                    </th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                        <h2 class="text-3xl text-center font-medium leading-none mt-3">
+                            Productos agregados
+                        </h2>
+                        <div class="overflow-x-auto">
+                            <table class="table mt-5 dtr-inline  dt-responsive">
+                                <thead>
+                                    <tr class="bg-gray-700 text-white">
+                                        <th class="border-b-2 whitespace-no-wrap">Producto</th>
+                                        <th class="border-b-2 whitespace-no-wrap">Cantidad</th>
+                                        <th class="border-b-2 whitespace-no-wrap">Precio</th>
+                                        <th class="border-b-2 whitespace-no-wrap">Subtotal</th>
+                                        <th class="border-b-2 whitespace-no-wrap">Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_productos">
+    
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5" class="text-center">
+                                            Total: <b id="total">0</b>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        
                         <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white tooltip"
                             title="Click aqui para guardar el registro de la venta">Guardar</button>
                     </div>
@@ -267,5 +273,17 @@
 
             $("#total").text(total);
         }
+    </script>
+    <script>
+        $("select").select2({
+            language: {
+                noResults: function () {
+                    return "No hay resultado";
+                },
+                searching: function () {
+                    return "Buscando..";
+                },
+            },
+        });
     </script>
 @endsection

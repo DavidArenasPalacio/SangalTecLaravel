@@ -12,20 +12,18 @@ use Maatwebsite\Excel\Facades\Excel;
 class DashboardController extends Controller
 {
     public function filtrar(Request $request){
-        if($request["fechainicio"] <= now() && $request["fechafin"] <= now()){
-        return Excel::download(new ReportesExport($request->fechainicio, $request->fechafin), 'reporte.xlsx');
-    }else {
-        alert("Error", "Las fechas ingresadas no pueden ser mayor al actual");
-        return back();
 
-        if($request["fechainicio"] = null && $request["fechafin"] =null){
-            alert("Error", "Los campos de fecha inicio y fecha fin no pueden estar vacios.");
+        if ($request["fechainicio"] == null || $request["fechafin"] == null) {
+            alert("Error", "Los campos de las fechas no pueden estar vacias");
             return back();
-        }else {
-            
-            return Excel::download(new ReportesExport($request->fechainicio, $request->fechafin), 'reporte.xlsx');
         }
-    }
+    
+        elseif($request["fechainicio"] <= now() && $request["fechafin"] <= now()){
+            return Excel::download(new ReportesExport($request->fechainicio, $request->fechafin), 'reporte.xlsx');
+        }else {
+            alert("Error", "Las fechas ingresadas no pueden ser mayor al actual");
+            return back();
+        }
 
     }
     public function index(){

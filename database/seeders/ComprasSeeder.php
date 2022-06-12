@@ -15,34 +15,7 @@ class ComprasSeeder extends Seeder
      */
     public function run()
     {
-        Compra::create([
-            "usuario_id" => 3,
-            "proveedor_id" => 2,
-            "Precio_total" => 35000,
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        DetallesCompra::create([
-            "compra_id" => 1,
-            "producto_id" => 1,
-            "Precio_unitario" => 5000,
-            "Cantidad" => 3,
-            "Sub_total" => 15000,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        DetallesCompra::create([
-            "compra_id" => 1,
-            "producto_id" => 2,
-            "Precio_unitario" => 10000,
-            "Cantidad" => 2,
-            "Sub_total" => 20000,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        
 
         
 

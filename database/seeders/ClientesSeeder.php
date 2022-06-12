@@ -23,23 +23,5 @@ class ClientesSeeder extends Seeder
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-
-        Clientes::create([
-            "Nombre_Cliente" => "Juan",
-            "Documento_Cliente" => "23434567",
-            "Telefono_Cliente" => "24467654",
-            "Direccion_Cliente" => "CR 490",
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-
-        Clientes::create([
-            "Nombre_Cliente" => "Esteban",
-            "Documento_Cliente" => "2335566",
-            "Telefono_Cliente" => "566743",
-            "Direccion_Cliente" => "CR #34",
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
     }
 }

@@ -14,8 +14,8 @@
                             <label for="proveedor_id">Proveedor:</label>
 
                             <div class="mt-2">
-                                <select class="input  border w-full @error('proveedor') border-theme-6 @enderror"
-                                    id="proveedor">
+                                <select class="input select2 border @error('proveedor') border-theme-6 @enderror"
+                                    id="proveedor" style="width: 100%">
                                     <option selected="true" disabled="disabled">
                                         ------ Seleccione -----
                                     </option>
@@ -42,8 +42,8 @@
                             <label for="">Producto:</label>
                             <div class="mt-2">
                                 <select name="producto"
-                                    class="input  border w-full mr-2 @error('producto') border-theme-6 @enderror"
-                                    onchange="obtener_precio()" id="nombreProducto">
+                                    class="input select2 border mr-2 @error('producto') border-theme-6 @enderror"
+                                    onchange="obtener_precio()" id="nombreProducto" style="width: 100%">
                                     <option selected="true" disabled="disabled">
                                         ------ Seleccione -----
                                     </option>
@@ -124,7 +124,7 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="5" class="text-center">
-                                            Total: $<b id="total">0</b>
+                                            Total: <b id="total">0</b>
                                         </th>
                                     </tr>
                                 </tfoot>
@@ -230,7 +230,7 @@
                     ${nombreProducto}
                 </td>
                 <td class="cantidades">${cantidad}</td>
-                <td>$${precio}</td>
+                <td>${precio}</td>
                 <td class="subtotal">${subtotal}</td>
 
                 <td>
@@ -280,5 +280,18 @@
 
             $("#total").text(total);
         }
+    </script>
+
+    <script>
+        $("select").select2({
+            language: {
+                noResults: function () {
+                    return "No hay resultado";
+                },
+                searching: function () {
+                    return "Buscando..";
+                },
+            },
+        });
     </script>
 @endsection

@@ -58,7 +58,7 @@
                     foreach ($productos1 as $key => $value) {
                         if($ventas->id == $value->id){
                             echo $value->Nombre_Producto. ' ' .$value->Cantidad. '<br>';
-                         
+                        
                         
                         }
                     }    

@@ -36,26 +36,29 @@
       </div>
   </div>
   <div class="flex justify-between" >
-    <button type="submit" class="button bg-theme-1 text-white mt-5">Generar Reporte</button>
+    <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Click aqui para generar el reporte de las compras y ventas con las fechas ingresadas">Generar Reporte</button>
 </div>
 </form>
 
+<div class="mt-10">
+  <figure class="highcharts-figure">
+    <p class="highcharts-description">
+      Este grafico muestra la cantidad de ventas que se han realizado en cada mes del año actual
+    </p>
+    <div id="container" class="mt-5"></div>
+  </figure>
+</div>
 
 
-<figure class="highcharts-figure">
-  <div id="container"></div>
-  <p class="highcharts-description">
-    Este grafico muestra la cantidad de ventas que se han realizado en cada mes del año actual
-  </p>
-</figure>
-<br>
-<br>
-<figure class="highcharts-figure">
-  <div id="container1"></div>
-  <p class="highcharts-description">
-    Este grafico muestra la cantidad de compras que se han realizado en cada mes del año actual
-  </p>
-</figure>
+<div class="mt-10">
+  <figure class="highcharts-figure">
+    <p class="highcharts-description">
+      Este grafico muestra la cantidad de compras que se han realizado en cada mes del año actual
+    </p>
+    <div id="container1" class="mt-5"></div>
+  </figure>
+</div>
+
 
 <script type="text/javascript">
 
@@ -78,7 +81,7 @@ Highcharts.chart('container', {
     },
   yAxis:{
       title:{
-          text:'Producto'
+          text:'Ventas'
       }
   },
   legend:{
@@ -118,7 +121,7 @@ Highcharts.chart('container1', {
   },
   yAxis:{
       title:{
-          text:'Producto'
+          text:'Compras'
       }
   },
   legend:{
