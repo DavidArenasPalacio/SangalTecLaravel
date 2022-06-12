@@ -21,7 +21,7 @@ class ReportesExport implements FromView,ShouldAutoSize
     public function view(): View
     {
     
-            $productos= DB::table('compra')->select('compra.id','productos.Nombre_Producto', 'productos.Cantidad')
+            $productos= DB::table('compra')->select('compra.id','productos.Nombre_Producto', 'detallecompra.Cantidad')
             ->join('detallecompra','compra.id','=','detallecompra.compra_id')
             ->join('productos','detallecompra.producto_id','productos.id')
             // ->whereBetween('compra.created_at',[$this->date1,$this->date2])
@@ -38,7 +38,7 @@ class ReportesExport implements FromView,ShouldAutoSize
             ->whereDate('compra.created_at', '<=', $this->date2)
             ->get();
     
-            $productos1= DB::table('ventas')->select('ventas.id','productos.Nombre_Producto', 'productos.Cantidad')
+            $productos1= DB::table('ventas')->select('ventas.id','productos.Nombre_Producto', 'ventasdetalle.Cantidad')
             ->join('ventasdetalle','ventas.id','=','ventasdetalle.venta_id')
             ->join('productos','ventasdetalle.producto_id','productos.id')
             // ->whereBetween('ventas.created_at',[$this->date1,$this->date2])
@@ -56,8 +56,6 @@ class ReportesExport implements FromView,ShouldAutoSize
             ->get();
         
             return view('exports.exports', compact('compra','productos','ventas','productos1'));
-            
-    
         
     }
 }

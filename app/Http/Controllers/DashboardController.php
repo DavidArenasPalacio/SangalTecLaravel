@@ -44,7 +44,7 @@ class DashboardController extends Controller
             $ventasData[$month - 1] = $ventasChart[$index];
 
         }
-       
+    
         
 
 
