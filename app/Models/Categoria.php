@@ -14,10 +14,5 @@ class Categoria extends Model
     protected $fillable = ['Nombre_Categoria','Estado'];
 
 
-    public static $rules = [ 
-        'Nombre_Categoria' => 'required',
-        
-    ];
-
     public $timestamps = false;
 }

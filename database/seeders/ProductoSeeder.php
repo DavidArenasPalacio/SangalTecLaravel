@@ -20,9 +20,7 @@ class ProductoSeeder extends Seeder
             "Precio_Venta" => 8000,
             "Cantidad" => 20,
             "categoria_id" => 1,
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
         
         Producto::create([
@@ -31,9 +29,7 @@ class ProductoSeeder extends Seeder
             "Precio_Venta" => 14000,
             "Cantidad" => 20,
             "categoria_id" => 2,
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
 
         Producto::create([
@@ -42,9 +38,7 @@ class ProductoSeeder extends Seeder
             "Precio_Venta" => 30000,
             "Cantidad" => 20,
             "categoria_id" => 3,
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
 
         Producto::create([
@@ -53,9 +47,7 @@ class ProductoSeeder extends Seeder
             "Precio_Venta" => 3000,
             "Cantidad" => 20,
             "categoria_id" => 4,
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
     }
 }

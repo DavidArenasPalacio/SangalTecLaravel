@@ -20,7 +20,6 @@ class CreateCompraTable extends Migration
             $table->string('Telefono_Proveedor', 20);
             $table->string('Direccion_Proveedor', 55);
             $table->tinyInteger('Estado');
-            $table->timestamps();
         });
 
         Schema::create('compra', function (Blueprint $table) {
@@ -39,7 +38,6 @@ class CreateCompraTable extends Migration
             $table->float('Precio_unitario', 11,2);
             $table->bigInteger('Cantidad');
             $table->float('Sub_total', 11,2);
-            $table->timestamps();
         });
     }
 

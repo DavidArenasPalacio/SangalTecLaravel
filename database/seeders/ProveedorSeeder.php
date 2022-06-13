@@ -19,9 +19,7 @@ class ProveedorSeeder extends Seeder
             "Correo_Proveedor" => "norma@norma.com",
             "Telefono_Proveedor" => "3467537",
             "Direccion_Proveedor" => "cr 334 #23",
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
 
         Proveedor::create([
@@ -29,9 +27,7 @@ class ProveedorSeeder extends Seeder
             "Correo_Proveedor" => "Distrimax@max.com",
             "Telefono_Proveedor" => "34556732",
             "Direccion_Proveedor" => "cr 24 #3",
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
 
         Proveedor::create([
@@ -39,9 +35,7 @@ class ProveedorSeeder extends Seeder
             "Correo_Proveedor" => "Samsumg@ss.com",
             "Telefono_Proveedor" => "2345562",
             "Direccion_Proveedor" => "cr 45 #2",
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
     }
 }

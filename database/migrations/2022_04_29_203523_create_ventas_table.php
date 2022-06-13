@@ -19,7 +19,6 @@ class CreateVentasTable extends Migration
             $table->string('Documento_Cliente');
             $table->string('Telefono_Cliente');
             $table->string('Direccion_Cliente');
-            $table->timestamps();
         });
 
         Schema::create('ventas', function (Blueprint $table) {
@@ -38,7 +37,6 @@ class CreateVentasTable extends Migration
             $table->float('Precio_unitario', 11,2);
             $table->bigInteger('Cantidad');
             $table->float('Sub_total', 11,2);
-            $table->timestamps();
         });
     }
 

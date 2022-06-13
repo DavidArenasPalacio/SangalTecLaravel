@@ -14,9 +14,5 @@ class Rol extends Model
     protected $fillable = ['Nombre_Rol','Estado'];
 
 
-    public static $rules = [ 
-        'Nombre_Rol' => 'required|min:5',
-    ];
-
     public $timestamps = false;
 }

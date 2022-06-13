@@ -17,7 +17,6 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('Nombre_Categoria');
             $table->tinyInteger('Estado');
-            $table->timestamps();
         });
         
         Schema::create('productos', function (Blueprint $table) {
@@ -28,7 +27,6 @@ class CreateProductosTable extends Migration
             $table->integer('Cantidad');
             $table->foreignId('categoria_id')->constrained('categoria');
             $table->tinyInteger('Estado');
-            $table->timestamps();
         });
     }
 

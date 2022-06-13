@@ -16,16 +16,12 @@ class RolSeeder extends Seeder
     {
         Rol::create([
             "Nombre_Rol" => "Administrador",
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
 
         Rol::create([
             "Nombre_Rol" => "Empleado",
-            "Estado" => 1,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            "Estado" => 1
         ]);
     }
 }

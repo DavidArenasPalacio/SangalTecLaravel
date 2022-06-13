@@ -20,7 +20,7 @@ class VentasDetalle extends Model
         
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 
     
 }
