@@ -15,10 +15,10 @@ class CreateVentasTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre_Cliente');
-            $table->string('Documento_Cliente');
-            $table->string('Telefono_Cliente');
-            $table->string('Direccion_Cliente');
+            $table->string('Nombre_Cliente',50);
+            $table->string('Documento_Cliente',20);
+            $table->string('Telefono_Cliente',20);
+            $table->string('Direccion_Cliente',55);
         });
 
         Schema::create('ventas', function (Blueprint $table) {

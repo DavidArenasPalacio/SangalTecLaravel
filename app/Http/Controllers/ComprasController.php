@@ -61,11 +61,15 @@ class ComprasController extends Controller
 
     public function detalle($id)
     {
+        $compra = Compra::select("compra.Precio_total as precio")
+        ->where("compra.id",$id)
+        ->get();
+
         $detal = DetallesCompra::select("detallecompra.*", "productos.Nombre_Producto as producto")
             ->join("productos", "productos.id", "=", "detallecompra.producto_id")
             ->where("detallecompra.compra_id", $id)->get();
 
-        return view("compra.detalle", compact("detal"));
+        return view("compra.detalle", compact("detal", "compra"));
     }
 
 

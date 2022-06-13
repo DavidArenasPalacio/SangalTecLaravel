@@ -30,6 +30,14 @@
                     <td class="border-b formatoPeso">{{$value->SubTotal}}</td>
                 </tr>
                 @endforeach
+                <tr>
+                    <td class="border-b"><b>Precio total de la venta:</b> </td>
+
+                @foreach($venta as $value)
+                    <td class="border-b formatoPeso">{{$value->precio}}</td>
+                
+                @endforeach
+                </tr>
             </tbody>
         </table>
     </div>

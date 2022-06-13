@@ -155,6 +155,9 @@ class VentasController extends Controller
 
     public function listardetalle($id) 
     {
+            $venta = Ventas::select("ventas.Precio_total as precio")
+            ->where("ventas.id",$id)
+            ->get();
         
             $ventasdetalle = VentasDetalle::select("ventasdetalle.id", "ventasdetalle.venta_id as Ventas", "productos.Nombre_Producto as Productos", "ventasdetalle.Cantidad as Cantidad", "ventasdetalle.Precio_unitario", "ventasdetalle.Sub_total as SubTotal")
                 ->join("productos", "ventasdetalle.producto_id", "=", "productos.id")
@@ -162,7 +165,7 @@ class VentasController extends Controller
                 ->get();
 
                 
-            return view("ventas.productos", compact("ventasdetalle"));
+            return view("ventas.productos", compact("ventasdetalle","venta"));
 
     }
 

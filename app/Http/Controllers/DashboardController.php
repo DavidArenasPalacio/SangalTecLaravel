@@ -28,6 +28,7 @@ class DashboardController extends Controller
     }
     public function index(){
         $ventasChart = Ventas::select(DB::raw('COUNT(*) as count'))
+            ->where("ventas.Estado",1)
             ->whereYear('created_at', date('Y'))
             ->groupBy(DB::raw('Month(created_at)'))
             ->pluck('count');
@@ -35,6 +36,7 @@ class DashboardController extends Controller
                     
         $ventasMonths = Ventas::select(DB::raw('Month(created_at) as month'))
             ->whereYear('created_at', date('Y'))
+            ->where("ventas.Estado",1)
             ->groupBy(DB::raw('Month(created_at)'))
             ->pluck('month');
         
@@ -50,11 +52,13 @@ class DashboardController extends Controller
 
         $comprasChart = Compra::select(DB::raw('COUNT(*) as count'))
         ->whereYear('created_at', date('Y'))
+        ->where("compra.Estado",1)
         ->groupBy(DB::raw('Month(created_at)'))
         ->pluck('count');
     
     $comprasMonths = Compra::select(DB::raw('Month(created_at) as month'))
         ->whereYear('created_at', date('Y'))
+        ->where("compra.Estado",1)
         ->groupBy(DB::raw('Month(created_at)'))
         ->pluck('month');
         

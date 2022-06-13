@@ -19,7 +19,7 @@
             </div>
             <div class="w-full ">
                 <label for="categoria_id">Categoría: </label>
-                <select name="categoria_id" class="input w-full sm:mt-2 border mr-2 @error('categoria_id') border-theme-6 @enderror" id="categoria_id">
+                <select name="categoria_id" class="input select2 sm:mt-2 border mr-2 @error('categoria_id') border-theme-6 @enderror" style="width: 100%" id="categoria_id">
                     <option>------ Seleccione -----</option>
                     @foreach ($categorias as $value)
                     <option value="{{ $value->id }}" {{ old('categoria_id') == $value->id ? 'selected' : '' }}>
@@ -109,6 +109,19 @@
 
 
         });
+    });
+</script>
+
+<script>
+    $("select").select2({
+        language: {
+            noResults: function () {
+                return "No hay resultado";
+            },
+            searching: function () {
+                return "Buscando..";
+            },
+        },
     });
 </script>
 @endsection
