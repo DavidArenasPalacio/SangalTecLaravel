@@ -172,7 +172,7 @@
             let cantidadExistencia = $("#Producto option:selected").attr("cantidadExistencia");
             let cantidadSeleccionada = $("#cantidad").val();
 
-            if (parseInt(cantidadExistencia) < parseInt(cantidadSeleccionada)) {
+            if (parseInt(cantidadExistencia) < parseInt(cantidadSeleccionada) ) {
                 alert("La cantidad seleccionada es mayor a la existencia");
                 $("#cantidad").val(1);
             }
@@ -196,52 +196,53 @@
 
             let cantidadExistencia = $("#Producto option:selected").attr("cantidadExistencia");
 
-            nombreProductos.forEach((element, index) => {
+            if (parseInt(producto_id) > 0 && cantidad >= 0 && precio >= 0) {    
+                nombreProductos.forEach((element, index) => {
+                    if (element.textContent.trim() === producto_text.trim()) {
+                        let cantidadFinal = parseInt($("#cantidad").val()) + parseInt(cantidades[index].textContent);
 
-
-
-                if (element.textContent.trim() === producto_text.trim()) {
-                    let cantidadFinal = parseInt($("#cantidad").val()) + parseInt(cantidades[index].textContent);
-
-                    if (cantidadFinal > cantidadExistencia) {
-                        alert("error no se puede agregar mas este producto, la cantidad es insuficiente.");
-                    } else {
-                        let nuevaCantidad = parseInt(cantidades[index].textContent) + parseInt(cantidad);
-                        cantidades[index].textContent = nuevaCantidad;
-                        cantidadesDb[index].value = nuevaCantidad;
-                        subtotal = parseInt(precio) * nuevaCantidad;
-                        subTotal[index].textContent = subtotal;
+                        if (cantidadFinal > cantidadExistencia) {
+                            alert("error no se puede agregar mas este producto, la cantidad es insuficiente.");
+                        } else {
+                            let nuevaCantidad = parseInt(cantidades[index].textContent) + parseInt(cantidad);
+                            cantidades[index].textContent = nuevaCantidad;
+                            cantidadesDb[index].value = nuevaCantidad;
+                            subtotal = parseInt(precio) * nuevaCantidad;
+                            subTotal[index].textContent = subtotal;
+                        }
+                        encontrado = false;
                     }
-                    encontrado = false;
-                }
-            });
-            if (encontrado) {
-                if (cantidad >= 0 && precio >= 0) {
-                    $("#tbl_productos").append(`
-                        <tr id="tr-${producto_id}">
-                        <td class="nombreProductos">
-                        <input type="hidden" name="Producto[]" value="${producto_id}" />
-                        <input type="hidden" name="cantidades[]" value="${cantidad}" class="cantidadesDb"  />
-                        <input type="hidden" name="precios[]" value="${precio}" /> 
-                        ${producto_text}
-                        </td>
-                        <td class="cantidades">${cantidad}</td>
-                        <td>${precio}</td>
-                        <td class="subtotal">${subtotal}</td>
+                });
 
-                        <td>
-                            <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" title="Click aqui para eliminar este producto de la venta" onclick="eliminar(${producto_id})">x</button>
-                        </td>
-                        </tr>
-                    `);
+                if (encontrado) {
+                    if (cantidad >= 0 && precio >= 0) {
+                        $("#tbl_productos").append(`
+                            <tr id="tr-${producto_id}">
+                            <td class="nombreProductos">
+                            <input type="hidden" name="Producto[]" value="${producto_id}" />
+                            <input type="hidden" name="cantidades[]" value="${cantidad}" class="cantidadesDb"  />
+                            <input type="hidden" name="precios[]" value="${precio}" /> 
+                            ${producto_text}
+                            </td>
+                            <td class="cantidades">${cantidad}</td>
+                            <td>${precio}</td>
+                            <td class="subtotal">${subtotal}</td>
 
-                } else {
-                    swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
+                            <td>
+                                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" title="Click aqui para eliminar este producto de la venta" onclick="eliminar(${producto_id})">x</button>
+                            </td>
+                            </tr>
+                        `);
+
+                    } else {
+                        swal.fire('La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero');
+                    }
                 }
+                _subtotal();
+
+            } else {
+                swal.fire("La cantidad y el precio del producto no pueden estar vacios o ser menor o igual a cero");
             }
-
-            _subtotal();
-
         }
 
         function limpiar() {
@@ -273,6 +274,23 @@
 
             $("#total").text(total);
         }
+
+        $(document).ready(function() {
+
+        $('#form').validate({ // initialize the plugin
+            rules: {
+                
+                cantidad: {
+                    required: true,
+                    number: true,
+                    minlength: 1
+                }
+            },
+        
+                errorElement: 'span'
+            });
+        });
+
     </script>
     <script>
         $("select").select2({

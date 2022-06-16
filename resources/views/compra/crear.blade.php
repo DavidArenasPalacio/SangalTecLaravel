@@ -140,31 +140,7 @@
         </form>
     </div>
     @endsection @section('script')
-    {{-- <script>
-        $(document).ready(function() {
-            $('#form').validate({ // initialize the plugin
-                rules: {
-                    proveedor: {
-                        required: true,
-                        number: true
-                    },
-                    nombreProducto: {
-                        required: true,
-                        number: true
-                    },
-                    cantidad: {
-                        required: true,
-                        number: true,
-                        minlength: 1,
-                    }
-
-                },
-                errorElement: 'span'
-
-
-            });
-        });
-    </script> --}}
+    
     <script>
         function deshabilitar_proveedor() {
             document.querySelector("#proveedor").setAttribute("disabled", "true");
@@ -280,6 +256,23 @@
 
             $("#total").text(total);
         }
+
+        $(document).ready(function() {
+
+        $('#form').validate({ // initialize the plugin
+            rules: {
+                
+                cantidad: {
+                    required: true,
+                    number: true,
+                    minlength: 1
+                }
+            },
+        
+                errorElement: 'span'
+            });
+        });
+
     </script>
 
     <script>

@@ -31,7 +31,7 @@
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             Recuerda ingresar
                             <br>
-                            Una contraseña segura.
+                            una contraseña segura.
                         </div>
 
                     </div>
@@ -63,29 +63,7 @@
                                 @enderror
 
                                 <label for="inputEmail" style="display:none; class="
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+
                                     col-md-4 col-form-label text-md-right">{{ __('Correo Electronico') }}</label>
                             </div>
 
@@ -119,7 +97,7 @@
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit"
                                         class="button button--lg w-full text-white bg-theme-1 xl:mr-3">
-                                        {{ __('Restaurar Contraseña') }}
+                                        {{ __('Restablecer Contraseña') }}
                                     </button>
                                 </div>
                             </div>

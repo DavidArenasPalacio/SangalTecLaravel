@@ -14,24 +14,24 @@ class CategoriasSeeder extends Seeder
      */
     public function run()
     {
-        Categoria::create([
-            "Nombre_Categoria" => "Piñateria",
-            "Estado" => 1
-        ]);
+        // Categoria::create([
+        //     "Nombre_Categoria" => "Piñateria",
+        //     "Estado" => 1
+        // ]);
 
-        Categoria::create([
-            "Nombre_Categoria" => "Tecnologia ",
-            "Estado" => 1
-        ]);
+        // Categoria::create([
+        //     "Nombre_Categoria" => "Tecnologia ",
+        //     "Estado" => 1
+        // ]);
 
-        Categoria::create([
-            "Nombre_Categoria" => "Sentimiento ",
-            "Estado" => 1
-        ]);
+        // Categoria::create([
+        //     "Nombre_Categoria" => "Sentimiento ",
+        //     "Estado" => 1
+        // ]);
 
-        Categoria::create([
-            "Nombre_Categoria" => "Academico",
-            "Estado" => 1
-        ]);
+        // Categoria::create([
+        //     "Nombre_Categoria" => "Academico",
+        //     "Estado" => 1
+        // ]);
     }
 }

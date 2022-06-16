@@ -26,7 +26,7 @@ class SaveVenta extends FormRequest
         return [
             'nombreC' => ['required'],
             'producto' => ['required'],
-            'cantidad' => ['required','numeric']
+            'cantidad' => ['required','numeric','int']
             // 'precio' => ['required'],  
             // 'precioTotal' => ['required'] 
         ];

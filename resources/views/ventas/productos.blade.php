@@ -37,6 +37,8 @@
                     <td class="border-b formatoPeso">{{$value->precio}}</td>
                 
                 @endforeach
+                <td class="border-b"></td>
+                <td class="border-b"></td>
                 </tr>
             </tbody>
         </table>
