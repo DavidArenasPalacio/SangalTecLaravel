@@ -37,7 +37,7 @@
 
                                 <input type="text" id="documento" readonly name="Documento"
                                     class="input w-full border bg-gray-200 mt-2 cursor-not-allowed @error('Documento') border-theme-6 @enderror"
-                                    min="1" value="{{ old('Documento') }}">
+                                    value="{{ old('Documento') }}">
                                 @error('Documento')
                                     <div class="text-theme-6 mt-2"><strong>{{ $message }}</strong></div>
                                 @enderror

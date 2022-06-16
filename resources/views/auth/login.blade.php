@@ -92,7 +92,7 @@
                                 <div class="d-flex align-items-center justify-content-between mt-8 mb-0">
                                     <button type="submit"
                                         class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
-                                        {{ __('Iniciar Sesion') }}
+                                        {{ __('Iniciar Sesión') }}
                                     </button>
                                     @if (Route::has('password.request'))
                                         <a class="small btn btn-link" href="{{ route('password.request') }}">

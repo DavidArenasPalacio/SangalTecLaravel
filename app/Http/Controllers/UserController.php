@@ -40,7 +40,7 @@ class UserController extends Controller
         else{
             $users = User::select("users.id", "users.name as nombre", "users.documento", "users.telefono", "users.direccion", "users.email", "users.estado", "rol.Nombre_Rol as rol")
             ->join("rol", "rol.id", "=", "users.rol_id")
-            ->where("users.name", Auth::user()->name)
+            ->where("users.id", Auth::user()->id)
             ->get();
         }
             
