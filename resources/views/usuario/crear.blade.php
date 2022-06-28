@@ -96,8 +96,8 @@
         <button type="submit" class="button bg-theme-1 text-white mt-5 w-full">Crear Usuario</button>
     </div> -->
     <div class="flex justify-between">
-        <a href="/usuario" class="button  border bg-gray-600 text-white mr-2 mt-5 ">Volver</a>
-        <button type="submit" class="button bg-theme-1 text-white mt-5 ">Guardar</button>
+        <a href="/usuario" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip" title="Presione el boton izquierdo del mouse aqui para volver a la lista de los usuarios">Volver</a>
+        <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Presione el boton izquierdo del mouse aqui para guardar el registro del usuario">Guardar</button>
     </div>
 </form>
 </div>

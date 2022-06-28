@@ -315,8 +315,15 @@
                                         </li>
                                     @endguest
                                 </div>
-
-
+                            </div>
+                            <div class="p-4 border-b border-theme-40">
+                                <div class="font-medium">
+                                        <li class="nav-item dropdown">
+                                            <a target="_blank" href="/libs/MANUAL DE USUARIO SANGALTEC FINAL.docx.pdf" id="navbarDropdown" class="nav-link" data-toggle="dropdown">
+                                                Descarga aqui el manual de usuario
+                                            </a>
+                                        </li>
+                                </div>
                             </div>
 
                             <div class="p-2 border-t border-theme-40">

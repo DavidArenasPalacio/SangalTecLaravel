@@ -36,7 +36,7 @@
       </div>
   </div>
   <div class="flex justify-between" >
-    <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Click aqui para generar el reporte de las compras y ventas con las fechas ingresadas">Generar Reporte</button>
+    <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Presione el boton izquierdo del mouse aqui para generar el reporte de las compras y ventas con las fechas ingresadas">Generar Reporte</button>
 </div>
 </form>
 

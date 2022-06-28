@@ -87,9 +87,9 @@
                     </div>
                     <div class="flex justify-between">
                         <a href="/compra" class="button border bg-gray-600 text-white mr-2 mt-5 tooltip"
-                            title="Click aqui para volver a la lista de las compras">Volver</a>
+                            title="Presione el boton izquierdo del mouse aqui para volver a la lista de las compras">Volver</a>
                         <button type="button" class="button bg-theme-1 text-white mt-5 tooltip"
-                            title="Click aqui para agregar el producto a la compra" onclick="agregar()">
+                            title="Presione el boton izquierdo del mouse aqui para agregar el producto a la compra" onclick="agregar()">
                             Agregar Producto
                         </button>
                     </div>
@@ -131,7 +131,7 @@
                             </table>
                         </div>
                         <button type="submit" class="button w-full mr-1 mb-2 bg-theme-1 text-white tooltip"
-                            title="Click aqui para guardar el registro de la compra">
+                            title="Presione el boton izquierdo del mouse aqui para guardar el registro de la compra">
                             Guardar
                         </button>
                     </div>
@@ -210,7 +210,7 @@
                 <td class="subtotal">${subtotal}</td>
 
                 <td>
-                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white tooltip" title="Click aqui para eliminar este producto de la compra" onclick="eliminar(${id})">x</button>
+                    <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white tooltip" title="Presione el boton izquierdo del mouse aqui para eliminar este producto de la compra" onclick="eliminar(${id})">x</button>
                 </td>
                 </tr>
             `);

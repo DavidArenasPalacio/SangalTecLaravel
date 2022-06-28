@@ -99,9 +99,9 @@
                     </div>
                     <div class="flex justify-between">
                         <a href="/ventas" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip"
-                            title="Click aqui para volver a la lista de las ventas">Volver</a>
+                            title="Presione el boton izquierdo del mouse aqui para volver a la lista de las ventas">Volver</a>
                         <button type="button" class="button bg-theme-1 text-white mt-5 tooltip"
-                            title="Click aqui para agregar el producto a la venta" onclick="agregar()">Agregar
+                            title="Presione el boton izquierdo del mouse aqui para agregar el producto a la venta" onclick="agregar()">Agregar
                             Producto</button>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         </div>
                         
                         <button type="submit" id="btnGuardar" class="button w-full mr-1 mb-2 bg-theme-1 text-white tooltip"
-                            title="Click aqui para guardar el registro de la venta">Guardar</button>
+                            title="Presione el boton izquierdo del mouse aqui para guardar el registro de la venta">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@
                             <td class="subtotal">${subtotal}</td>
 
                             <td>
-                                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" title="Click aqui para eliminar este producto de la venta" onclick="eliminar(${producto_id})">x</button>
+                                <button type="button" class="button w-24 mr-1 mb-2 bg-theme-6 text-white" title="Presione el boton izquierdo del mouse aqui para eliminar este producto de la venta" onclick="eliminar(${producto_id})">x</button>
                             </td>
                             </tr>
                         `);

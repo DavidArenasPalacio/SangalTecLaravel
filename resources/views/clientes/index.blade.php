@@ -8,7 +8,7 @@
             </h2>
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
                 <a href="/clientes/crear" class="button flex  text-white bg-theme-1 shadow-md mr-2 tooltip"
-                    title="Click aqui para ingresar al formulario de registro de cliente"><i data-feather="plus"
+                    title="Presione el boton izquierdo del mouse aqui para ingresar al formulario de registro de cliente"><i data-feather="plus"
                         class="mx-auto"></i> Registrar un nuevo cliente</a>
             </div>
         </div>

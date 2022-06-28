@@ -31,7 +31,7 @@
 
         <div class="flex justify-between">
             <a href="/proveedor" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip"
-                title="Click aqui para volver a la lista de los proveedores">Volver</a>
+                title="Presione el boton izquierdo del mouse aqui para volver a la lista de los proveedores">Volver</a>
         </div>
     </div>
 @endsection

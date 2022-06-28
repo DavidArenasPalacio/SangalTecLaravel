@@ -35,7 +35,7 @@
 
         <div class="flex justify-between">
             <a href="/clientes" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip"
-                title="Click aqui para volver a la lista de los clientes">Volver</a>
+                title="Presione el boton izquierdo del mouse aqui para volver a la lista de los clientes">Volver</a>
         </div>
 
     </div>

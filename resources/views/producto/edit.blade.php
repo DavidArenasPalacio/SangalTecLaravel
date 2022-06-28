@@ -71,8 +71,8 @@
 
         </div>
         <div class="flex justify-between">
-            <a href="/producto" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip" title="Click aqui para volver a la lista de los productos">Volver</a>
-            <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Click aqui para guardar los datos editados del producto">Guardar</button>
+            <a href="/producto" class="button  border bg-gray-600 text-white mr-2 mt-5 tooltip" title="Presione el boton izquierdo del mouse aqui para volver a la lista de los productos">Volver</a>
+            <button type="submit" class="button bg-theme-1 text-white mt-5 tooltip" title="Presione el boton izquierdo del mouse aqui para guardar los datos editados del producto">Guardar</button>
         </div>
     </form>
 </div>
